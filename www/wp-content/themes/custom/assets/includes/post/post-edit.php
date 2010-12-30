@@ -1,0 +1,1 @@
+<div class="post-edit sxn"><?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link" style="background: #ececec; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; color: #fff; width: 2em; text-align: center;">', '</span>' ); ?></div>

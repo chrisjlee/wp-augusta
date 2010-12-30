@@ -1,0 +1,20 @@
+/*
+Theme Name: Strategic Organization Theme
+Theme URI: http://www.globerunnerseo.com    
+Description: A child theme of the 2010 default theme for WordPress.
+Author: chris@globerunnerseo.com  based on work by the WordPress team
+Author url: http://www.chrisjlee.net
+Version: 0.1
+Tags: black, blue, white, three-columns, fixed-width, custom-header, theme-options, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+Template: twentyten
+
+Copyright 2010 Globerunnerseo.com. 
+All rights reserved. Theme cannot be modified. 
+Any modifications will void any warantee or responsibilities of the authors, 
+Globerunnerseo.com, and/or it's heirs.
+
+*/
+@import url('../twentyten/style.css');
+
+/* compressed */
+body{font-size:10px; color:#111}h1, h2, h3, h4, h5, h6{font-weight:bold; letter-spacing:-1px; margin-bottom:10px}/* Font sizes */h1{font-size:4em}h2{font-size:3em}h3{font-size:2.5em}h4{font-size:2em}h5{font-size:1.8em}h6{font-size:1.6em}p, caption, td, th, dd, dt, pre, code, address{font-size:1.2em; line-height:1.6em; margin-bottom:10px}hr{margin-bottom:10px}/* Links */a:link{color:#111; text-decoration:none}a:visited{color:#111; text-decoration:none}a:hover, a:focus{color:#111; text-decoration:underline}a:active{}/* Lists and stuff */ul, ol{margin:0 0 10px 0}li{font-size:12px; /* declared explicitly to avoid nesting bugs */margin:0; list-style-position:inside}li li{margin:0 0 0 15px}/* pad nested list items */dt{font-weight:bold}dd{font-style:italic; padding-left:10px; margin:0 0 10px 0}/* Tables */table{border-color:#b3b3b3; border-width:1px; border-style:solid; border-right-style:none}th{background-color:#EEE; border-bottom-color:#CCC; border-bottom-width:1px; border-bottom-style:solid; border-right-color:#CCC; border-right-width:1px; border-right-style:solid; padding:2px 10px}td{border-bottom-color:#CCC; border-bottom-width:1px; border-bottom-style:solid; border-right-color:#CCC; border-right-width:1px; border-right-style:solid; padding:2px 10px}caption{font-style:italic; text-align:left}/* Other blocks of content */blockquote{color:#333; font-style:italic; margin:10px}code{color:#666; display:block; border-color:#b3b3b3; border-width:1px; border-style:solid; padding:10px; margin:0 0 10px 0}pre{color:#666; display:block; margin:0 0 10px 0}/* Misc html elements */del{color:#999}ins{font-style:italic}
