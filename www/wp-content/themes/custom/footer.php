@@ -20,7 +20,7 @@
         	get_sidebar( 'footer' );
         ?>
 			<?php 
-				  $fargs = array(
+				  $args = array(
                     'container'       => 'div', 
                     'container_class' => 'grid_10 menu alpha', 
                     'menu'            => 'Footer', 
@@ -36,7 +36,7 @@
                     'walker'          => ''
                     //'theme_location' => 'footer'
 				  );
-				  wp_nav_menu($fargs); 
+				  wp_nav_menu($args); 
 				  ?>
     	<?php do_action('thm_site_generator');?>
 		</div><!-- #colophon -->
