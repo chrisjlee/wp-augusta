@@ -4,7 +4,7 @@
 		<div id="header" class="sxn container_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="masthead" class="sxn">
 				<div id="logo" class="sxn">
-				  <div class="grid_15"><h2 id="site-title" class="grid">
+				  <div class="grid_16"><h2 id="site-title" class="grid">
 					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><span>						
 						<?php bloginfo( 'name' ); ?>						
 					</span></a>
@@ -33,13 +33,13 @@
 					<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentyten' ); ?>"><?php _e( 'Skip to content', 'twentyten' ); ?></a></div>
 					<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 					<?php wp_nav_menu( array( 
-					    'container_id'    => 'menu-access',
+					'container_id'    => 'menu-access',
 						'container_class' => 'menu-primary', 
 						'menu' => 'Main',
-					    'menu_id' => 'access-ul',
-					    'menu_class' => 'superfish sxn sf-menu',
+						'menu_id' => 'access-ul',
+						'menu_class' => 'superfish sxn sf-menu',
 						'theme_location' => 'primary'
-					     ) ); ?>
+						) ); ?>
 				</div><!-- #access -->
 				<div id="branding" role="banner" class="sxn">
 					<div id="branding-overlay" class="sxn"></div>

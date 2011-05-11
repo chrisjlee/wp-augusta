@@ -16,14 +16,14 @@ get_header(); ?>
 <?php get_template_part( 'tpt-header', 'core' ); ?>
 		<div id="container" class="container_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="content" role="main" class="grid_24 alpha omega">
-    			<div class="sxn grid_24 alpha omega">
-    				<div id="sidebar-front-primary" class="widget-area sidebar bfl grid_7 alpha"><?php get_sidebar('front');  ?></div>
-    				<div id="content-body" class="grid_17 omega"><?php get_template_part('loop','front'); ?></div>
-    			</div>
-    			<div class="clearfloat"></div>
+					<div id="content" class="sxn grid_<?php echo CONFIG_960GS_TYPE; ?> alpha omega">
+						<div id="sidebar-front-primary" class="widget-area sidebar bfl grid_6 alpha"><?php get_sidebar('front');  ?></div>
+						<div id="content-body" class="grid_10 omega"><?php get_template_part('loop','front'); ?></div>
+					</div>
+					<div class="clearfloat"></div>
 				<div id="sidebar-front-secondary" class="widget-area sidebar sxn grid_24 alpha omega" role="complementary">    			  
-				  <?php get_sidebar('front-secondary');  ?>
-    			</div>
+					<?php get_sidebar('front-secondary');  ?>
+				</div>
 			</div><!-- #content -->
 </div><!-- #container -->
 <?php get_footer(); ?>

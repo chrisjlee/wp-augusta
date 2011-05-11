@@ -16,10 +16,10 @@
 get_header(); ?>
 <body id="tpl-index" <?php if(function_exists('body_class')) body_class(); ?> >
 <?php get_template_part( 'tpt-header', 'core' ); ?>
-		<div id="container" class="container_24">
+		<div id="container" class="container_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="content" role="main">
-			<?php get_template_part('loop','blog'); ?>
-			<div class="grid_6 omega"><?php get_sidebar('blog');  ?></div>
+				<?php get_template_part('loop','blog'); ?>
+				<div class="grid_6 omega"><?php get_sidebar('blog');  ?></div>
 			</div><!-- #content -->
 		</div><!-- #container -->
 <?php get_footer(); ?>

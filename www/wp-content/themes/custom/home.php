@@ -14,7 +14,7 @@
 get_header(); ?>
 <body id="tpl-blog" <?php if(function_exists('body_class')) body_class(); ?> >
 <?php get_template_part( 'tpt-header', 'page' ); ?>
-		<div id="container" class="container_24">
+		<div id="container" class="container_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="content" role="main" class="grid_24 alpha omega">
     			<div class="sxn grid_24 alpha omega">
     				<div id="sidebar-primary" class="grid_7 alpha"><?php get_sidebar('primary-widget-area');  ?></div>

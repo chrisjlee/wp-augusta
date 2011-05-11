@@ -16,10 +16,10 @@
 get_header(); ?>
 <body id="tpl-404" <?php if(function_exists('body_class')) body_class(); ?> >
 <?php get_template_part( 'tpt-header', 'page' ); ?>
-		<div id="container" class="container_24">
+		<div id="container" class="container_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="content" role="main" class="sxn entry-content">
-    			<div id="content-primary" class="grid_7 alpha "><?php get_sidebar('primary');  ?></div>
-    			<div id="content-body" class="grid_17 omega">
+    			<div id="content-primary" class="grid_6 alpha "><?php get_sidebar('primary');  ?></div>
+    			<div id="content-body" class="grid_10 omega">
     				<div class="grid_16">
     				<h2>404: We seemed to be unable to find the particular page you're looking for</h2>
     				<p>Please use the following search form to find the page that you may be looking for:</p>

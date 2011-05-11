@@ -16,7 +16,7 @@
 get_header(); ?>
 <body id="tpl-single" <?php if(function_exists('body_class')) body_class(); ?> >
 <?php get_template_part( 'tpt-header', 'core' ); ?>
-		<div id="container" class="<?php do_action('custom_grid_container'); ?>">
+		<div id="container" class="grid_<?php echo CONFIG_960GS_TYPE; ?>">
 			<div id="content" role="main">
 			<?php get_template_part('loop','index'); ?>
 			<?php get_sidebar('blog');  ?>
