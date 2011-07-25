@@ -1,0 +1,26 @@
+#  Gitignore file for augusta
+www/index.php
+www/wp-*.php
+www/readme.html
+www/index.php
+www/license.txt
+www/xmlrpc.php
+# ignore the wp-config file should be stored in /data
+www/wp-config.php
+#Ignore any dev files
+www/wp-*dev.php
+!www/wp-config-dev-sample.php
+!wp-config-dev-settings.php
+
+# Ignore wordpress install
+# SVN Tracked Wordpress install is located in /setup/
+www/wp-admin/
+www/wp-includes/
+
+# Ignore Specific Wordpress themes and plugins
+*/wp-content/plugins/akismet
+*/wp-content/plugins/hello.php
+*/wp-content/themes/twentyeleven/
+
+# Ignore SVN Files
+*/.svn/
