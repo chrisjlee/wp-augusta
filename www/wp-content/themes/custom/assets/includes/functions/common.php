@@ -22,7 +22,7 @@ add_image_size( 'single-post-thumbnail', 400, 9999 ); // Permalink thumbnail siz
  * 
  */
 function thm_the_subtitle(&$custom_meta_title='subtitle') {
-	do_action('thm_the_subtitle',$custom_meta_title)
+	do_action('thm_the_subtitle',$custom_meta_title);
     $st = get_post_custom_values("subtitle", $post->id);
     if (isset($st) && !empty($st) ) $st = $st[0];
     else $st = '';
