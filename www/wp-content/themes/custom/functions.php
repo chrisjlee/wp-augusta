@@ -177,14 +177,14 @@ function augusta_menu() {
 function augusta_hero() {
     do_action('augusta_hero');
 }
-function augusta_content_prefix() {
-    do_action('augusta_prefix');
+function augusta_content_before() {
+    do_action('augusta_before');
 }
 function augusta_content() {
     do_action('augusta_content');
 }
-function augusta_content_postfix() {
-    do_action('augusta_content');
+function augusta_content_after() {
+    do_action('augusta_after');
 }
 function augusta_branding() {
     do_action('augusta_branding');
@@ -193,6 +193,24 @@ function augusta_footer() {
     do_action('augusta_footer');
 }
 
+function zone_content_above_class() {
+  do_action ('zone_content_above_class');
+}
+function zone_content_class() {
+  do_action ('zone_content_class');
+}
+function zone_content_below_class() {
+  do_action ('zone_content_above_class');
+}
+/*
+ * Globe Runner Hooks
+ */
 function grs_generator() {
   do_action ('grs_generator');
 }
+
+
+function augusta_zone_content_above_class() {
+  echo "grid_16";
+}
+add_action('zone_content_above_class', 'augusta_zone_content_above_class');

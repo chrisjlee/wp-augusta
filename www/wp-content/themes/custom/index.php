@@ -15,14 +15,21 @@
 get_header(); ?>
 <body id="tpl-index" <?php if(function_exists('body_class')) body_class(); ?> >
 <div id="page">
-  <div id="zone-header" class="sxn"><?php do_action('augusta_header') ?></div>
-  <div id="zone-menu" class="sxn"><?php do_action('augusta_header') ?></div>
-  <div id="zone-content" class="hfeed">
-  <?php
-  do_action('augusta_content_prefix');
-  do_action('augusta_content');
-  do_action('augusta_content_postfix');
-  ?>
+  <div id="zone-header" class="<?php do_action('zone_header_class') ?>">
+     <?php do_action('augusta_header') ?>
+  </div>
+  <div id="zone-menu" class="<?php do_action('zone_menu_class') ?>">
+    <?php do_action('augusta_header') ?>
+  </div>
+  <div id="zone-content-above" class="<?php do_action('zone_content_above_class')?>">
+    <?php do_action('augusta_content_above'); ?>
+  </div>
+  <div id="zone-content" class="<?php do_action('zone_content_class')?>">
+     <?php do_action('augusta_content'); ?>
+  </div>
+  <div id="zone-content-below" class="<?php do_action('zone_content_below_class')?>">
+    <?php do_action('augusta_content_below'); ?>
+  </div>
   <?php //get_template_part('loop','blog');?>
   </div><!-- #zone-content -->
 </div><!-- #page -->
