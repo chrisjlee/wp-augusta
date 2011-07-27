@@ -14,25 +14,33 @@
  */
 add_action( 'after_setup_theme', 'augusta_setup' );
 
-
-@add_theme_support( 'nav-menus' );
-@add_theme_support( 'post-thumbnails' );
-@add_theme_support( 'editor-style' );
-@add_theme_support( 'widgets' );
-@add_theme_support( 'menus' );
-
-/* Include files
+/* Setup Path Constants 
+ * @since 0.0.1
 --------------------------------------------- */
-// Path constants
-if ( is_child_theme() ) define('AUGUSTA_URL', STYLESHEETPATH . '/assets/includes');
-else define('AUGUSTA_URL', TEMPLATEPATH . '/assets/includes');
+if ( is_child_theme() ) {
+  define('AUGUSTA_ASSETS', STYLESHEETPATH . '/assets');
+  define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
+  define('AUGUSTA_HOOK', STYLESHEETPATH . '/assets/inc/hooks');
+}
+else {
+  define('AUGUSTA_ASSETS', TEMPLATEPATH . '/assets');
+  define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
+  define('AUGUSTA_HOOK', STYLESHEETPATH . '/assets/inc/hooks');
+}
 
-//	Autoload Common Functions
-require_once(AUGUSTA_URL . '/functions/common.php');
-require_once(AUGUSTA_URL . '/functions/settings.php');
+/**
+ * Autoload files
+ --------------------------------------------- */
+require_once( AUGUSTA_INC . '/functions/common.php');
+require_once( AUGUSTA_ASSETS . '/bootstrap.php');
+require_once( AUGUSTA_ASSETS . '/settings.php');
+// Load Hooks
+require_once( AUGUSTA_HOOK . '/augusta-menu.php');
 
-
-
+/*
+ * Implements hook init()
+ * Function sets up theme initializing widgets and adding theme support
+ * */
 if ( ! function_exists( 'augusta_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -56,7 +64,21 @@ if ( ! function_exists( 'augusta_setup' ) ):
  * @since Twenty Eleven 1.0
  */
 function augusta_setup() {
-
+  // Setup Support for Nav Menus  
+  add_theme_support( 'nav-menus' );
+  
+  // Enable Post Thumbnails
+  add_theme_support( 'post-thumbnails' );
+  
+  // Enable Editor Styles
+  add_theme_support( 'editor-style' );
+  
+  // Turn on ability to use widgets
+  add_theme_support( 'widgets' );
+  
+  // Enable Menu support
+  add_theme_support( 'menus' );
+  
   // Add default posts and comments RSS feed links to <head>.
   add_theme_support( 'automatic-feed-links' );
 
@@ -82,8 +104,8 @@ function augusta_setup() {
 
   // The height and width of your custom header.
   // Add a filter to twentyeleven_header_image_width and twentyeleven_header_image_height to change these values.
-  define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyeleven_header_image_width', 1000 ) );
-  define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyeleven_header_image_height', 288 ) );
+  define( 'HEADER_IMAGE_WIDTH', apply_filters( 'augusta_header_image_width', 1000 ) );
+  define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'augusta_header_image_height', 288 ) );
 
   // We'll be using post thumbnails for custom header images on posts and pages.
   // We want them to be the size of the header image that we just defined
@@ -99,8 +121,9 @@ endif;
 
   /** Register sidebars by running augusta_widgets_init() on the widgets_init hook. */
   add_action( 'widgets_init', 'augusta_widgets_init' );
-
+  /** Setup Hook for favicon */
   add_action('wp_head', 'augusta_favicon_link');
+  /** Add hook to be executed with wp_head */
   add_action('wp_head', 'augusta_setup');
 
 /*

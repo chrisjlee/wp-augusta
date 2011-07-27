@@ -18,9 +18,10 @@ www/wp-admin/
 www/wp-includes/
 
 # Ignore Specific Wordpress themes and plugins
+*/wp-content/themes/*
 */wp-content/plugins/akismet
 */wp-content/plugins/hello.php
 */wp-content/themes/twentyeleven/
-
+!*/wp-content/themes/custom
 # Ignore SVN Files
 */.svn/
