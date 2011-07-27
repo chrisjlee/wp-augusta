@@ -10,8 +10,8 @@
 <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> 
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 <meta name="author" content="Chris Lee" />
-<meta name="Copyright" content="Copyright (c) 2009-<?php date('Y')?>" />
-<title><?php locate_template(array('/assets/includes/static/page-title.php'),true);  ?></title>
+<meta name="Copyright" content="Copyright (c) 2009-<?php echo date('Y')?>" />
+<title><?php bloginfo('name'); ?> <?php wp_title(); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />

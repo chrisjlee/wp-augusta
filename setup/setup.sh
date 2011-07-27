@@ -44,6 +44,7 @@ fi
 
 main
 
+unset main
 unset dl
 unset svn
 

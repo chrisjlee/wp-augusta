@@ -3,8 +3,8 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage Augusta
+ * @since Augusta v1.0.0
  */
 ?>
 
@@ -18,18 +18,15 @@
 	 * some default sidebar stuff just in case.
 	 */
 	if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
-	
 			<li id="search" class="widget-container widget_search">
 				<?php get_search_form(); ?>
 			</li>
-
 			<li id="archives" class="widget-container">
 				<h3 class="widget-title"><?php _e( 'Archives', 'twentyten' ); ?></h3>
 				<ul>
 					<?php wp_get_archives( 'type=monthly' ); ?>
 				</ul>
 			</li>
-
 			<li id="meta" class="widget-container">
 				<h3 class="widget-title"><?php _e( 'Meta', 'twentyten' ); ?></h3>
 				<ul>
@@ -38,14 +35,10 @@
 					<?php wp_meta(); ?>
 				</ul>
 			</li>
-
 		<?php endif; // end primary widget area ?>
 			</ul>
 		</div><!-- #primary .widget-area -->
-
 <?php
 	// A second sidebar for widgets, just because.
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) : ?>
-
-
 <?php endif; ?>

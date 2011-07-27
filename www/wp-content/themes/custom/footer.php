@@ -33,7 +33,7 @@
 					);
 					wp_nav_menu($args); 
 				?>
-	    	<?php do_action('thm_site_generator');?>
+	    	<?php do_action('grs_site_generator');?>
 			</div><!-- #colophon -->
 		</div><!-- #footer -->
 	</div><!-- #wrapper -->

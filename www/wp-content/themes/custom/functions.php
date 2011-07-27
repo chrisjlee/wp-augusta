@@ -9,6 +9,11 @@
 *		
 */ 
 
+/**
+ * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
+ */
+add_action( 'after_setup_theme', 'augusta_setup' );
+
 
 @add_theme_support( 'nav-menus' );
 @add_theme_support( 'post-thumbnails' );
@@ -19,203 +24,175 @@
 /* Include files
 --------------------------------------------- */
 // Path constants
-if ( is_child_theme() ) define('THMURL', STYLESHEETPATH . '/assets/includes');
-else define('THMURL', TEMPLATEPATH . '/assets/includes');
+if ( is_child_theme() ) define('AUGUSTA_URL', STYLESHEETPATH . '/assets/includes');
+else define('AUGUSTA_URL', TEMPLATEPATH . '/assets/includes');
 
 //	Autoload Common Functions
-require_once(THMURL . '/functions/common.php');
-require_once(THMURL . '/functions/settings.php');
-
-$content_width = CONFIG_CONTENT_WIDTH;
+require_once(AUGUSTA_URL . '/functions/common.php');
+require_once(AUGUSTA_URL . '/functions/settings.php');
 
 
-function custom_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Front Page: Primary Widget Area', 'twentyten' ),
-		'id' => 'front',
-		'description' => __( 'The primary widget area for the front page only', 'twentyten' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );	
-	register_sidebar( array(
-		'name' => __( 'Front Page: Secondary Widget Area', 'twentyten' ),
-		'id' => 'front-secondary',
-		'description' => __( 'The Secondary Widget area for the Front Page only', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
-	register_sidebar( array(
-		'name' => __( 'Pages: Primary Widget Area', 'twentyten' ),
-		'id' => 'page',
-		'description' => __( 'The Primary Widget area for all Pages', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
-	register_sidebar( array(
-		'name' => __( 'Blog: Primary Widget Area', 'twentyten' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'The primary widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
 
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Blog: Secondary Widget Area', 'twentyten' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
+if ( ! function_exists( 'augusta_setup' ) ):
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which runs
+ * before the init hook. The init hook is too late for some features, such as indicating
+ * support post thumbnails.
+ *
+ * To override twentyeleven_setup() in a child theme, add your own twentyeleven_setup to your child theme's
+ * functions.php file.
+ *
+ * @uses load_theme_textdomain() For translation/localization support.
+ * @uses add_editor_style() To style the visual editor.
+ * @uses add_theme_support() To add support for post thumbnails, automatic feed links, and Post Formats.
+ * @uses register_nav_menus() To add support for navigation menus.
+ * @uses add_custom_background() To add support for a custom background.
+ * @uses add_custom_image_header() To add support for a custom header.
+ * @uses register_default_headers() To register the default custom header images provided with the theme.
+ * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
+ *
+ * @since Twenty Eleven 1.0
+ */
+function augusta_setup() {
 
-	// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'twentyten' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
+  // Add default posts and comments RSS feed links to <head>.
+  add_theme_support( 'automatic-feed-links' );
 
-	// Area 4, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'twentyten' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+  // This theme uses wp_nav_menu() in one location.
+  register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
 
-	// Area 5, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'twentyten' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+  // Add support for a variety of post formats
+  add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
 
-	// Area 6, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+  // Add support for custom backgrounds
+  add_custom_background();
+
+  // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
+  add_theme_support( 'post-thumbnails' );
+
+  // The next four constants set how Twenty Eleven supports custom headers.
+
+  // The default header text color
+  define( 'HEADER_TEXTCOLOR', '000' );
+
+  // By leaving empty, we allow for random image rotation.
+  define( 'HEADER_IMAGE', '' );
+
+  // The height and width of your custom header.
+  // Add a filter to twentyeleven_header_image_width and twentyeleven_header_image_height to change these values.
+  define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyeleven_header_image_width', 1000 ) );
+  define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyeleven_header_image_height', 288 ) );
+
+  // We'll be using post thumbnails for custom header images on posts and pages.
+  // We want them to be the size of the header image that we just defined
+  // Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
+  set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
+  
+  // Add Augusta's custom image sizes
+  add_image_size( 'large-feature', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true ); // Used for large feature (header) images
+  add_image_size( 'small-feature', 500, 300 ); // Used for featured posts if a large-feature doesn't exist
+  
 }
-/** Register sidebars by running twentyten_widgets_init() on the widgets_init hook. */
-add_action( 'widgets_init', 'custom_widgets_init' );
-if ( ! function_exists( 'custom_slider' ) ) :
-
-function custom_slider($category = 'featured', $postcount = '10'){
-?>
-		<div id="slider">
-		<?php $q = new WP_Query("category_name=$category&showposts=$postcount"); if( $q->have_posts() ) : while($q->have_posts()) : $q->the_post();?>	
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
-				<?php the_post_thumbnail();?>	
-			</a>
-			<?php endwhile; endif;?>
-		</div><!--/slider-->
-<?php }
 endif;
 
-/**
- *	Template for comments and pingbacks.
- *
- *	Used as a callback by wp_list_comments() for displaying the comments.
- *
- *	@since Speaky 1.0
- */
-function twentyten_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case '' :
-	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div id="comment-<?php comment_ID(); ?>">
-		<div class="comment-author vcard">
-			<?php echo get_avatar( $comment, 40 ); ?>
-			<?php printf( __( '%s <span class="says">says:</span>', 'twentyten' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-		</div><!-- .comment-author .vcard -->
-		<?php if ( $comment->comment_approved == '0' ) : ?>
-			<em><?php _e( 'Your comment is awaiting moderation.', 'twentyten' ); ?></em>
-			<br />
-		<?php endif; ?>
+  /** Register sidebars by running augusta_widgets_init() on the widgets_init hook. */
+  add_action( 'widgets_init', 'augusta_widgets_init' );
 
-		<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-			<?php
-				/* translators: 1: date, 2: time */
-				printf( __( '%1$s at %2$s', 'twentyten' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( 'Edit', 'twentyten' ), ' ' );
-			?>
-		</div><!-- .comment-meta .commentmetadata -->
-
-		<div class="comment-body"><?php comment_text(); ?></div>
-
-		<div class="reply">
-			<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-		</div><!-- .reply -->
-	</div><!-- #comment-##  -->
-
-	<?php
-		break;
-		case 'pingback'  :
-		case 'trackback' :
-	?>
-	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'twentyten' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'twentyten'), ' ' ); ?></p>
-	<?php
-			break;
-	endswitch;
-}
-
-/**
- * Globerunner Dashboard Widget
- */
-function remove_footer_admin () {
-    echo 'Fueled by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Globerunnerseo.com: <a href="http://www.Globerunnerseo.com" target="_blank">Dallas SEO</a></p>';
-} 
-
-
-function thm_favicon_link() {
-    echo '<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />' . "\n";
-}
-add_action('wp_head', 'thm_favicon_link');
-add_action('wp_head', 'twentyten_setup');
-add_action('widgets_init', 'custom_widgets_init' );
-
-add_filter('widget_content', 'make_alternating_widget_styles');
+  add_action('wp_head', 'augusta_favicon_link');
+  add_action('wp_head', 'augusta_setup');
 
 /*
- *  @todo make alternating widget styles 
- *  Work In Progress
- * 
- * */
-function make_alternating_widget_styles($content='')
-{   
-  global $wl_make_alt_ws;
-    $wl_make_alt_ws=($wl_make_alt_ws=="style_a")?"style_b":"style_a";
-    return preg_replace('/(class="widget )/', "$1 widget_${wl_make_alt_ws} ", $content);
-var_dump($content);
+ * Implements:
+ * widgets_init
+ */
+if ( !function_exists('augusta_widgets_init') ) :
+  function augusta_widgets_init() {
+    
+  }
+endif; 
+
+if ( !function_exists('augusta_widgets_link') ) :
+  function augusta_favicon_link() {
+    echo '<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />' . "\n";
+  }
+endif;  
+  //add_filter('widget_content', 'make_alternating_widget_styles');
+  
+  
+ /**
+ * Sets the post excerpt length to 40 words.
+ *
+ * To override this length in a child theme, remove the filter and add your own
+ * function tied to the excerpt_length filter hook.
+ */
+function augusta_excerpt_length( $length ) {
+  return 40;
+}
+add_filter( 'excerpt_length', 'augusta_excerpt_length' );
+
+/**
+ * Returns a "Continue Reading" link for excerpts
+ */
+function augusta_continue_reading_link() {
+  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
 }
 
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link().
+ *
+ * To override this in a child theme, remove the filter and add your own
+ * function tied to the excerpt_more filter hook.
+ */
+function augusta_auto_excerpt_more( $more ) {
+  return ' &hellip;' . twentyeleven_continue_reading_link();
+}
+add_filter( 'excerpt_more', 'augusta_auto_excerpt_more' );
 
-?>
+/**
+ * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *
+ * To override this link in a child theme, remove the filter and add your own
+ * function tied to the get_the_excerpt filter hook.
+ */
+function augusta_custom_excerpt_more( $output ) {
+  if ( has_excerpt() && ! is_attachment() ) {
+    $output .= twentyeleven_continue_reading_link();
+  }
+  return $output;
+}
+add_filter( 'get_the_excerpt', 'augusta_custom_excerpt_more' );
+
+/**
+ * Augusta Custom Hooks
+ */
+
+function augusta_header() {
+    do_action('augusta_header');
+}
+function augusta_menu() {
+    do_action('augusta_menu');
+}
+function augusta_hero() {
+    do_action('augusta_hero');
+}
+function augusta_content_prefix() {
+    do_action('augusta_prefix');
+}
+function augusta_content() {
+    do_action('augusta_content');
+}
+function augusta_content_postfix() {
+    do_action('augusta_content');
+}
+function augusta_branding() {
+    do_action('augusta_branding');
+}
+function augusta_footer() {
+    do_action('augusta_footer');
+}
+
+function grs_generator() {
+  do_action ('grs_generator');
+}
