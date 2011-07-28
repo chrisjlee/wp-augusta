@@ -8,9 +8,8 @@
  */
 ?>
 
-		<div id="sidebar" class="widget-area sidebar" role="complementary">
-			<ul class="xoxo">
-
+<div id="sidebar" class="widget-area sidebar" role="complementary">
+	<ul class="xoxo">
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out
 	 * the widgets for that widget area. If it instead returns false,
@@ -36,7 +35,7 @@
 				</ul>
 			</li>
 		<?php endif; // end primary widget area ?>
-			</ul>
+		</ul>
 		</div><!-- #primary .widget-area -->
 <?php
 	// A second sidebar for widgets, just because.

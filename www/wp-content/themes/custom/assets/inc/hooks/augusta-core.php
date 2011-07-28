@@ -42,38 +42,38 @@ function augusta_menu($args) {
 /**  Zones */
 // Augusta Hero
 function augusta_hero() {
-  do_action('augusta_hero');
+  do_action ( 'augusta_hero' );
 }
 function augusta_menu() {
-  do_action('augusta_menu');
+  do_action ( 'augusta_menu ' );
 }
 function augusta_content_before() {
-  do_action('augusta_content_before');
+  do_action ( 'augusta_content_before' );
 }
 function augusta_content() {
-  do_action('augusta_content');
+  do_action ( 'augusta_content ' );
 }
 function augusta_content_after() {
-  do_action('augusta_content_after');
+  do_action ( 'augusta_content_after' );
 }
 function augusta_branding() {
-  do_action('augusta_branding');
+  do_action ( 'augusta_branding' );
 }
 function augusta_footer() {
-  do_action('augusta_footer');
-}
-function region_content() {
-  do_action ('region_content_class');
+  do_action ( 'augusta_footer' );
 }
 /**  Regions */
-function region_content_above() {
-  do_action ('region_content_above');
+function region_content_first() {
+  do_action ( 'region_content_above' );
 }
-function region_content() {
-  do_action ('region_content');
+function region_content_second() {
+  do_action ( 'region_content' );
 }
-function region_content_below_class() {
-  do_action ('region_content_above_class');
+function region_content_third() {
+  do_action ( 'region_content_third' );
+}
+function region_content_fourth() {
+  do_action ( 'region_content_fourth' );
 }
 
 /**

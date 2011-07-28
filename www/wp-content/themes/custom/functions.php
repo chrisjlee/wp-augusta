@@ -40,13 +40,18 @@ else {
 /**
  * Autoload files
  --------------------------------------------- */
+// Contains a library of common functions
 require_once( AUGUSTA_INC . '/functions/common.php');
-//require_once( AUGUSTA_INC . '/functions/helpers.php');
-
-require_once( AUGUSTA_ASSETS . '/bootstrap.php');
+// Contains library of template formatters change to html5, page title, etc
+require_once( AUGUSTA_INC . '/functions/helper.php');
+// This file sets up all the constants
 require_once( AUGUSTA_ASSETS . '/settings.php');
-// Load Hooks
+// Bootstrap file loads all the css / js files automatically
+require_once( AUGUSTA_ASSETS . '/bootstrap.php');
+
+// Load Specific Hooks
 require_once( AUGUSTA_HOOK . '/augusta-menu.php');
+// Hooks that define zones, regions classes
 require_once( AUGUSTA_HOOK . '/augusta-classes.php');
 
 /*
@@ -95,7 +100,7 @@ function augusta_setup() {
   add_theme_support( 'automatic-feed-links' );
 
   // This theme uses wp_nav_menu() in one location.
-  register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
+  register_nav_menu( 'primary', __( 'Primary Menu', 'augusta' ) );
 
   // Add support for a variety of post formats
   add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
@@ -141,9 +146,68 @@ endif;
 /*
  * Implements widgets_init
  */
-if ( !function_exists( 'augusta_widgets_init' ) ) :
+if ( !function_exists( 'custom_widgets_init' ) ) :
   function augusta_widgets_init() {
-    
+    //register_widget( 'Augusta_Widget' );
+
+  register_sidebar( array(
+    'name' => __( 'Main Sidebar', 'augusta' ),
+    'id' => 'sidebar-1',
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Sidebar Second ', 'augusta' ),
+    'id' => 'sidebar-2',
+    'description' => __( 'Second Sidebar', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-second">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Blog: Sidebar ', 'augusta' ),
+    'id' => 'sidebar-5',
+    'description' => __( 'Sidebar for the blog', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-blog">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Footer Area One', 'augusta' ),
+    'id' => 'sidebar-3',
+    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Footer Area Two', 'augusta' ),
+    'id' => 'sidebar-4',
+    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Footer Area Three', 'augusta' ),
+    'id' => 'sidebar-5',
+    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
   }
 endif; 
 

@@ -38,3 +38,5 @@
 }
 
 add_filter('augusta_menu_setup','custom_augusta_menu', 10);
+
+echo "loaded custom hooks";
