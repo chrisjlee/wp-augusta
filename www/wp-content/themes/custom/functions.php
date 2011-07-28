@@ -1,22 +1,31 @@
 <?php
-/*
-*		Custom Functions 
-*		
-*		PLEASE BE SURE TO VISIT:
-*		/assets/includes/functions/settings.php
-*		
-*		That file will change certain functionality; 
-*		
-*/ 
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha  
+ * @description File Contains the necessary setup 
+ * initialization for hooks, auto loading 
+ * the necessary files as well as  creating constants
+ * 
+ * File Structure:
+ * - Configure Settings files: 
+ *      /assets/settings.php
+ * - Setup Custom Hooks 
+ *     /assets/hooks/custom-hooks.php
+ */ 
 
 /**
- * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
+ * Tell WordPress to run augusta_setup() when the 'after_setup_theme' hook is run.
  */
 add_action( 'after_setup_theme', 'augusta_setup' );
 
-/* Setup Path Constants 
+ /** 
+ * Setup Path Constants 
+ * This will define the correct constants of 
+ * regardless of if it's a child theme or not 
  * @since 0.0.1
---------------------------------------------- */
+ */
 if ( is_child_theme() ) {
   define('AUGUSTA_ASSETS', STYLESHEETPATH . '/assets');
   define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
@@ -32,7 +41,7 @@ else {
  * Autoload files
  --------------------------------------------- */
 require_once( AUGUSTA_INC . '/functions/common.php');
-require_once( AUGUSTA_INC . '/functions/helpers.php');
+//require_once( AUGUSTA_INC . '/functions/helpers.php');
 
 require_once( AUGUSTA_ASSETS . '/bootstrap.php');
 require_once( AUGUSTA_ASSETS . '/settings.php');
@@ -125,15 +134,14 @@ endif;
   /** Register sidebars by running augusta_widgets_init() on the widgets_init hook. */
   add_action( 'widgets_init', 'augusta_widgets_init' );
   /** Setup Hook for favicon */
-  add_action('wp_head', 'augusta_favicon_link');
+  add_action( 'wp_head', 'augusta_favicon_link' );
   /** Add hook to be executed with wp_head */
-  add_action('wp_head', 'augusta_setup');
+  add_action( 'wp_head', 'augusta_setup' );
 
 /*
- * Implements:
- * widgets_init
+ * Implements widgets_init
  */
-if ( !function_exists('augusta_widgets_init') ) :
+if ( !function_exists( 'augusta_widgets_init' ) ) :
   function augusta_widgets_init() {
     
   }
@@ -153,26 +161,28 @@ endif;
  * To override this length in a child theme, remove the filter and add your own
  * function tied to the excerpt_length filter hook.
  */
-function augusta_excerpt_length( $length ) {
-  return 40;
-}
+if ( !function_exists( 'custom_excerpt_length' ) ) :
+  function augusta_excerpt_length( $length ) {
+    return 40;
+  }
+endif;
 add_filter( 'excerpt_length', 'augusta_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
  */
 function augusta_continue_reading_link() {
-  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
+  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>' ) . '</a>';
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and Augusta_continue_reading_link().
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
  */
 function augusta_auto_excerpt_more( $more ) {
-  return ' &hellip;' . twentyeleven_continue_reading_link();
+  return ' &hellip;' . augusta_continue_reading_link();
 }
 add_filter( 'excerpt_more', 'augusta_auto_excerpt_more' );
 
@@ -184,59 +194,9 @@ add_filter( 'excerpt_more', 'augusta_auto_excerpt_more' );
  */
 function augusta_custom_excerpt_more( $output ) {
   if ( has_excerpt() && ! is_attachment() ) {
-    $output .= twentyeleven_continue_reading_link();
+    $output .= augusta_continue_reading_link();
   }
   return $output;
 }
 add_filter( 'get_the_excerpt', 'augusta_custom_excerpt_more' );
 
-/**
- * Augusta Custom Hooks
- */
-
-function augusta_header() {
-    do_action('augusta_header');
-}
-function augusta_menu() {
-    do_action('augusta_menu');
-}
-function augusta_hero() {
-    do_action('augusta_hero');
-}
-function augusta_content_before() {
-    do_action('augusta_before');
-}
-function augusta_content() {
-    do_action('augusta_content');
-}
-function augusta_content_after() {
-    do_action('augusta_after');
-}
-function augusta_branding() {
-    do_action('augusta_branding');
-}
-function augusta_footer() {
-    do_action('augusta_footer');
-}
-
-function zone_content_above_class() {
-  do_action ('zone_content_above_class');
-}
-function zone_content_class() {
-  do_action ('zone_content_class');
-}
-function zone_content_below_class() {
-  do_action ('zone_content_above_class');
-}
-/*
- * Globe Runner Hooks
- */
-function grs_generator() {
-  do_action ('grs_generator');
-}
-
-
-function augusta_zone_content_above_class() {
-  echo "grid_16";
-}
-add_action('zone_content_above_class', 'augusta_zone_content_above_class');

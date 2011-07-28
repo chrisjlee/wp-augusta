@@ -2,11 +2,11 @@
 Theme Name: Augusta
 Theme URI: http://www.globerunnerseo.com    
 Description: A base theme designed by Globe Runner SEO
-Author: chris@globerunnerseo.com  based on work by the WordPress team
+Author: chris@globerunnerseo.com based on work by the WordPress team, yoko and thematic themes
 Author url: http://www.chrisjlee.net
-Version: 0.1
+Version: 1.0.0-alpha
 Tags: black, blue, white, three-columns, fixed-width, custom-header, theme-options, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
-Template: twentyten
+Template: augusta
 
 Copyright 2010-2011 Globerunnerseo.com. 
 All rights reserved. Theme cannot be modified. 
@@ -14,3 +14,68 @@ Any modifications will void any warantee or responsibilities of the authors,
 Globerunnerseo.com, and/or it's heirs.
 
 */
+
+
+/*****************************************    
+      Required: Do Not Modify
+******************************************/
+/*    Helpers         
+ * ------------------------------------*/
+ 
+.clearfix:after, .sxn:after, .section:after .block:after, .colgroup:after, .bfr:after, .bfl:after, .widget:after, .page:after{content:"."; display:block; clear:both; visibility:hidden; line-height:0; height:0}
+.clearfix, .sxn, .block, .section, .colgroup, .widget, .page, .sxn, .bfr, .bfl {display:inline-block}
+html[xmlns] .clearfix, html[xmlns] .section, html[xmlns] .sxn, html[xmlns] .block, html[xmlns] .bfr, html[xmlns] .bfl, html[xmlns] .colgroup, html[xmlns] .widget, html[xmlns] .page {display:block}
+* html .clearfix, * html .bfl, * html .bfr, * html .section, * html .sxn, * html .colgroup,  * html .widget, * html .page{height:1%}
+
+/*=   Clearfloat Fix    */
+.clearfloat { clear:both; height:0; font-size: 1px; line-height: 0px; } 
+.cancelfloatempty {clear:both; font-size:1px; margin:0; padding:0}
+
+/*=   Float Classes   */
+.block,  .col, .cg, .fl, .bfl { float: left } .bfr, .fr { float:right; } .fn,.section, .sxn { float:none; }
+.section, .sxn  { float: none; }
+
+/*=   Image Fixes for IE6   */
+.f0, .imgfix { font-size: 0; line-height: 0px;  } 
+.pw, .inset { margin-left: auto; margin-right: auto;}
+
+/*=   show/hide   */
+.hide {display: none; } .db,.show { display: block; }
+.hide-text, .hidetext { position: absolute; left: -999em;  }
+.show-text { position: static; left: auto; }
+
+div.menu { width: 100%; }
+  div.menu ul { list-style: none; }
+    div.menu ul li { list-style: none; float: none; margin: 0; padding:0.5em 0.2em;}
+    
+.ui-tabs .ui-tabs-hide { position: absolute; left: -999em; top: -999em; }
+
+/*=   Font Sizes    */
+.fs-xxs   { font-size: 8px !important;  line-height: 120% !important; } .fs-xs  { font-size: 10px !important;  line-height: 120% !important; }
+.fs-s   { font-size: 12px !important; line-height: 120% !important; } .fs-m   { font-size: 14px !important; line-height: 130% !important; }
+.fs-l   { font-size: 16px !important; line-height: 140% !important; } .fs-xl  { font-size: 18px !important; line-height: 143% !important; }
+.fs-xxl { font-size: 20px !important; line-height: 145% !important; } .fs-xxxl { font-size: 24px !important; line-height: 150% !important; } 
+
+/*=   Line-Height   */
+.lh-1e { line-height: 1em !important; } .lh-1e1 { line-height: 1.1em !important; } .lh-1e2 { line-height: 1.2em !important; } 
+.lh-1e3 { line-height: 1.3em !important; } .lh-1e4 { line-height: 1.4em !important; } .lh-1e5 { line-height: 1.5em !important; }
+.lh-1e6 { line-height: 1.6em !important; } .lh-1e7 { line-height: 1.7em !important; } .lh-1e8 { line-height: 1.8em !important; }
+.lh-2e { line-height: 2em !important; } .lh-2e1 { line-height: 2.1em !important; } .lh-2e5 { line-height: 2.5em !important; }
+
+.lh-100p { line-height: 100% } .lh-120p { line-height: 120% } .lh-130p { line-height: 130% } .lh-140p { line-height: 140% }
+.lh-150p { line-height: 150% } .lh-160p { line-height: 160% } .lh-180p { line-height: 180% } .lh-200p { line-height: 200% }
+
+/*=   Text-Transform    */
+.tt-none,.tt-n { text-transform: none; } 
+.TT-NONE,.TT-N { text-transform: none !important; } 
+  .tt-c, .tt-capitalize { text-transform: capitalize;}
+  .TT-C, .TT-CAPITALIZE { text-transform: capitalize !important;}
+
+/*=   Colors    */
+.color-white { color: #fff; }
+.color-blue { color:#273894; }
+
+div.box-gray, 
+a.box-gray  { border: 1px solid #ccc;  -webkit-radius: 3px; -moz-border-radius: 3px; -khtml-border-radius:3px; border-radius: 3px; padding: 10px; }
+
+ul.ls-n, ul.ls-n li  { list-style-type: none;}

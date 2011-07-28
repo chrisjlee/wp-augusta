@@ -1,0 +1,27 @@
+/*    
+ *   Calendar Module 
+ */   
+#tec-events-calendar-header { position:static; padding: 0 0 0 10px; font-weight: normal; }
+
+.tec-calendar-buttons { padding: 0 10px 0 0; }
+#tec-content { width: 645px !important; padding: 0 !important; margin: 0 !important; background: transparent !important; }
+.tec-events .tec-event-list-meta  { border-left: 0; float: left; width: auto; }
+.tec-events .event-day { font-weight: normal; border-bottom: 1px solid #ececec; }
+#content .tec-events .event-day { font-size: 12px !important; border-bottom: 1px solid #333 !important; padding: 0 0 10px 0;  }
+.tec-events .tec-events-calendar-header { font-weight: normal; } 
+.tec-events h2.tec-cal-title { font-weight: normal !important; padding: 0 0 0 12px !important; } 
+.tec-events .tec-calendar-buttons { float: right; } 
+.tec-events .tec-event-entry { width: auto; padding: 10px 0 12px 0;}
+.tec-events { }
+.tec-nav  { margin: 5px 0; }
+
+#content .tec-calendar { border:1px solid #E7E7E7; } 
+#content .tec-calendar tr td { text-align: right; padding: 0; } 
+
+#tec-content #content tr th, #content thead th {
+  background:none repeat scroll 0 0 #699539; color:#FFFFFF; font-size:12px;  font-weight:bold; line-height:18px; padding:9px 24px;
+}
+.tec-calendar td.tec-present .daynum { background: #333; }
+#tec-content { width: 655px; padding: 10px 0 10px 10px; }
+#tec-month-nav  {padding: 10px;}
+#events #main { padding-bottom: 20px; }
