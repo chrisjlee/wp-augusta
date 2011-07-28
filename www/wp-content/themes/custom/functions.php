@@ -32,10 +32,13 @@ else {
  * Autoload files
  --------------------------------------------- */
 require_once( AUGUSTA_INC . '/functions/common.php');
+require_once( AUGUSTA_INC . '/functions/helpers.php');
+
 require_once( AUGUSTA_ASSETS . '/bootstrap.php');
 require_once( AUGUSTA_ASSETS . '/settings.php');
 // Load Hooks
 require_once( AUGUSTA_HOOK . '/augusta-menu.php');
+require_once( AUGUSTA_HOOK . '/augusta-classes.php');
 
 /*
  * Implements hook init()

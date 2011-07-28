@@ -1,3 +1,10 @@
+<?php
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee
+ */
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie6 no-js"><![endif]-->
 <!--[if lt IE 7]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie6 lte9 lte8 lte7 no-js"><![endif]-->
@@ -13,27 +20,7 @@
 <meta name="Copyright" content="Copyright (c) 2009-<?php echo date('Y')?>" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<title><?php
-  /*
-   * Print the <title> tag based on what is being viewed.
-   */
-  global $page, $paged;
-
-  wp_title( '|', true, 'right' );
-
-  // Add the blog name.
-  bloginfo( 'name' );
-
-  // Add the blog description for the home/front page.
-  $site_description = get_bloginfo( 'description', 'display' );
-  if ( $site_description && ( is_home() || is_front_page() ) )
-    echo " | $site_description";
-
-  // Add a page number if necessary:
-  if ( $paged >= 2 || $page >= 2 )
-    echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
-
-  ?></title>
+<title><?php do_action('augusta_title'); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />

@@ -4,7 +4,7 @@
 
 define('CONFIG_CONTENT_WIDTH','960');   // Uses it in the Config
 define('CONFIG_960GS','true');    // use 960gs?
-define('CONFIG_960GS_TYPE','24'); // name the number of columns, 24, 12/16, 
+define('CONFIG_960GS_COL','24'); // name the number of columns, 24, 12/16, 
 /* Javascript */
 define('CONFIG_COLORBOX','true'); // use colorbox?
 define('CONFIG_COLORBOX_THEME','4');  // Colorbox Theme? 1-5, Default, Custom? - Default is 4

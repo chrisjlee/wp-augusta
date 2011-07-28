@@ -16,10 +16,10 @@ get_header(); ?>
 <body id="tpl-index" <?php if(function_exists('body_class')) body_class(); ?> >
 <div id="page">
   <div id="zone-header" class="<?php do_action('zone_header_class') ?>">
-     <?php do_action('augusta_header') ?>
+     <?php do_action('augusta_header'); ?>
   </div>
   <div id="zone-menu" class="<?php do_action('zone_menu_class') ?>">
-    <?php do_action('augusta_header') ?>
+    <?php do_action('augusta_menu'); ?>
   </div>
   <div id="zone-content-above" class="<?php do_action('zone_content_above_class')?>">
     <?php do_action('augusta_content_above'); ?>
