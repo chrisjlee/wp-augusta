@@ -7,7 +7,13 @@ html, body { font-family: Georgia, Times New Roman, Roman, Times, serif; }
 .footer-shadow { background: url('../images/footer-bottom.png') no-repeat top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 30px 0; margin: 0 auto 30px; }
 #footer { background: transparent;  }
 #colophon { background: url('../images/footer-corner.png') no-repeat top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 30px 0; }
-body { background: #ABA398 url("../images/body-bg.jpg") repeat-x 50% 0; }
+body,
+body.debug,
+.debug-960-16 { background: transparent url("../images/body-bg.jpg") repeat-y 50% 0; }
+!important.debug-960-16 { background: transparent url("../images/debug/16_col.gif") repeat-y 50% 0 !important; }
+body.debug-960-24 { background: transparent url("../images/debug/24_col.gif") repeat-y 50% 0 !important; }
+body.debug-960-12 { background: transparent url("../images/debug/12_col.gif") repeat-y 50% 0 !important; }
+body.debug-off { background: transparent; }
 #access { background: transparent url("../images/access-bg.gif") repeat-x 50% 0;   }
 #logo {background:url("../images/logo-bg.jpg") no-repeat scroll 0 0 transparent; }
 #site-title a { background: url("../images/site-text.png") no-repeat;   }
