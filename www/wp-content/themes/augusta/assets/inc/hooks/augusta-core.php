@@ -76,6 +76,13 @@ function region_content_fourth() {
   do_action ( 'region_content_fourth' );
 }
 
+function augusta_layout_start() {
+  do_action ('augusta_layout_start');
+}
+function augusta_layout_end() {
+  do_action ('augusta_layout_start');
+}
+
 /**
  * August Content Core Hooks
  * 
@@ -102,9 +109,7 @@ endif;
  * Globe Runner Hooks
  */
 function grs_generator_setup() {
- echo <<<END
-    <div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>END;
+ $output = "<div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>";
 }
-add_action('grs_generator', '');
-
+add_action('grs_generator', 'grs_generator_setup');
 require_once('custom-hooks.php');
