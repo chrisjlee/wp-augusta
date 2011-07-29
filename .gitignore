@@ -23,5 +23,6 @@ www/wp-includes/
 */wp-content/plugins/hello.php
 */wp-content/themes/twentyeleven/
 !*/wp-content/themes/custom
+!*/wp-content/themes/augusta
 # Ignore SVN Files
 */.svn/

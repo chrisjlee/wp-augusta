@@ -1,0 +1,303 @@
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha  
+ * @description File Contains the necessary setup 
+ * initialization for hooks, auto loading 
+ * the necessary files as well as  creating constants
+ * 
+ * 
+ */ 
+
+/*****************************************		
+    		Global Styles
+******************************************/
+html, body { width: 100%; height: 100%; }
+body, input, textarea { color:#000; font: 12px Arial,sans-serif; line-height:18px; 
+/* Prevent mobile zooming while remain desktop zooming. http://github.com/shichuan/mobile-html5-boilerplate/issues/closed#issue/14 */
+-webkit-text-size-adjust: 100%; -ms-text-size-adjust: none; } /*  W3C won't validate this */
+/* prevent callout */
+
+/*  Header Links */
+h1, h1 a, h1 a:hover, h1 a:visited{text-decoration:none; color:white}
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited{ color:#000 }
+h2, h2 a, h2 a:hover, h2 a:visited, h3, h3 a, h3 a:hover, h3 a:visited, #sidebar h2, #wp-calendar caption, cite{text-decoration:none}
+h3{font-size:1.3em}
+
+/**   Header sizes    */
+h1 { font-size: 16px; padding-top: 0px; margin:0}
+h2 { font-size: 14px; }
+h3 { font-size: 12px; }
+h4 { font-size: 10px; }
+h5 { font-size: 10px; }
+h6 { font-size: 10px; }
+	h2.pagetitle{ font-size:1.6em; text-align: left;  color:#000; margin: 10px 0 0 0; text-align:center }
+h3.comments{padding:0; margin:40px auto 20px}
+
+/**   Links within pagewidth  */
+#pagewidth a, #pagewidth a:visited, #pagewidth a:active {color:#707070; text-decoration:none}
+#pagewidth a:hover {color: #000; text-decoration:underline}
+#pagewidth h1 a, #pagewidth h2 a,
+#pagewidth h3 a, #pagewidth h4 a, 
+#pagewidth h5 a, #pagewidth h6 a {  }
+#pagewidth h1 a { color: #000; text-decoration:underline }
+#pagewidth h2 a { color: #000; text-decoration:underline }
+#pagewidth h3 a { color: #000; text-decoration:underline }
+#pagewidth h4 a { color: #000; text-decoration:underline }
+#pagewidth h5 a { color: #000; text-decoration:underline }
+#pagewidth h6 a { color: #000; text-decoration:underline }
+#pagewidth h1 a:hover, #pagewidth h2 a:hover, #pagewidth h3 a:hover { color: #000; text-decoration:underline }
+
+/**   Font styles within #pagewidth */
+#pagewidth h1, #pagewidth h2, #pagewidth h3 {  }
+#pagewidth h4, #pagewidth h5, #pagewidth h6 {  }
+#pagewidth h1 {} 
+#pagewidth h2 {} 
+#pagewidth h3 { }
+#pagewidth h4 { }
+#pagewidth h5 { }
+#pagewidth h6 { }
+
+/**   Font styles within #content */
+#content h1, #content h2, #content h3 {  }
+#content h4, #content h5, #content h6 {  }
+#content h1 { } 
+#content h2 { } 
+#content h3 { }
+#content h4 { }
+#content h5 { }
+#content h6 { }
+
+/**   Font Stacks   */
+body.georgia,
+body.georgia div,
+body.georgia a,
+body.georgia p,
+body.georgia li { font-family: Georgia, Times New Roman, Times, Serif; font-weight: normal;  }
+
+body.arial,
+body.arial div,
+body.arial a,
+body.arial p,
+body.arial li { font-family: Arial, Helvetica, Sans Serif; font-weight: normal;  }
+
+/**   Header tags   */
+h1,h2,h3,h4,h5,h6 { font-weight:normal; clear:both; } 
+
+/**   Headers   */
+#comments,
+h1, h2, h3, h4, h5, h6 { color:#000;  }
+h1, h2, h3 { font-family:Arial,Helvetica,Sans-Serif; font-weight:bold }
+h1 {font-size:2em; margin: 0 0 1.1em; }
+h2 {font-size:1.8em; margin: 0 0 1em;}
+h3 {font-size:1.5em; margin: 0 0 1em;}
+h4 {font-size:1.4em; margin: 0 0 1em;}
+h5 {font-size:1.3em; margin: 0 0 1em;}
+h6 {font-size:1.2em; margin: 0 0 1em;}  
+
+/**   Paragraph   */
+p { font-size:1em;  margin-bottom:18px; }
+p p, p ol, p li, p  { font-size: 1em; }
+
+/**   Lists   */
+ul { margin: 0 0 18px 2.5em; }
+ol { 	margin: 0 0 18px 2.5em; }
+ul { 	list-style:disc; }
+ol { 	list-style-type: decimal; }
+ol ol { 	list-style:upper-alpha;  }
+ol ol ol { 	list-style:lower-roman; }
+ol ol ol ol { 	list-style:lower-alpha; }
+ul ul, ol ol, ul ol, ol ul { 	margin-bottom:0; }
+dl  { margin:0 1.5em; } dt { font-weight:bold; } dd { margin-bottom:1.4em; } strong { font-weight: bold; }
+
+/**   Pullquotes   */
+blockquote { color:#666; font-style:italic; margin: 15px 30px 0 10px; padding-left: 20px; border-left: 5px solid #ddd;  }
+blockquote.left { float: left; margin-left:0; margin-right:1.55em; text-align: right; width: 33%; } 
+blockquote.right { float: right; margin-left:1.55em; margin-right:0; text-align: left; width: 33%; }
+blockquote:before, blockquote:after, q:before, q:after { content : ''; content : none; }
+blockquote { 	margin: 0 3em; }
+  blockquote cite{ margin: 5px 0 0; display:block }
+blockquote em, blockquote i, blockquote cite { 	font-style:normal;  }
+
+/**   Meta Tags   */
+strong { font-weight: bold; }
+cite, em, i {   font-style: italic; }
+pre { font:100%/1.4 Monaco, monospace; margin-bottom:18px; }
+code { font:100%/1.4 Monaco, monospace; }
+abbr, acronym { border-bottom:1px dotted #333; cursor: help; }
+acronym, abbr, span.caps{ font-size:0.9em; letter-spacing:.07em }
+acronym, abbr, span.caps{ cursor:help }
+acronym, abbr{ border-bottom:1px dashed #999 }
+ins { text-decoration:none; }
+sup, sub { height: 0; line-height: 1; vertical-align: baseline; position: relative; }
+sup { bottom: 1ex; }
+sub { top: .5ex; }
+/**   Adjust font size   */
+p, ul, ol, pre, dl, address { margin-bottom : 1.5em; font-size : 1em; /* 16 / 16 = 1 */ }
+
+small{ font-family: Arial,Helvetica,Sans-Serif; font-size:0.9em; line-height:1.5em }
+p img{ padding:0; max-width:100% }
+/**   Adjust Content Page Style   */
+#content #content-posts, .entry, .entry p { color: #000; font-size: 12px;   }
+
+/**   Reset Color of text to Black   */
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike { color:#000 }
+
+/**   Fix Default browser behavior   */
+p img { max-width: 100%; }
+a img { border:none }
+hr { display:none }
+
+/**  Mobile   */
+.nocallout {-webkit-touch-callout: none;}
+/* Text overflow with ellipsis */
+.ellipsis { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+/* A hack for HTML5 contenteditable attribute on mobile */
+.textarea.contenteditable {-webkit-appearance: none;}
+
+/**   Default Image Styles   */   
+.entry-content .wp-post-image { border: 1px solid #ccc; float:right; margin: 0 0 20px 1.4em;  padding: 5px; }
+.entry-content img { height:auto; margin: 0 0 1.4em 0; max-width:100%; }
+.alignleft, img.alignleft { float: left; margin-right:1.53em; }
+.alignright, img.alignright { display: block; float: right;  margin-left:1.53em; }
+.aligncenter, img.aligncenter { margin-left:auto; margin-right:auto; display: block; clear: both; }
+.wp-caption { border:1px solid #ccc; text-align: center; margin-bottom:1.4em; padding:9px 5px 0; }
+.wp-caption img { border: 1px solid #ccc; margin: 0; padding: 0; }
+.wp-caption p.wp-caption-text { margin: 0; padding:1.4em 5px; }
+
+.gallery-icon { margin: 0 5px; padding-top: 6px; }
+.gallery { display: block; clear: both; overflow: hidden; margin: 0 auto; padding:0 0 1.35em 0; }
+  .gallery .gallery-row { display: block; clear: both; overflow: hidden; margin: 0; }
+  .gallery .gallery-item { overflow: hidden; float: left; margin: .6em 0 0; text-align: center; list-style: none; padding: 0; }
+  .gallery .gallery-item img, 
+  .gallery .gallery-item img.thumbnail { max-width: 89%; height: auto; padding: 1%; margin: 0 auto; border: none !important; }
+.gallery-caption { margin-left: 0;  }
+.wp-caption-text, .gallery-caption { color:#666; font-size:.815em; line-height:1.54em; }
+.wp-smiley { /* Prevent the smileys from breaking line-height */ max-height:1em; margin:0 !important; }
+.entry-content img { margin: 0 0 18px 0; }
+.gallery img { margin:0; }
+
+/**   Captions   */
+.aligncenter, div.aligncenter{display:block; margin-left:auto; margin-right:auto}
+
+/**   Image Align   */
+img.centered{display:block; margin-left:auto; margin-right:auto}
+img.alignright{padding:4px; margin:0 0 2px 7px; display:inline}
+img.alignleft{padding:4px; margin:0 7px 2px 0; display:inline}
+.alignright{float:right}
+.alignleft{float:left}
+
+small{ font-family: Arial,Helvetica,Sans-Serif; font-size:0.9em; line-height:1.5em }
+
+p img{padding:0; max-width:100%}
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike{color:#000}
+code {font:1.1em 'Courier New',Courier,Fixed}
+acronym, abbr, span.caps{font-size:0.9em; letter-spacing:.07em}
+
+/* 	Links	*/
+#content a, #content a:visited, #content a:active {color:#000000; text-decoration:none}
+#content a:hover, #content h1 a:hover, #content h2 a:hover, #content h3 a:hover{color: #000; text-decoration:underline}
+
+/*  .Entry (Inside Posts)
+---------------------------------------*/	
+.entry { font-size:11px; }
+	.entry, 
+	.entry p,
+	.entry li { color: #000; font-size: 12px; line-height: 14px; font-family: Arial, Helvetica, sans-serif; }
+	.entry p a:visited, .entry p a, .entry p a:hover{ color:#F06400; text-decoration:underline }
+	
+.thread-alt { background-color:#f8f8f8 }
+.thread-even { background-color:white }
+.depth-1 { border:1px solid #ddd }
+.even, .alt { border-left:1px solid #ddd }
+
+acronym, abbr, span.caps{cursor:help}
+acronym, abbr{border-bottom:1px dashed #999}
+blockquote{margin:15px 30px 0 10px; padding-left:20px; border-left:5px solid #ddd}
+	blockquote cite{margin:5px 0 0; display:block}
+a img{border:none}
+.center{ text-align:center }
+.hidden{ display:none}
+.hidetext{ position: absolute; left: -999em; top: -999em;}
+
+hr { display:none }
+.navigation{display:block; font-family:Arial,Helvetica,Sans-Serif; font-size:11px; text-align:center; margin-top:10px; /*margin-bottom:60px; */}
+
+div.menu  { } 
+div.menu  ul { float: none; width: 100%; min-height: 1%; clear: both; }
+div.menu  ul,
+div.menu  ul li { margin: 0; padding: 0; list-style: none; } 
+div.menu  ul li { float: left;  } 
+
+.navigation{display:block; font-size: 1em; text-align:center; margin-top: 10px;}
+.narrowcolumn .navigation{ padding-right:15px }
+
+/*  Sidebar 
+---------------------------------------*/ 
+.sidebar ul, .sidebar ul li, .sidebar ul ul, 
+.sidebar ul ul ul, .sidebar ul ul li, .sidebar ul ul ul li,
+.sidebar ul ul ul ul { list-style-type: none; margin-left: 0; }
+
+.categories { }
+.cat-item {}
+.current-cat {}
+.current-cat-parent {}
+.children {}
+.pagenav {}
+.page_item {}
+.current_page_item {}
+.current_page_parent {}
+.current_page_ancestor {}
+.widget {}
+.widget_text {}
+.blogroll {}
+.linkcat{}
+ 
+/**  Sticky Post
+ ------------------------------------*/
+#content .sticky { border-top: 1px solid #ddd; background-color: #F0F0F0; padding: 15px 10px; overflow: hidden;}
+
+/* Post Typography 
+  ------------------------------------*/
+#content strong { font-weight: bold; }s
+#content p em { font-family:'Droid Serif',  Times, serif; font-style: italic; }
+#content em { font-family:'Droid Serif',  Times, serif; font-style: italic; font-size: .9em; }
+#content p small { font-size: .8em; }
+#content .post blockquote { margin: 0 20px 10px 0; overflow: hidden; font: italic 1.1em/1.6 'Droid Serif', Times, serif; }
+#content .single-entry-content blockquote { margin: 20px 20px 10px 20px; background: none; }
+#content blockquote cite { margin: 10px 0 0 0; padding: 0 25px 15px 0; float: right; font: normal .8em 'Droid Sans', arial, sans-serif; text-transform: uppercase;  letter-spacing: .1em; }
+#content pre {  background-color: #f0f0f0; font-family: monospace; font-size: 1.2em; line-height: 1.3; margin: 0 0 20px 0; padding: 10px; }
+#content p.nocomments {  font-size: .8em; text-transform: uppercase; letter-spacing: 0.1em; }
+ 
+/*	WP Caption
+---------------------------------------*/
+.wp-caption { border:1px solid #ddd; text-align:center; background-color:#f3f3f3; padding-top:4px; margin:10px;  border-radius:3px; -moz-border-radius:3px; -khtml-border-radius:3px; -webkit-border-radius:3px;}
+  .wp-caption img{ margin:0; padding:0; border:0 none}
+  .wp-caption p.wp-caption-text{ font-size:11px; line-height:17px; padding:0 4px 5px; margin:0 }
+
+/*	WP Calendar
+---------------------------------------*/
+#wp-calendar #prev a, #wp-calendar #next a{ font-size:9pt }
+#wp-calendar a { text-decoration:none }
+#wp-calendar caption { font:bold 1.3em Arial,Helvetica,Sans-Serif; text-align:center }
+#wp-calendar th { font-style:normal; text-transform:capitalize }
+
+#wp-calendar { empty-cells:show; margin:10px auto 0; width:155px }
+	#wp-calendar a { display:block }
+		#wp-calendar #next a { padding-right:10px; text-align:right }
+		#wp-calendar #prev a { padding-left:10px; text-align:left }
+	#wp-calendar caption { text-align:center; width:100% }
+#wp-calendar td {padding:3px 0; text-align:center }
+#wp-calendar td.pad:hover {/* Doesn't work in IE */background-color:#fff}
+
+#subscribe_to_rss{height:20px}
+	#subscribe_to_rss #rss_left{float:left}
+	#subscribe_to_rss #rss_icon{margin-right:7px; vertical-align:middle}
+	#subscribe_to_rss #rss_right{float:left; padding-top:2px}
+#subscribe_to_rss #rss_text_link{/*padding-top:3px; */}
+
+#commentform p{margin:5px 0}
+.nocomments{text-align:center; margin:0; padding:0}
+.commentmetadata{margin:0; display:block}
+
