@@ -34,7 +34,7 @@
     'walker'          => ''
     //'theme_location' => 'footer'
   );
-  return wp_nav_menu($args);
+  echo apply_filters('augusta_menu_setup',$args);
 }
 
 add_filter('augusta_menu_setup','custom_augusta_menu', 10);

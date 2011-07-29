@@ -18,4 +18,4 @@
         <a href="<?php echo get_permalink(); ?>"><?php _e( 'Permalink ', 'yoko' ); ?></a>
         <?php edit_post_link( __( 'Edit &rarr;', 'yoko' ), '| <span class="edit-link">', '</span>' ); ?></p>
     </div><!-- end entry-meta -->
-  </div><!-- end entry-content -->
+</div><!-- end entry-content -->
