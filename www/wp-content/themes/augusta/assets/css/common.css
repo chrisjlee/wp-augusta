@@ -35,6 +35,7 @@ h6 { font-size: 10px; }
 	h2.pagetitle{ font-size:1.6em; text-align: left;  color:#000; margin: 10px 0 0 0; text-align:center }
 h3.comments{padding:0; margin:40px auto 20px}
 
+.zone { margin-left: auto; margin-right: auto; }
 /**   Links within pagewidth  */
 #pagewidth a, #pagewidth a:visited, #pagewidth a:active {color:#707070; text-decoration:none}
 #pagewidth a:hover {color: #000; text-decoration:underline}

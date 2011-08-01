@@ -9,6 +9,7 @@
 if ( !function_exists('custom_menu_setup') ) :
    function augusta_menu_setup($menu){
     if (!$menu) {}  
+
     $args = array(
       'container'       => 'div', 
       'container_class' => 'menu ', 
@@ -32,6 +33,7 @@ if ( !function_exists('custom_menu_setup') ) :
      * Footer Menu
      */ 
     if ($menu == 'footer') {
+      echo "$menu";
        $args = array(
         'container'       => 'div', 
         'container_class' => 'menu ', 
@@ -54,6 +56,6 @@ if ( !function_exists('custom_menu_setup') ) :
    }   
 endif;
 
-add_action('augusta_menu', 'augusta_menu_setup', $menu);
+//add_action('augusta_menu', 'augusta_menu_setup', $menu);
 
 ?>

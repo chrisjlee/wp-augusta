@@ -58,16 +58,14 @@
  */
  
  
- 
- 
 /**  Container Hooks */
 // Page Class Hook  */
 if ( !function_exists('custom_page_class') ) :
-  function page_class_setup() {
+  function page_class_setup($output) {
     if (!$class) {
-      $default = ""; // by default
+      $default = "page"; // by default
     }    
-    echo apply_filters('page_class_setup', $class);
+    return print apply_filters('page_class_setup', $class);
   }
   add_action('page_class','page_class_setup');
 endif;
@@ -78,9 +76,9 @@ if ( !function_exists('custom_pagewidth_class') ) :
     if (!$class) {
       $default = ""; // by default
     }    
-    echo apply_filters('pagewidth_class_setup', $class)  ;
+    return print apply_filters('pagewidth_class_setup', $class)  ;
   }
-  add_action('pagewidth_class','pagewidth_class_setup');
+  add_action('pagewidth_class','pagewidth_class_setup', 1);
 endif;
 
 
@@ -88,7 +86,7 @@ endif;
 //  User Class Hook 
 if ( !function_exists('custom_zone_user_class') ) :
 function zone_user_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_user_class','zone_user_class_setup');
 endif;
@@ -97,7 +95,7 @@ endif;
 //  Header Class Hook 
 if ( !function_exists('custom_zone_header_class') ) :
 function zone_header_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_header_class','zone_header_class_setup');
 endif;
@@ -106,7 +104,7 @@ endif;
 //  Zone Menu Class Hook
 if (!function_exists('custom_zone_menu_class')) :
 function zone_menu_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_menu_class','zone_menu_class_setup');
 endif;
@@ -114,7 +112,7 @@ endif;
 //  Zone Menu Class Hook
 if (!function_exists('custom_zone_content_above_class')) :
 function zone_content_above_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_content_above_class','zone_content_above_setup');
 endif;
@@ -123,7 +121,7 @@ endif;
 //  Zone Content Class Hook
 if (!function_exists('custom_zone_content_class')) :
 function zone_content_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_content_class','zone_content_class_setup');
 endif;
@@ -139,7 +137,7 @@ endif;
 //  Zone Footer Class Hook
 if (!function_exists('custom_zone_footer_class')) :
 function zone_footer_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_footer_class','zone_footer_class_setup');
 endif;
@@ -147,7 +145,7 @@ endif;
 //  Zone Meta Class Hook
 if (!function_exists('custom_zone_meta_below_class')) :
 function zone_meta_below_class_setup() {
-  echo "container_16";
+  echo "container_16 zone";
 }
 add_action('zone_meta_class','zone_meta_class_setup');
 endif;
@@ -184,15 +182,10 @@ function region_content_third_class_setup() {
 add_action('region_content_third_class','region_content_third_class_setup');
 endif;
 
-
-
- // /**
- // * Fire each array and add an action to each of them
- // */
+// @todo - dynamic hook generation 
 // $zones = array();
 // $zones = array('page','pagewidth','header','content','content_above','content_below');
-// 
-// foreach ( $zones as $value ) {
-  // var_dump($values);
-  // add_action('zone_'.$value.'_class','zone_'.$value.'_class_setup');
+// while (list(, $value) = each($zones)) {
+  // //$fn = 'zone_{$value}_class_setup';
+  //add_action('zone_{$value}_class','zone_{$value}_class_setup' );
 // }

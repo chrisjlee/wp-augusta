@@ -63,36 +63,38 @@ wp_register_script('jquery-latest-cdn', 'http://ajax.googleapis.com/ajax/libs/jq
 
 /* CSS Auto Load
  ---------------------------------------*/
-  
+if (!is_admin()) :   // Don't load styles to modify the backend
  /** 
   * Determine if 960grids are on  
   * then figure out which reset to load
   *  
   */
-  if (CONFIG_960GS == true && !is_admin()) {
+  if ( CONFIG_960GS == true ) {
    wp_enqueue_style('aug-reset', AUGPI . '/core/960gs/min/reset.css', '1.0', 'all');
   } else {
     wp_enqueue_style('aug-reset',  AUGCSS.'/reset.css', '1.0', 'all'); // Eric Meyer Reset
   }
   
-  /**  CSS for all pages  */
-  if(!is_admin()) {
+  /**   Adapt.js for mobile styles   */
+  wp_enqueue_script('aug-adapt',  AUGPI . '/core/adapt/js/adapt.min.js', false);   
+  wp_enqueue_script('aug-adapt-config',  AUGPI . '/core/adapt/js/adapt.config.js', array('aug-adapt'), false); 
+  
   wp_enqueue_style('aug-common', AUGCSS . '/common.css', array('aug-reset'), '1.0', 'all');
   wp_enqueue_style('aug-main',  AUGCSS . '/main.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
   
   /** Load Formalize - formalize.me automatically loads*/
   wp_enqueue_style('aug-formalize',  AUGPI . '/core/formalize/css/formalize.css', array('aug-reset'),  '1.0', 'all');
-  wp_enqueue_script('aug-formalize',  AUGPI . '/core/formalize/js/jquery.formalize.min.js', array('jquery'), '1.0', 'all');  
+  wp_enqueue_script('aug-formalize',  AUGPI . '/core/formalize/js/jquery.formalize.min.js', array('jquery'), '1.0', true);  
   
   /**   Selectivizr Please save me from IE6-8   */
-  wp_enqueue_script('aug-selectivizr',  AUGPI . '/core/selectivizr/js/selectivizr-min.js', array('jquery'), '1.0', 'all');  
+  wp_enqueue_script('aug-selectivizr',  AUGPI . '/core/selectivizr/selectivizr-min.js', array('jquery'), '1.0');  
+  
   
   /**  Javascript for all pages  */
   wp_enqueue_script( 'jquery' ); // uses No conflict mode
   wp_enqueue_script( 'jquery-ui-core', AUGJS . '/plugins/ui/jquery-ui-latest.custom.min.js', array( 'jquery' ) );
   wp_enqueue_script( 'aug-core', AUGJS . '/augusta.core.js', array( 'jquery', 'jquery-ui-core' ), '1.0.1');
   
-  }
 /** 
  * If you're going to be using 960gs there is 
  * a different reset.css file. 960gs has a different
@@ -101,86 +103,86 @@ wp_register_script('jquery-latest-cdn', 'http://ajax.googleapis.com/ajax/libs/jq
  * 960gs Framework for All Pages
  * 
  */
-if ( CONFIG_960GS == true) {
-  /**  Load my grids for augusta  */
-  // Load base styles 
-  wp_enqueue_style( 'aug-960text', AUGPI . '/core/960gs/min/text.css', array('aug-reset'), '1.0', 'all and screen' );
-  
-  // Load 960gs grids. Which kind? 
-  if ( CONFIG_960GS_COLS == 24 ) {
-    wp_enqueue_style ( 'aug-960-24', AUGPI . '/core/960gs/min/css/960_24_col.css', array('aug-960text'), '1.0', 'screen' );
-  } else {  
-    // By default it will load 16/12 grids, which is a standard configuration
-    if ( !is_admin() )wp_enqueue_style ( 'aug-960', AUGPI . '/core/960gs/min/960.css', array('aug-960text') , '1.0', 'all and screen' );
-  }
-}
-
-/*  jQuery UI  
- ---------------------------------------*/
-if (CONFIG_JQUERYUI == true) { 
-  // Initialize the Latest
-  wp_enqueue_script( 'jquery-ui-latest', AUGPI.'/core/ui/jquery-ui-latest-custom.min', array( 'jquery'), '1.8.14');
-  wp_enqueue_script( 'jquery-ui-core' );
-  
-  /** Update jquery to the latest   */
-  if (CONFIG_JQUERYUI_CDN == true) :
-  function augusta_enqueue_jquery_cdn() {  
-    if(!is_admin()) { 
-      wp_deregister_script('jquery-ui-core');
-      wp_register_script('jquery-ui-core', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', array('jquery'), '1.6.2', false);
-    } 
-  }  
-  if( !is_admin() ) add_action('wp_enqueue_script','augusta_enqueue_jquery_cdn');
-  endif;
-}
-
-/*    Color Box
- ---------------------------------------*/
-if ( CONFIG_COLORBOX == true )  { 
-  if (preg_match('/1-5/',CONFIG_COLORBOX_THEME) ) {
-    wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/example'. CONFIG_COLORBOX_THEME . '/colorbox.css', '1.0', 'screen' );
-  } else if ( strpos( 'custom',CONFIG_COLORBOX_THEME) === 0 ) {
-    wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/custom/colorbox.css', '1.0', 'screen');
-  } else { 
-    wp_enqueue_style('aug-colorbox', AUGPI.'/core/colorbox/example4/colorbox.css', '1.0', 'screen');
-  } 
-  /** Remove Thickbox if you're going to use colorbox */
-  if ( wp_script_is('thickbox') && !is_admin() ) wp_deregister_script('thickbox');
-  wp_enqueue_script('aug-colorbox', AUGPI.'/core/colorbox/colorbox/jquery.colorbox-min.js', array('jquery'), '1.4', true );   
-}
-
-/*  Dropdowns Auto-enable dropdown
- ---------------------------------------*/
-if ( CONFIG_DROPDOWN === true ) :
-  
-  function augusta_enqueue_superfish_style () {
-  wp_enqueue_style('aug-superfish', AUGPI.'/core/superfish/css/superfish.css', '1.0', 'screen');  
-  wp_enqueue_style('aug-superfish-custom', AUGPI.'/core/superfish/css/superfish.custom.css', array('aug-superfish'), '1.0', 'screen');
-  }
-  
-  function augusta_enqueue_superfish() {  
-  wp_enqueue_script('aug-superfish', AUGPI.'/core/superfish/js/superfish.js', array('jquery'), '1.0.0' );
-  wp_enqueue_script('aug-superfish-supersubs', AUGPI.'/core/superfish/js/supersubs.js', array('jquery', 'aug-superfish'), '1.0.0', true );  
-  wp_enqueue_script('aug-bgiframe', AUGPI.'/core/superfish/js/jquery.bgiframe.min.js', array('jquery', 'aug-superfish'), '1.0.0', true );   
-  wp_enqueue_script('aug-superfish-config', AUGPI.'/core/superfish/js/superfish.config.js', array('jquery', 'aug-superfish'), '1.0.0', true );
-  }
-  // Add Actions
-  if( !is_admin() ) {
-    add_action('wp_enqueue_script','augusta_enqueue_superfish');
-    add_action('wp_enqueue_style','augusta_enqueue_superfish_style');
-  }
-endif;
-
-/**   Innerfade   */
-if ( !function_exists('augusta_enqueue_innerfade' ) ) :
-  function augusta_enqueue_innerfade() {
-    if (CONFIG_INNERFADE === true) { 
-      wp_enqueue_script('innerfade', AUGPI . '/core/jquery.innerfade/js/jquery.innerfade.js', array('jquery'), '1.0.0');      
+  if ( CONFIG_960GS == true) {
+    /**  Load my grids for augusta  */
+    // Load base styles 
+    wp_enqueue_style( 'aug-960text', AUGPI . '/core/960gs/min/text.css', array('aug-reset'), '1.0', 'all and screen' );
+    
+    // Load 960gs grids. Which kind? 
+    if ( CONFIG_960GS_COLS == 24 ) {
+      wp_enqueue_style ( 'aug-960-24', AUGPI . '/core/960gs/min/css/960_24_col.css', array('aug-960text'), '1.0', 'screen' );
+    } else {  
+      // By default it will load 16/12 grids, which is a standard configuration
+      wp_enqueue_style ( 'aug-960', AUGPI . '/core/960gs/min/960.css', array('aug-960text') , '1.0', 'all and screen' );
     }
   }
-add_action('wp_enqueue_script','augusta_enqueue_innerfade');
-endif;
 
+  /*  jQuery UI  
+   ---------------------------------------*/
+  if (CONFIG_JQUERYUI == true) { 
+    // Initialize the Latest
+    wp_enqueue_script( 'jquery-ui-latest', AUGPI.'/core/ui/jquery-ui-latest-custom.min', array( 'jquery'), '1.8.14');
+    wp_enqueue_script( 'jquery-ui-core' );
+    
+    /** Update jquery to the latest   */
+    if (CONFIG_JQUERYUI_CDN == true) :
+    function augusta_enqueue_jquery_cdn() {  
+      if(!is_admin()) { 
+        wp_deregister_script('jquery-ui-core');
+        wp_register_script('jquery-ui-core', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', array('jquery'), '1.6.2', false);
+      } 
+    }  
+    if( !is_admin() ) add_action('wp_enqueue_script','augusta_enqueue_jquery_cdn');
+    endif;
+  }
+  
+  /*    Color Box
+   ---------------------------------------*/
+  if ( CONFIG_COLORBOX == true )  { 
+    if (preg_match('/1-5/',CONFIG_COLORBOX_THEME) ) {
+      wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/example'. CONFIG_COLORBOX_THEME . '/colorbox.css', '1.0', 'screen' );
+    } else if ( strpos( 'custom',CONFIG_COLORBOX_THEME) === 0 ) {
+      wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/custom/colorbox.css', '1.0', 'screen');
+    } else { 
+      wp_enqueue_style('aug-colorbox', AUGPI.'/core/colorbox/example4/colorbox.css', '1.0', 'screen');
+    } 
+    /** Remove Thickbox if you're going to use colorbox */
+    if ( wp_script_is('thickbox') && !is_admin() ) wp_deregister_script('thickbox');
+    wp_enqueue_script('aug-colorbox', AUGPI.'/core/colorbox/colorbox/jquery.colorbox-min.js', array('jquery'), '1.4', true );   
+  }
+  
+  /*  Dropdowns Auto-enable dropdown
+   ---------------------------------------*/
+  if ( CONFIG_DROPDOWN === true ) :
+    
+    function augusta_enqueue_superfish_style () {
+    wp_enqueue_style('aug-superfish', AUGPI.'/core/superfish/css/superfish.css', '1.0', 'screen');  
+    wp_enqueue_style('aug-superfish-custom', AUGPI.'/core/superfish/css/superfish.custom.css', array('aug-superfish'), '1.0', 'screen');
+    }
+    
+    function augusta_enqueue_superfish() {  
+    wp_enqueue_script('aug-superfish', AUGPI.'/core/superfish/js/superfish.js', array('jquery'), '1.0.0' );
+    wp_enqueue_script('aug-superfish-supersubs', AUGPI.'/core/superfish/js/supersubs.js', array('jquery', 'aug-superfish'), '1.0.0', true );  
+    wp_enqueue_script('aug-bgiframe', AUGPI.'/core/superfish/js/jquery.bgiframe.min.js', array('jquery', 'aug-superfish'), '1.0.0', true );   
+    wp_enqueue_script('aug-superfish-config', AUGPI.'/core/superfish/js/superfish.config.js', array('jquery', 'aug-superfish'), '1.0.0', true );
+    }
+    // Add Actions
+    if( !is_admin() ) {
+      add_action('wp_enqueue_script','augusta_enqueue_superfish');
+      add_action('wp_enqueue_style','augusta_enqueue_superfish_style');
+    }
+  endif;
+  
+  /**   Innerfade   */
+  if ( !function_exists('augusta_enqueue_innerfade' ) ) :
+    function augusta_enqueue_innerfade() {
+      if (CONFIG_INNERFADE === true) { 
+        wp_enqueue_script('innerfade', AUGPI . '/core/jquery.innerfade/js/jquery.innerfade.js', array('jquery'), '1.0.0');      
+      }
+    }
+  add_action('wp_enqueue_script','augusta_enqueue_innerfade');
+  endif;
+endif; // not admin
 /**
  * Augusta CSS Contextual Autoloading
  * 

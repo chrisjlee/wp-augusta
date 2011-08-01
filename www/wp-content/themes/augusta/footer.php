@@ -10,17 +10,13 @@
  *
  */
 ?>
-    <div id="footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
-      <div id="footer-colophon" class="sxn">
-        <?php get_sidebar('footer');?>
-        <?php
-        do_action('augusta_menu');
-        do_action('grs_site_generator');
-        ?>
-      </div><!-- #colophon -->
+    <div id="zone-footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
+      <div id="footer" class="region">
+        <?php 
+        get_sidebar('footer');
+        do_action('augusta_menu'); ?>
+      </div><!-- #footer -->
     </div><!-- #footer -->
-  </div><!-- #wrapper -->
-</div><!-- #page -->
 <?php do_action('augusta_layout_end'); ?>
 <?php 
 wp_footer();

@@ -1,25 +1,30 @@
 <?php
 /**
- * The main template file.
+ * The Front Page template file.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query. 
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * Reference: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha
+ * @since Augusta v1.0.0
+ * 
  */
-
 get_header(); ?>
-<body id="tpl-single" <?php if(function_exists('body_class')) body_class(); ?> >
-<?php get_template_part( 'tpt-header', 'core' ); ?>
-		<div id="container" class="grid_<?php echo CONFIG_960GS_TYPE; ?>">
-			<div id="content" role="main">
-			<?php get_template_part('loop','index'); ?>
-			<?php get_sidebar('blog');  ?>
-			</div><!-- #content -->
-<?php get_footer(); ?>
-</div><!-- #container -->
+<body id="tpl-front" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
+<?php do_action ('augusta_layout_start');  ?>  
+<div id="zone-header" class="<?php do_action('zone_header_class') ?>">
+   <?php do_action('augusta_header'); ?>
+</div>
+<div id="zone-menu" class="<?php do_action('zone_menu_class') ?>">
+  <?php do_action('augusta_menu'); ?>
+</div>
+<div id="zone-content" class="<?php do_action('zone_content_class')?>">
+  <?php 
+  do_action('augusta_content_single'); 
+  get_sidebar();
+  ?>
+</div>
+<?php get_footer();?>
+<?php do_action('augusta_layout_end');  ?>

@@ -270,3 +270,11 @@ function augusta_custom_excerpt_more( $output ) {
 }
 add_filter( 'get_the_excerpt', 'augusta_custom_excerpt_more' );
 
+
+
+// function custom_doctype_setup($output) {
+  // $output = "<html>";
+  // //return print apply_filters('augusta_doctype','augusta_doctype', $output);
+  // return print "<html>";  
+  // //add_action('augusta_doctype','custom_doctype_setup', $output);
+// }

@@ -7,6 +7,7 @@
  * @since Twenty Ten 1.0
  */
 ?>
+<?php do_action('augusta_sidebar_before'); ?>
 <?php
 	// A second sidebar for widgets, just because.
 	if ( is_active_sidebar( 'front' ) ) : ?>
@@ -19,3 +20,4 @@
 			
 	<!-- </div> #secondary .widget-area -->
 <?php endif; ?>
+<?php do_action('augusta_sidebar_after'); ?>

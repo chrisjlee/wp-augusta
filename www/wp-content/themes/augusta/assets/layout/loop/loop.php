@@ -1,3 +1,13 @@
+<?php
+/*
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha
+ * 
+ */  
+?>
+
 <?php do_action('augusta_loop_before'); ?>
 <?php if (have_posts()) : ?>
 <?php while (have_posts()) : the_post(); ?>
