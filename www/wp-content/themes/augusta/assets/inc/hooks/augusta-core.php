@@ -23,6 +23,9 @@
  * 
  */
 
+// Load Custom Hooks
+require_once('custom-hooks.php');
+ 
 // Augusta Header
 function augusta_header() {
   do_action('augusta_header');
@@ -102,7 +105,7 @@ function augusta_content_setup() { ?>
   <?php get_sidebar(); ?>
 <? }
 
-add_action ( 'august_content','augusta_content_setup', null );
+add_action ( 'august_content','augusta_content_setup');
 endif;
 
 /**
@@ -112,4 +115,4 @@ function grs_generator_setup() {
  $output = "<div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>";
 }
 add_action('grs_generator', 'grs_generator_setup');
-require_once('custom-hooks.php');
+

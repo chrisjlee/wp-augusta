@@ -10,7 +10,7 @@
  *
  */
 ?>
-    <div id="footer" role="contentinfo" class="sxn <?php do_action('zone_footer_class');?>">
+    <div id="footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
       <div id="footer-colophon" class="sxn">
         <?php get_sidebar('footer');?>
         <?php
@@ -21,8 +21,8 @@
     </div><!-- #footer -->
   </div><!-- #wrapper -->
 </div><!-- #page -->
-<?php do_action('augusta_closure'); ?>
-<?php
+<?php do_action('augusta_layout_end'); ?>
+<?php 
 wp_footer();
 get_template_part('/assets/layout/block', 'analytics');
 ?>

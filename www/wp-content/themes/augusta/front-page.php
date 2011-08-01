@@ -23,5 +23,5 @@ get_header(); ?>
 <div id="zone-content" class="<?php do_action('zone_content_class')?>">
   <?php do_action('augusta_content'); ?>
 </div>
-<?php do_action ('augusta_layout_end');  ?>
+<?php do_action('augusta_layout_end');  ?>
 <?php get_footer();?>

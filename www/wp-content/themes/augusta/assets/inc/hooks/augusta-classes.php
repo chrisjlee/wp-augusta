@@ -64,15 +64,21 @@
 // Page Class Hook  */
 if ( !function_exists('custom_page_class') ) :
   function page_class_setup() {
-    echo "sxn";
+    if (!$class) {
+      $default = ""; // by default
+    }    
+    echo apply_filters('page_class_setup', $class);
   }
   add_action('page_class','page_class_setup');
 endif;
 
 // Pagewidth Class Hook 
 if ( !function_exists('custom_pagewidth_class') ) :
-  function pagewidth_class_setup() {
-    echo "";
+  function pagewidth_class_setup($class) {
+    if (!$class) {
+      $default = ""; // by default
+    }    
+    echo apply_filters('pagewidth_class_setup', $class)  ;
   }
   add_action('pagewidth_class','pagewidth_class_setup');
 endif;
