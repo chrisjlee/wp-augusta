@@ -10,19 +10,25 @@
  *
  */
 ?>
-<div id="zone-footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
-  <div id="footer" class="region">
-    <?php 
-    get_sidebar('footer');
-    do_action('augusta_footer'); ?>
-  </div><!-- #footer -->
-</div><!-- #zone-footer -->
-<div id="zone-meta" class="">
-  <?php do_action('augusta_meta'); ?>
-</div>
+  <div id="zone-footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
+    <div id="region-footer" class="region">
+      <?php 
+      get_sidebar('footer');
+      do_action('augusta_footer', $menu='footer'); ?>
+    </div><!-- #footer -->
+  </div><!-- #zone-footer -->
+  <div id="zone-meta" class="">
+    <?php do_action('augusta_meta'); ?>
+  </div>
 <?php do_action('augusta_layout_end'); ?>
 <?php 
+
+/**
+ * Required wordpress hook
+ */
 wp_footer();
-get_template_part('/assets/layout/block', 'analytics');
+
+// Add analytics only if it's been turned on in the settings file
+if (CONFIG_ANALYTICS == true) get_template_part('/assets/layout/block', 'analytics');
 ?>
 </body></html>

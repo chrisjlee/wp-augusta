@@ -46,10 +46,7 @@ function augusta_hero($output) {
 }
 // Augusta Header
 function augusta_header($output) {
-  do_action('augusta_header');
-}
-function augusta_menu($menu) {
-  do_action ( 'augusta_menu', $menu );
+  do_action('augusta_header',10, 1);
 }
 function augusta_content_before() {
   do_action ( 'augusta_content_before' );
@@ -66,6 +63,16 @@ function augusta_branding() {
 function augusta_footer() {
   do_action ( 'augusta_footer' );
 }
+function augusta_meta() {
+  do_action ( 'augusta_meta' );
+}
+/** Loop */
+function augusta_loop_before() {
+  do_action ( 'augusta_loop_before' );
+}
+function augusta_loop_after() {
+  do_action ( 'augusta_loop_after' );
+}
 
 /**  Regions */
 function region_content_first() {
@@ -80,12 +87,15 @@ function region_content_third() {
 function region_content_fourth() {
   do_action ( 'region_content_fourth', 40, 1 );
 }
+
+/** Layout Wrapper #page / #pagewidth */
 function augusta_layout_start() {
   do_action ('augusta_layout_start');
 }
 function augusta_layout_end() {
   do_action ('augusta_layout_end');
 }
+
 /**  Misc */
 function grs_generator() {
   do_action ('grs_generator');
@@ -93,10 +103,9 @@ function grs_generator() {
 
 /**
  * August Content Core Hooks
- * 
  */
 if ( !function_exists('custom_content_setup') ) :
-function augusta_content_setup() { ?>
+function augusta_content_setup($output) { ?>
   <div id="region-content-above" class="<?php do_action('region_content_above_class')?>">
     <?php do_action('augusta_content_above'); ?>
   </div>
@@ -106,18 +115,15 @@ function augusta_content_setup() { ?>
   <div id="region-content-below" class="<?php do_action('region_content_below_class')?>">
     <?php do_action('augusta_content_below'); ?>
   </div>
-  </div>
-  <?php get_sidebar(); ?>
-<? }
-add_action ('august_content','augusta_content_setup' );
+  blah blah
+<?php }
+add_filter( 'august_content','augusta_content_setup', $output );
 endif;
 
 /**
- * Globe Runner Hooks
+ * Globe Runner Theme Hooks
  */
-function grs_generator() {
- $output = "<div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>";
- echo $output;
-}
-add_action('augusta_meta', 'grs_generator');
-
+function grs_generator_setup() { ?>
+ <div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>
+<?php }
+add_action('grs_generator', 'grs_generator_setup');

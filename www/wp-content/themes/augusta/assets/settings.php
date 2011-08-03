@@ -1,6 +1,10 @@
 <?php 
 /**  
- * Augusta Settings
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * * Augusta Settings
+ * 
  * Define constants in order to setup theme
  */
 define('CONFIG_CONTENT_WIDTH','960');   // Uses it in the functions.php
@@ -20,7 +24,7 @@ define('CONFIG_INNERFADE','false'); // Turn on Dropdown ?
 define('CONFIG_CDN_JQUERY','true');     // CDN files for jQuery
 define('CONFIG_CDN_JQUERYUI','true');   // CDN files for jQuery UI ?
 define('CONFIG_WIDGET_CUSTOM_POST_TRUNC','false');  //Truncate custom widget titles
-define('CONFIG_ANALYTICS','false'); //add analytics snippet?
+define('CONFIG_ANALYTICS','true'); //add analytics snippet?
 define('CONFIG_ANALYTICS_ACCOUNT','UA-xxxxxx'); // 
 
 /*  Change the Header Image Dimensions

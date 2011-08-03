@@ -56,14 +56,17 @@ add_filter('body_class','augusta_browser_body_class');
  */
 if (!function_exists( 'custom_doctype_setup' ) ) :
 function augusta_doctype_setup($output) {
-  $output = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . "\n";
-  $output .= '<!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie6 no-js"><![endif]--> '. "\n";
-  $output .= '<!--[if lt IE 7]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie6 lte9 lte8 lte7 no-js"><![endif]-->' . "\n";
-  $output .= '<!--[if IE 7]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->' . "\n";
-  $output .= '<!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie8 lte9 lte8 no-js"><![endif]-->' . "\n";
-  $output .= '<!--[if IE 9]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie9 lte9 no-js"><![endif]-->' . "\n";
-  $output .= '<!--[if gt IE 9]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="gtie9 ie9 no-js"><![endif]-->' . "\n";
-  $output .= '<!--[if !IE]><!--> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="not-ie no-js"> <!--<![endif]-->' . "\n\n";
+  // Add Opengraph -  http://developers.facebook.com/docs/opengraph/
+  $fb ="\nxmlns:og='http://ogp.me/ns#'\nxmlns:fb='http://www.facebook.com/2008/fbml'";
+  
+  $output = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"' . $fb . '>' . "\n";
+  $output .= '<!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie6 no-js" ' . $fb . '><![endif]--> '. "\n";
+  $output .= '<!--[if lt IE 7]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie6 lte9 lte8 lte7 no-js" ' . $fb . '><![endif]-->' . "\n";
+  $output .= '<!--[if IE 7]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie7 lte9 lte8 lte7 no-js" ' . $fb . '> <![endif]-->' . "\n";
+  $output .= '<!--[if IE 8]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie8 lte9 lte8 no-js" ' . $fb . '><![endif]-->' . "\n";
+  $output .= '<!--[if IE 9]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie ie9 lte9 no-js" ' . $fb . '><![endif]-->' . "\n";
+  $output .= '<!--[if gt IE 9]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="gtie9 ie9 no-js" ' . $fb . '><![endif]-->' . "\n";
+  $output .= '<!--[if !IE]><!--> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="not-ie no-js" ' . $fb . '> <!--<![endif]-->' . "\n\n";
   $output .= "\n";
   $output .= '<!-- END Augusta Doctype Setup: helper.php -->' . "\n\n";
   

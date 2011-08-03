@@ -28,11 +28,11 @@
 
 if (!function_exists('custom_header_start_setup')) :
 function augusta_header_setup($output) {
-  $class = do_action('region_header_class');
+  $class = do_action('region_header_class_setup');
   if (!$output) {
-    $output = '<div id="region-header" class="' . $class . '"></div>';
+    $output = "<!--Augusta Region Start-->\n<div id='region-header' class='" . $class . "'></div>";
   }
-  echo apply_filters('augusta_layout_start_setup', $output);
+  echo $output = apply_filters('augusta_header_setup', $output);
 }
 add_filter('augusta_header', 'augusta_header_setup', $output);
 endif;
@@ -51,13 +51,13 @@ if (!function_exists('custom_layout_start_setup')) :
 function augusta_layout_start_setup($output) {
   if (!$output) {
     $class = do_action('page_class'); 
-    $output  = '<!--Augusta Layout Start--><div id="page" class="' . $class . '">';
+    $output  = '<!--Augusta Layout Start--><div id="page" class="page clearfix">';
     $class = do_action('pagewidth_class');
-    $output .= '<div id="pagewidth" class="' . $class . '">';
+    $output .= '<div id="pagewidth" class="pagewidth clearfix">';
   }
-  echo apply_filters('augusta_layout_start_setup', $output);
+  apply_filters('augusta_layout_start_setup', $output);
 }
-add_filter ('augusta_layout_start', 'augusta_layout_start_setup', $output);
+add_filter('augusta_layout_start', 'augusta_layout_start_setup', $output);
 endif;
 
 /**
@@ -82,47 +82,51 @@ add_action('augusta_layout_end', 'augusta_layout_end_setup');
 endif;
 
 /**
- * Augusta Content Setup
- * @todo documentating
- */
-function augusta_content_setup() {
-  get_template_part('assets/layout/loop/loop');
-}
-add_action ('augusta_content', 'augusta_content_setup');
-
-/**
- * Augusta Content Single Setup
- * @todo documentating
- */
-function augusta_content_single_setup() {
-  get_template_part('assets/layout/loop/loop', 'single');
-}
-add_action ('augusta_content_single', 'augusta_content_single_setup');
-
-/**
- * Augusta Loop Before 
- * @todo documentating
+ * Augusta Loop Before Setup 
+ * 
+ * Add Conditional logic 
+ * here with built in wordpress
+ * conditionals like is_front_page(), is_page(), etc. to display 
+ * parts of the loop differently
+ * 
  */
 if (!function_exists('custom_loop_before_setup') ) :
-function augusta_loop_before_setup() { 
+function augusta_loop_before_setup($output) { 
   if ( is_front_page() ) {
-  ?>
-  <div id="entry" class="hentry entry">
-  <?php }
-  else  { ?>
-  <div id="entry" class="hentry entry">  
-  <?php }
-  add_action ('augusta_loop_before', 'augusta_loop_before_setup');
+    $output  ="<div id='content-post' class='hentry entry'>";
+  } else  {
+    $output  ="<div id='content-post' class='hentry entry'>";
+  }
+  return apply_filter ('augusta_loop_before','augusta_loop_before_setup', $output);  
 }
+add_filter('augusta_loop_before', $output);
 endif;
 
 /**
- * Augusta Loop After 
- * @todo documentating
+ * Augusta Loop After
+ *  
+ * Add Conditional logic 
+ * here with built in wordpress
+ * conditionals like is_front_page(), is_page(), etc. to display 
+ * parts of the loop differently
+ * 
  */
 if (!function_exists('custom_loop_after_setup') ) :
 function augusta_loop_after_setup() {
-  echo "</div>";
+  
+  $output = "</div>";
+  
+  return apply_filter ('augusta_loop_before','augusta_loop_before_setup', $output);  
 }
+add_filter ('augusta_loop_after', 'augusta_loop_after_setup');
 endif;
-add_action ('augusta_loop_after', 'augusta_loop_after_setup');
+
+if ( !function_exists('custom_meta_setup') ) :
+function augusta_meta_setup() {
+  // Do something
+}
+add_action('augusta_meta','augusta_meta_setup');
+endif;
+add_action('augusta_meta', 'grs_generator', 50);
+
+

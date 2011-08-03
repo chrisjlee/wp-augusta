@@ -9,20 +9,20 @@
  */
 ?>
 <?php do_action('augusta_sidebar_before');?>
-<div id="sidebar" class="<?php do_action('augusta_sidebar_class') ?>" role="complementary">
+<div id="sidebar" class="<?php do_action('augusta_sidebar_class') ?> sidebar" role="complementary">
   <ul class="xoxo">
   <?php if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
     <li id="search" class="widget-container widget_search">
       <?php get_search_form();?>
     </li>
     <li id="archives" class="widget-container">
-      <h3 class="widget-title"><?php _e('Archives', 'twentyten');?></h3>
+      <h3 class="widget-title"><?php _e('Archives', 'augusta');?></h3>
       <ul>
         <?php wp_get_archives('type=monthly');?>
       </ul>
     </li>
     <li id="meta" class="widget-container">
-      <h3 class="widget-title"><?php _e('Meta', 'twentyten');?></h3>
+      <h3 class="widget-title"><?php _e('Meta', 'augusta');?></h3>
       <ul>
         <?php wp_register();?>
         <li>

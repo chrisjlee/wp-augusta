@@ -19,7 +19,7 @@ function augusta_responsive() {
  * a fallback
  * 
  */
-$augcss = (defined('AUGCSS')) ? AUGCSS : "assets/css"; 
+$augcss = ( defined('AUGCSS') ) ? AUGCSS. '/' : "assets/css/"; 
  
 ?>
 <script type="text/javascript" language="JavaScript">
@@ -30,8 +30,8 @@ $augcss = (defined('AUGCSS')) ? AUGCSS : "assets/css";
  * Adapt.js is loaded in 
  * bootstrap.php
  * 
- * Following is borrowed from 
- * sonspring http://sonspring.com/journal/adapt-js-explained#how-to-use
+ * Is borrowed from sonspring (Nathan Smith) 
+ * http://sonspring.com/journal/adapt-js-explained#how-to-use
  * 
  */
   

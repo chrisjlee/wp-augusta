@@ -40,11 +40,11 @@ function augusta_the_content() {
   * modify the_content
   * 
   */
-function augusta_content_default_setup() {
+function augusta_content_setup_default() {
   get_template_part('assets/layout/loop/loop');
   return $output;
 }
-add_action ('augusta_content','augusta_content_default_setup');
+add_action ('augusta_content','augusta_content_setup_default');
 
 /**
  * Augusta Slideshow 
@@ -83,7 +83,39 @@ if (!function_exists('custom_slideshow_setup')) : // allow child theme to overri
 endif;
 
 
+/**
+ * Augusta Content Single Setup
+ * @todo documentating
+ */
+function augusta_content_single_setup() {
+  get_template_part('assets/layout/loop/loop', 'single');
+}
+add_action('augusta_content_single', 'augusta_content_single_setup');
 
+/**
+ * Augusta Content Before
+ * @todo documentating
+ */
+function augusta_content_before_setup($output) {
+  $class = do_action('content_class');
+  if ( isset($class) ) {
+    $output = '<div id="content" class="'. $class .'">';
+  } else {
+    $output = '<div id="content" class="grid_12">';
+  }
+  return print apply_filters('augusta_content_before_setup', $output);
+}
+add_filter('augusta_content_before', 'augusta_content_before_setup');
+
+/**
+ * Augusta Content Before
+ * @todo documentating
+ */
+function augusta_content_after_setup($output) {
+  $output = '</div>';
+  return print apply_filters('augusta_content_after_setup', $output);
+}
+add_filter('augusta_content_after', 'augusta_content_after_setup');
 
 /**
  * Post Formatters
@@ -106,5 +138,3 @@ function augusta_link_pages_setup($args) {
   return wp_link_pages( $args );
 }
 endif;
-
-

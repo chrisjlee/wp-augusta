@@ -16,27 +16,24 @@
  * 
  *  
  */
- 
- function custom_augusta_menu_setup() {
-  $args = array(
-    'container'       => 'div', 
-    'container_class' => 'grid_10 menu alpha', 
-    'menu'            => 'Footer', 
-    'menu_id'         => 'menu-footer-ul',
-    'menu_class'      => 'sxn menu', 
-    'container_id'    => 'menu-footer', 
-    'fallback_cb'     => 'wp_page_menu',
-    'before'          => '',
-    'after'           => '',
-    'link_before'     => '<span>',
-    'link_after'      => '</span>',
-    'depth'           => 0,
-    'walker'          => ''
-    //'theme_location' => 'footer'
-  );
-  echo apply_filters('augusta_menu_setup',$args);
-}
-
-add_filter('augusta_menu_setup','custom_augusta_menu', 10);
-
-echo "loaded custom hooks";
+//  
+ // function custom_augusta_menu_setup($args) {
+  // $args = array(
+    // 'container'       => 'div', 
+    // 'container_class' => 'grid_10 menu alpha', 
+    // 'menu'            => 'Footer', 
+    // 'menu_id'         => 'menu-footer-ul',
+    // 'menu_class'      => 'sxn menu', 
+    // 'container_id'    => 'menu-footer', 
+    // 'fallback_cb'     => 'wp_page_menu',
+    // 'before'          => '',
+    // 'after'           => '',
+    // 'link_before'     => '<span>',
+    // 'link_after'      => '</span>',
+    // 'depth'           => 0,
+    // 'walker'          => ''
+    // //'theme_location' => 'footer'
+  // );
+  // echo apply_filters('augusta_menu_setup', $args);
+// }
+// add_filter('augusta_menu_setup','custom_augusta_menu', 10);

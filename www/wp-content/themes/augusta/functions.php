@@ -56,7 +56,9 @@ require_once( AUGUSTA_INC . '/functions/common.php');
 // Contains library of template formatters change to html5, page title, etc
 require_once( AUGUSTA_INC . '/functions/helper.php');
 
-/** Welcome to hookland. Load my hooks */
+/** Welcome to hookland. Load my augusta hooks */
+// Define hooks
+require_once( AUGUSTA_HOOK . '/augusta-core.php');
 // Load Specific Menu Hooks, modify and define your menus here
 require_once( AUGUSTA_HOOK . '/augusta-menu.php');
 // Hooks that define zones, regions css classes. 
@@ -64,7 +66,13 @@ require_once( AUGUSTA_HOOK . '/augusta-menu.php');
 require_once( AUGUSTA_HOOK . '/augusta-classes.php');
 // Directs each layout template to the correct template part
 require_once( AUGUSTA_HOOK . '/augusta-layout.php');
-// Load the responsive layouts  
+// Load Header Hooks
+require_once( AUGUSTA_HOOK . '/augusta-header.php');
+// Load Content Hooks
+require_once( AUGUSTA_HOOK . '/augusta-content.php');
+// Load Footer / Meta
+require_once( AUGUSTA_HOOK . '/augusta-footer.php');
+// Load the responsive layouts loads stylesheets 
 require_once( AUGUSTA_HOOK . '/augusta-responsive.php');
 
 /*
@@ -308,4 +316,4 @@ if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
 </script>
 <?php
 } 
-add_action('wp_footer', 'augusta_js_loading');
+add_action('wp_footer', 'augusta_js_loading', 100);
