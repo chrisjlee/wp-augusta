@@ -13,8 +13,8 @@
   <div id="zone-footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
     <div id="region-footer" class="region">
       <?php 
-      get_sidebar('footer');
-      do_action('augusta_footer', $menu='footer'); ?>
+      //get_sidebar('footer');
+      do_action('augusta_footer'); ?>
     </div><!-- #footer -->
   </div><!-- #zone-footer -->
   <div id="zone-meta" class="">

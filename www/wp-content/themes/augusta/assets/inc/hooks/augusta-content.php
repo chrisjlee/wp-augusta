@@ -82,7 +82,6 @@ if (!function_exists('custom_slideshow_setup')) : // allow child theme to overri
   add_action('augusta_slideshow', 'augusta_slideshow_setup');
 endif;
 
-
 /**
  * Augusta Content Single Setup
  * @todo documentating
