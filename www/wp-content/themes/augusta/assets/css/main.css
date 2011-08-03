@@ -1,3 +1,21 @@
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha  
+ *  
+ * Augusta: main.css 
+ * 
+ * This file contains the specific customizations 
+ * for the website. Write your styles here
+ * This file will cascade to all other files
+ * 
+ * Add seperate styles for different screen sizes on 
+ * 
+ * mobile.css
+ * 
+ */ 
+
 /*****************************************		
     		Backgrounds
 ******************************************/
@@ -31,7 +49,7 @@ body.debug-off { background: transparent; }
 
 #content-body { background: url('../images/content-bg.gif') repeat-x;  }
 
-#wrapper  { -  }
+#wrapper  {  }
 #pagewidth {   }
 #header {  }
 	#access {   }
@@ -61,13 +79,6 @@ body.debug-off { background: transparent; }
 	#footer li,
 	#footer div, 
 	#footer ul { }
-	    #site-generator { }
-	    #site-generator a { background: url('../images/globerunner.png') no-repeat top left; height: 21px;
-		padding: 10px 0 3px 42px; }
-			#site-generator a:hover, 
-			#site-generator a:active { }
-			#site-generator a.hover-colorblack:hover, 
-			#site-generator a.hover-colorblack:active { color: #000; }
 		#site-info { }	
 	    #site-info a    { }
 	    #site-title { }

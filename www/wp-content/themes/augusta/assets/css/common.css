@@ -3,10 +3,11 @@
  * @subpackage Augusta
  * @author Chris J. Lee - iam@chrisjlee.net
  * @contributor Felipe Rocha  
- * @description File Contains the necessary setup 
- * initialization for hooks, auto loading 
- * the necessary files as well as  creating constants
+ *  
+ * Augusta: common 
  * 
+ * This file contains the base styles needed to 
+ * quickly get setup after reset file
  * 
  */ 
 
@@ -152,6 +153,15 @@ small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockqu
 p img { max-width: 100%; }
 a img { border:none }
 hr { display:none }
+
+/** GRS Styles in meta */
+#site-generator { }
+#site-generator a { background: url('../images/globerunner.png') no-repeat top left; height: 21px;
+padding: 10px 0 3px 42px; }
+  #site-generator a:hover, 
+  #site-generator a:active { }
+  #site-generator a.hover-colorblack:hover, 
+  #site-generator a.hover-colorblack:active { color: #000; }
 
 /**  Mobile   */
 .nocallout {-webkit-touch-callout: none;}
@@ -304,4 +314,3 @@ div.menu  ul li { float: left;  }
 #commentform p{margin:5px 0}
 .nocomments{text-align:center; margin:0; padding:0}
 .commentmetadata{margin:0; display:block}
-
