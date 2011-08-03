@@ -1,0 +1,18 @@
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee
+ * @since 1.0.0
+ * 
+ * Augusta 720
+ *  
+ * By Default screens with range 
+ * between than above 760px to 980px
+ * will trigger these styles. 
+ * 
+ * No media queries needed. 
+ * Styles just load dynamically.
+ * 
+ */
+
+

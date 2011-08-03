@@ -157,6 +157,15 @@ endif;
  * Regions are parts that make up zones 
  * 
  */
+//  Region Content First Class Hook  
+if ( !function_exists( 'custom_region_header_class' ) ) :
+function region_header_class_setup($output) {
+  $output = "grid_xx";
+  if (!$output) return apply_filter('region_header_class', 'region_header_class_setup', $output);
+}
+add_filter('region_header_class','region_header_class_setup');
+endif;
+
 
 //  Region Content First Class Hook  
 if ( !function_exists( 'custom_region_content_first_class' ) ) :

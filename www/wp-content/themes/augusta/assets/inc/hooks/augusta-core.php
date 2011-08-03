@@ -80,12 +80,15 @@ function region_content_third() {
 function region_content_fourth() {
   do_action ( 'region_content_fourth', 40, 1 );
 }
-
 function augusta_layout_start() {
   do_action ('augusta_layout_start');
 }
 function augusta_layout_end() {
-  do_action ('augusta_layout_start');
+  do_action ('augusta_layout_end');
+}
+/**  Misc */
+function grs_generator() {
+  do_action ('grs_generator');
 }
 
 /**
@@ -106,16 +109,15 @@ function augusta_content_setup() { ?>
   </div>
   <?php get_sidebar(); ?>
 <? }
-
-add_action ( 'august_content','augusta_content_setup');
+add_action ('august_content','augusta_content_setup' );
 endif;
 
 /**
  * Globe Runner Hooks
  */
-function grs_generator_setup() {
+function grs_generator() {
  $output = "<div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>";
  echo $output;
 }
-add_action('grs_generator', 'grs_generator_setup');
+add_action('augusta_meta', 'grs_generator');
 

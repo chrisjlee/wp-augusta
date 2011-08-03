@@ -25,6 +25,28 @@
  * to be overriden by a child theme/function
  * 
  */ 
+
+if (!function_exists('custom_header_start_setup')) :
+function augusta_header_setup($output) {
+  $class = do_action('region_header_class');
+  if (!$output) {
+    $output = '<div id="region-header" class="' . $class . '"></div>';
+  }
+  echo apply_filters('augusta_layout_start_setup', $output);
+}
+add_filter('augusta_header', 'augusta_header_setup', $output);
+endif;
+
+/**
+ * Augusta Layout Start
+ * 
+ * This function usually contains the 
+ * <div>'s necessary to close #page, #pagewidth  
+ *
+ * This function also allows you the flexibility 
+ * to add any markup that always proceeds the closing tags of
+ * #page and #pagewidth 
+ */ 
 if (!function_exists('custom_layout_start_setup')) :
 function augusta_layout_start_setup($output) {
   if (!$output) {
@@ -34,8 +56,8 @@ function augusta_layout_start_setup($output) {
     $output .= '<div id="pagewidth" class="' . $class . '">';
   }
   echo apply_filters('augusta_layout_start_setup', $output);
-add_action ('augusta_layout_start', 'augusta_layout_start_setup');
 }
+add_filter ('augusta_layout_start', 'augusta_layout_start_setup', $output);
 endif;
 
 /**
@@ -85,10 +107,10 @@ if (!function_exists('custom_loop_before_setup') ) :
 function augusta_loop_before_setup() { 
   if ( is_front_page() ) {
   ?>
-  <div id="entries" class="hentry entry">
+  <div id="entry" class="hentry entry">
   <?php }
   else  { ?>
-  <div id="entry" class="hentry entry"  
+  <div id="entry" class="hentry entry">  
   <?php }
   add_action ('augusta_loop_before', 'augusta_loop_before_setup');
 }
@@ -104,4 +126,3 @@ function augusta_loop_after_setup() {
 }
 endif;
 add_action ('augusta_loop_after', 'augusta_loop_after_setup');
-

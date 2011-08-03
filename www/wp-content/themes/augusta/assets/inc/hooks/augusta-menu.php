@@ -8,7 +8,7 @@
 
 if ( !function_exists('custom_menu_setup') ) :
    function augusta_menu_setup($menu){
-    if (!$menu) {}  
+    if (!$menu) { echo 'augusta-menu.php: No menu defined'; }  
 
     $args = array(
       'container'       => 'div', 

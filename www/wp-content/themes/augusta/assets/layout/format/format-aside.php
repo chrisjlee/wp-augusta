@@ -1,3 +1,4 @@
+<?php do_action('augusta_loop_before'); ?>
 <div class="entry-details">
     <p><?php echo get_the_date(); ?><br/>
     <?php _e( 'by', 'yoko' ); ?> <?php the_author() ?><br/>
@@ -19,3 +20,4 @@
         <?php edit_post_link( __( 'Edit &rarr;', 'yoko' ), '| <span class="edit-link">', '</span>' ); ?></p>
     </div><!-- end entry-meta -->
 </div><!-- end entry-content -->
+<?php do_action('augusta_loop_after'); ?>

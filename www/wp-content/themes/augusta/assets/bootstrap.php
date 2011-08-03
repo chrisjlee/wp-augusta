@@ -76,9 +76,11 @@ if (!is_admin()) :   // Don't load styles to modify the backend
   }
   
   /**   Adapt.js for mobile styles   */
-  wp_enqueue_script('aug-adapt',  AUGPI . '/core/adapt/js/adapt.min.js', false);   
-  wp_enqueue_script('aug-adapt-config',  AUGPI . '/core/adapt/js/adapt.config.js', array('aug-adapt'), false); 
-  
+  /** Review /assets/hooks/augusta-hooks.php for adapt js configurations */ 
+  function augusta_adapt_js() {
+    wp_enqueue_script('aug-adapt',  AUGPI . '/core/adapt/js/adapt.min.js', false);
+  }
+  add_action('wp_head', 'augusta_adapt_js', 20);
   wp_enqueue_style('aug-common', AUGCSS . '/common.css', array('aug-reset'), '1.0', 'all');
   wp_enqueue_style('aug-main',  AUGCSS . '/main.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
   
@@ -121,7 +123,8 @@ if (!is_admin()) :   // Don't load styles to modify the backend
    ---------------------------------------*/
   if (CONFIG_JQUERYUI == true) { 
     // Initialize the Latest
-    wp_enqueue_script( 'jquery-ui-latest', AUGPI.'/core/ui/jquery-ui-latest-custom.min', array( 'jquery'), '1.8.14');
+    wp_enqueue_style ( 'aug-960', AUGPI . '/core/ui/css/jquery-ui-latest.custom.css', '1.8.14', 'all and screen' );
+    wp_enqueue_script( 'jquery-ui-latest', AUGPI.'/core/ui/js/jquery-ui-latest-custom.min', array( 'jquery'), '1.8.14');
     wp_enqueue_script( 'jquery-ui-core' );
     
     /** Update jquery to the latest   */

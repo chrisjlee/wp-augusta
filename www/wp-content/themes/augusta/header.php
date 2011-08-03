@@ -6,8 +6,8 @@
  * @version 1.0.0
  * 
  */
-?>
-<?php /**  augusta_doctype hook is called in assets/functions/helpers.php  */ ?>
+
+/**  augusta_doctype hook is called in assets/functions/helpers.php  */ ?>
 <?php do_action('augusta_doctype'); ?>
 <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" /> 
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-<!--Mobile snippets below borrowed: https://github.com/malarkey/320andup/blob/master/Multiple%20linked%20stylesheets/index.html -->
+<!-- Mobile snippets below borrowed: https://github.com/malarkey/320andup/blob/master/Multiple%20linked%20stylesheets/index.html -->
 <!-- For iPhone 4 -->
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
 <!-- For iPad 1-->
@@ -40,6 +40,7 @@
 <meta http-equiv="cleartype" content="on">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+<!-- Load CSS/JS Files -->
 <?php locate_template(array('assets/bootstrap.php'),true,true); ?>
 <?php
 	/* We add some JavaScript to pages with the comment form

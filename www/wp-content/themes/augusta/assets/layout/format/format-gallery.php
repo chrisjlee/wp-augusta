@@ -17,6 +17,7 @@
  * Borrowed from Yoko Theme 
  */
 ?>
+<?php do_action('augusta_loop_before'); ?>
 <div id="post-<?php the_ID();?>" <?php post_class();?>>
   <div class="entry-post-format">
     <header class="entry-header">
@@ -80,3 +81,4 @@ if ( $tags_list ):
     </div><!-- end entry-meta-->
   </div><!-- end entry-gallery -->
 </div><!-- end post-<?php the_ID(); ?> -->
+<?php do_action('augusta_loop_after'); ?>

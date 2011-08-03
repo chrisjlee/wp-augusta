@@ -12,7 +12,7 @@
  * 
  */
 get_header(); ?>
-<body id="tpl-front" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
+<body id="tpl-single" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
 <?php do_action ('augusta_layout_start');  ?>  
 <div id="zone-header" class="<?php do_action('zone_header_class') ?>">
    <?php do_action('augusta_header'); ?>

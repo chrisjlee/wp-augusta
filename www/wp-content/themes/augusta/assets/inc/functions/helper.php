@@ -79,14 +79,14 @@ endif;
 
 // Change the doctype
 function childtheme_doctype_setup($content) {
-  $content = '<!DOCTYPE html>';
-  $content .= "\n";
-  $content .= '<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->';
-  $content .= '<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->'
-  $content .= '<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->';
-  $content .= '<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->';
-  $content .= '<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en">';
-  return $content;
+  $output = '<!DOCTYPE html>';
+  $output .= "\n";
+  $output .= '<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]-->';
+  $output .= '<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]-->'
+  $output .= '<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]-->';
+  $output .= '<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]-->';
+  $output .= '<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en">';
+  return $output;
 }
    
  *

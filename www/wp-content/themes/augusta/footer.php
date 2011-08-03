@@ -14,9 +14,12 @@
   <div id="footer" class="region">
     <?php 
     get_sidebar('footer');
-    do_action('augusta_menu'); ?>
+    do_action('augusta_footer'); ?>
   </div><!-- #footer -->
 </div><!-- #zone-footer -->
+<div id="zone-meta" class="">
+  <?php do_action('augusta_meta'); ?>
+</div>
 <?php do_action('augusta_layout_end'); ?>
 <?php 
 wp_footer();

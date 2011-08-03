@@ -27,6 +27,11 @@ add_action( 'after_setup_theme', 'augusta_setup' );
  * This will define the correct constants of 
  * regardless of if it's a child theme or not 
  * @since 0.0.1
+ * 
+ * AUGUSTA_ASSETS - path to assets folder 
+ * AUGUSTA_INC - /assets/inc
+ * AUGUSTA_HOOK - path to hooks folder 
+ * 
  */
 if ( is_child_theme() ) {
   define('AUGUSTA_ASSETS', STYLESHEETPATH . '/assets');
@@ -59,6 +64,8 @@ require_once( AUGUSTA_HOOK . '/augusta-menu.php');
 require_once( AUGUSTA_HOOK . '/augusta-classes.php');
 // Directs each layout template to the correct template part
 require_once( AUGUSTA_HOOK . '/augusta-layout.php');
+// Load the responsive layouts  
+require_once( AUGUSTA_HOOK . '/augusta-responsive.php');
 
 /*
  * Implements hook init()
@@ -99,6 +106,8 @@ function augusta_setup() {
 
   // This theme uses wp_nav_menu() in one location.
   register_nav_menu( 'primary', __( 'Primary Menu', 'augusta' ) );
+    // This theme uses wp_nav_menu() in one location.
+  register_nav_menu( 'secondary', __( 'Secondary Menu', 'augusta' ) );
 
   // Add support for a variety of post formats
   add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
@@ -106,8 +115,6 @@ function augusta_setup() {
   add_custom_background();
   // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
   add_theme_support( 'post-thumbnails' );
-
-  // The next four constants set how Twenty Eleven supports custom headers.
 
   // The default header text color
   define( 'HEADER_TEXTCOLOR', '000' );
@@ -263,14 +270,12 @@ add_filter( 'excerpt_more', 'augusta_auto_excerpt_more' );
  * function tied to the get_the_excerpt filter hook.
  */
 function augusta_excerpt_more( $output ) {
-  if ( has_excerpt() && ! is_attachment() ) {
+  if ( has_excerpt() && !is_attachment() ) {
     $output .= augusta_continue_reading_link();
   }
   return $output;
 }
 add_filter( 'get_the_excerpt', 'augusta_excerpt_more' );
-
-
 
 // function custom_doctype_setup($output) {
   // $output = "<html>";
@@ -279,15 +284,28 @@ add_filter( 'get_the_excerpt', 'augusta_excerpt_more' );
   // //add_action('augusta_doctype','custom_doctype_setup', $output);
 // }
 
-
+/**
+ * Augusta JS Loading
+ * 
+ * Allows you to run  specific 
+ * scripts to stage while javascript
+ * is still loading
+ *   
+ */
 function augusta_js_loading  () { ?>
-  <script>
-    if (typeof jQuery !== undefined || typeof jQuery != undefined ) {
-      jQuery('html').removeClass('no-js');
-      //jQuery('window').load( function() { jQuery('html').removeClass('js-loading'); })
-    }
-  </script>
- <?php
+<script type='text/javascript'>
+if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
+  jQuery(document).ready(function () {
+   jQuery('html').removeClass('no-js');
+   jQuery('html').removeClass('js-loading');
+   jQuery('html').addClass('js')
+   jQuery('window').bind('load', function() {
+     jQuery('html').removeClass('js-loading');
+     jQuery('html').addClass('js-loaded')
+   });
+ });
+}
+</script>
+<?php
 } 
-
 add_action('wp_footer', 'augusta_js_loading');

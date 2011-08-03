@@ -15,10 +15,9 @@
     		Global Styles
 ******************************************/
 html, body { width: 100%; height: 100%; }
-body, input, textarea { color:#000; font: 12px Arial,sans-serif; line-height:18px; 
+body, input, textarea, a { color:#000; font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif; line-height:18px; 
 /* Prevent mobile zooming while remain desktop zooming. http://github.com/shichuan/mobile-html5-boilerplate/issues/closed#issue/14 */
 -webkit-text-size-adjust: 100%; -ms-text-size-adjust: none; } /*  W3C won't validate this */
-/* prevent callout */
 
 /*  Header Links */
 h1, h1 a, h1 a:hover, h1 a:visited{text-decoration:none; color:white}
@@ -36,10 +35,6 @@ h6 { font-size: 10px; }
 	h2.pagetitle{ font-size:1.6em; text-align: left;  color:#000; margin: 10px 0 0 0; text-align:center }
 h3.comments{padding:0; margin:40px auto 20px}
 
-.zone { margin-left: auto !important; margin-right: auto !important;  }
-@media all and screen and (min-device-width: 720px) and (max-device-width: 1020px) {
-  .zone { width: 960px; }
-}
 /**   Links within pagewidth  */
 #pagewidth a, #pagewidth a:visited, #pagewidth a:active {color:#707070; text-decoration:none}
 #pagewidth a:hover {color: #000; text-decoration:underline}
@@ -155,13 +150,13 @@ a img { border:none }
 hr { display:none }
 
 /** GRS Styles in meta */
-#site-generator { }
-#site-generator a { background: url('../images/globerunner.png') no-repeat top left; height: 21px;
+#grs { }
+#grs a { background: url('../images/globerunner.png') no-repeat top left; height: 21px;
 padding: 10px 0 3px 42px; }
-  #site-generator a:hover, 
-  #site-generator a:active { }
-  #site-generator a.hover-colorblack:hover, 
-  #site-generator a.hover-colorblack:active { color: #000; }
+  #grs a:hover, 
+  #grs a:active { }
+  #grs a.hover-colorblack:hover, 
+  #grs a.hover-colorblack:active { color: #000; }
 
 /**  Mobile   */
 .nocallout {-webkit-touch-callout: none;}
@@ -314,3 +309,10 @@ div.menu  ul li { float: left;  }
 #commentform p{margin:5px 0}
 .nocomments{text-align:center; margin:0; padding:0}
 .commentmetadata{margin:0; display:block}
+
+/**   Augusta Base Styles    */
+.zone { margin-left: auto !important; margin-right: auto !important;  }
+.region { }
+@media all and screen and (min-device-width: 720px) and (max-device-width: 1020px) {
+  .zone { width: 960px; }
+}
