@@ -262,13 +262,13 @@ add_filter( 'excerpt_more', 'augusta_auto_excerpt_more' );
  * To override this link in a child theme, remove the filter and add your own
  * function tied to the get_the_excerpt filter hook.
  */
-function augusta_custom_excerpt_more( $output ) {
+function augusta_excerpt_more( $output ) {
   if ( has_excerpt() && ! is_attachment() ) {
     $output .= augusta_continue_reading_link();
   }
   return $output;
 }
-add_filter( 'get_the_excerpt', 'augusta_custom_excerpt_more' );
+add_filter( 'get_the_excerpt', 'augusta_excerpt_more' );
 
 
 
@@ -278,3 +278,16 @@ add_filter( 'get_the_excerpt', 'augusta_custom_excerpt_more' );
   // return print "<html>";  
   // //add_action('augusta_doctype','custom_doctype_setup', $output);
 // }
+
+
+function augusta_js_loading  () { ?>
+  <script>
+    if (typeof jQuery !== undefined || typeof jQuery != undefined ) {
+      jQuery('html').removeClass('no-js');
+      //jQuery('window').load( function() { jQuery('html').removeClass('js-loading'); })
+    }
+  </script>
+ <?php
+} 
+
+add_action('wp_footer', 'augusta_js_loading');
