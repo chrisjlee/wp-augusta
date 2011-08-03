@@ -52,7 +52,7 @@ var ADAPT_CONFIG = {
   // Separate ranges by "to" keyword.
   range: [
     '0px    to 760px  = mobile.css',
-    '760px            = screen.css',
+    '760px  to 1920px = screen.css',
     '760px  to 980px  = 720.css',
     '980px  to 1280px = 960.css',
     '1280px to 1600px = 1200.css',
