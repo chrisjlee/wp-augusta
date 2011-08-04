@@ -11,11 +11,11 @@
  */
 ?>
 <?php do_action('augusta_footer_before'); ?>
-<div id="footer" class="<?php do_action("region_footer_class"); ?>">
-  <div id="block-footer-first" class="grid-8">
+<div id="footer" class="<?php do_action("region_footer_class"); ?> grid-16 alpha omega">
+  <div id="footer-first" class="grid-8 alpha">
     Footer First
   </div>
-  <div id="block-footer-second" class="grid-8">
+  <div id="footer-second" class="grid-8 omega">
     Footer Second
   </div>
 </div>

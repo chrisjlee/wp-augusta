@@ -14,7 +14,7 @@
 if ( !function_exists('custom_footer_before_setup') ) :
 function augusta_footer_before_setup($output='', $class='') {
   // If output = 0 it turns this zone off
-  if ($output == 0) return; 
+  if ($output === 0) return; 
   
   // Utilize region_footer_class hook
   $_class = do_action('region_footer_class');
@@ -35,7 +35,7 @@ endif;
  */ 
 if ( !function_exists('custom_footer_after_setup') ) :
 function augusta_footer_after_setup($output='') {
-  if ($output == 0) return; 
+  if ($output === 0) return; 
   if (!$output) {
     $output = "\n</div><!--Augusta Footer END-->\n";
   }
@@ -44,7 +44,13 @@ function augusta_footer_after_setup($output='') {
 add_filter('augusta_footer_after', 'augusta_footer_after_setup', $output);
 endif;
 
-// Augusta Header 
+/**
+ * Augusta Footer 
+ * Router function that loads the template file.
+ * can be overriden by function to load 
+ * a different file 
+ * 
+ */ 
 if ( !function_exists('custom_footer_start_setup') ) :
 function augusta_footer_setup() {
   do_action('augusta_footer_after_setup');
@@ -53,8 +59,6 @@ function augusta_footer_setup() {
 }
 add_filter('augusta_footer', 'augusta_footer_setup');
 endif;
-
-
 
 if ( !function_exists('custom_meta_setup') ) :
 function augusta_meta_setup() {

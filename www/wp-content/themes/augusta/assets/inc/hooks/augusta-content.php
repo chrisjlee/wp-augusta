@@ -35,18 +35,6 @@ function augusta_the_content() {
   echo apply_filters('the_content', 'augusta_content');
 } 
  
- /**
-  * 
-  * Provides hookability to
-  * modify the_content
-  * 
-  */
-function augusta_content_setup_default() {
-  get_template_part('assets/layout/loop/loop');
-  return $output;
-}
-add_action ('augusta_content','augusta_content_setup_default');
-
 /**
  * Augusta Slideshow 
  * Implements augusta_slideshow
@@ -98,12 +86,12 @@ add_action('augusta_content_single', 'augusta_content_single_setup');
  */
 function augusta_content_before_setup($output='', $class='') {
   $class = do_action('content_class');
-  if ( isset($class) ) {
+  if ( !empty($class) ) {
     $output = '<div id="region-content" class="region-content'. $class .'">';
   } else {
     $output = '<div id="region-content" class="region-content grid-12">';
   }
-  return print apply_filters('augusta_content_before_setup', $output, $class);
+  return print apply_filters( 'augusta_content_before_setup', $output, $class );
 }
 add_filter('augusta_content_before', 'augusta_content_before_setup');
 
@@ -111,7 +99,7 @@ add_filter('augusta_content_before', 'augusta_content_before_setup');
  * Augusta Content Before
  * @todo documentating
  */
-function augusta_content_after_setup($output='') {
+function augusta_content_after_setup( $output='' ) {
   $output = '</div>';
   return print apply_filters('augusta_content_after_setup', $output);
 }
@@ -123,11 +111,11 @@ add_filter('augusta_content_after', 'augusta_content_after_setup');
  * @todo documentating
  */
 function augusta_sidebar_before_setup($output='', $class='') {
-  $class = do_action('content_class');
-  if ( isset($class) ) {
+  $class = do_action('sidebar_class');
+  if ( !empty($class) ) {
     $output = '<div id="region-sidebar" class="region-content'. $class .'">';
   } else {
-    $output = '<div id="region-sidebar" class="region-content grid-4">';
+    $output = '<div id="region-sidebar" class="region-content grid-4 grid-default">';
   }
   return print apply_filters('augusta_sidebar_before_setup', $output, $class);
 }

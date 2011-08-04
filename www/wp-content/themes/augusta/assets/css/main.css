@@ -45,7 +45,7 @@ body {background: url("../images/body-bg.jpg"); overflow: hidden; }/**/
 #zone-menu { background: transparent url("../images/zone-menu-bg.gif");   }/** */
 /** Delete Me to Activate
 #logo {background:url("../images/logo-bg.gif") no-repeat scroll 0 0 transparent; } /**/
-.sidebar li .widget-title { background: url("../images/title-bg.gif") top left repeat-x; height: 26px; } /**/
+.sidebar li .widget-title { background: url("../images/title-bg.gif") top left repeat-x;   } /**/
 /** Delete Me to Activate
 #zone-content { background: url('../images/content-bg.gif') repeat-x;  } /**/
  
@@ -97,6 +97,8 @@ body {background: url("../images/body-bg.jpg"); overflow: hidden; }/**/
         #main .entry-post {}
         #main .entry-footer {}
   #region-sidebar {}
+  #region-sidebar .sidebar li .widget-title  { height: 50px; color: #fff; } /** Default Styling - Delete me */
+  #region-sidebar .sidebar li .widget-title  {  }
 /**  Zone: Footer  */
 #zone-footer {}
   #footer { }

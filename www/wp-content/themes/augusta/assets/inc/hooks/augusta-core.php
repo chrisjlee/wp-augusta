@@ -34,8 +34,8 @@
 require_once('custom-hooks.php');
  
 // Augusta Header
-function augusta_menu($arg, $menu) {
-  do_action('augusta_menu',$arg, $menu);
+function augusta_menu($output, $class) {
+  do_action('augusta_menu');
 }
 
 /**  Zones */
@@ -56,6 +56,7 @@ function augusta_header_after($output) {
 function augusta_branding() {
   do_action ( 'augusta_branding' );
 }
+
 // Augusta Content
 function augusta_content_before() {
   do_action ( 'augusta_content_before' );

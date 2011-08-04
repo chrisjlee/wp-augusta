@@ -30,7 +30,7 @@
  * 
  */ 
 
- if (!function_exists('custom_layout_before_setup')) :
+if (!function_exists('custom_layout_before_setup')) :
 function augusta_layout_before_setup($output) {
   if ($output == 0) return;
   if (!$output) {

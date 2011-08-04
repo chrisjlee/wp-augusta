@@ -14,14 +14,14 @@
  * 
  */
 if ( !function_exists('custom_header_before_setup') ) :
-function augusta_header_before_setup($output='', $class='') {
+function augusta_header_before_setup( $output='', $class='' ) {
   // If output = 0 it turns this zone off
-  if ($output == 0) return; 
+  if ($output === 0) return; 
   
   // Utilize region_header_class hook
   $_class = do_action('region_header_class');
   if ( !empty($_class) ) $_class = $class;
-  if (!$class) $class = "grid-16";
+  if (!$class) $class = "container-16";
   if (!$output) {
     $output = "<!--Augusta Region Start-->\n<div id='region-header' class='" . $class . "'>";
   }
@@ -37,7 +37,7 @@ endif;
  */ 
 if ( !function_exists('custom_header_after_setup') ) :
 function augusta_header_after_setup($output='') {
-  if ($output == 0) return; 
+  if ($output === 0) return; 
   if (!$output) {
     $output = "\n</div><!--Augusta Header END-->\n";
   }

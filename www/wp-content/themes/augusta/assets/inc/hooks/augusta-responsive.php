@@ -55,8 +55,8 @@ var ADAPT_CONFIG = {
     '760px  to 980px  = 720.css',
     '980px  to 1280px = 960.css',
     '1280px to 1600px = 1200.css',
-    '1600px to 1920px = 1560.css',
-    '1920px           = fluid.css'
+    '1600px to 1920px = 1560.css'
+    //'1920px           = fluid.css'
   ]
 };
 
@@ -70,7 +70,7 @@ function augusta_respond_class(i, width) {
   // Check for valid range.
   if (i > -1) {
     // Add class="range_NUMBER"
-    console.log(width);
+    //console.log(width);
     html.className += ' range_' + i;
   }
 

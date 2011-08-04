@@ -117,14 +117,14 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   if ( CONFIG_960GS == true ) {
     /**  Load my grids for augusta  */
     // Load base styles 
-    wp_enqueue_style( 'aug-960text', AUGPI . '/core/960gs/min/text.css', array('aug-reset'), '1.0', 'all and screen' );
+    wp_enqueue_style( 'aug-960text', AUGPI . '/core/960gs/min/text.css', array('aug-reset'), '1.0', 'all' );
     
     // Load 960gs grids. Which kind? 
     if ( CONFIG_960GS_COLS == 24 ) {
-      wp_enqueue_style ( 'aug-960-24', AUGPI . '/core/960gs/min/css/960_24_col.css', array('aug-960text'), '1.0', 'screen' );
+      wp_enqueue_style ( 'aug-960-24', AUGPI . '/core/960gs/min/css/960_24_col.css', array('aug-960text'), '1.0', 'all and screen and (min-device-width: 720px) and (max-device-width: 1200px)' );
     } else {  
       // By default it will load 16/12 grids, which is a standard configuration
-      wp_enqueue_style ( 'aug-960', AUGPI . '/core/960gs/min/960.css', array('aug-960text') , '1.0', 'all and screen' );
+      wp_enqueue_style ( 'aug-960', AUGPI . '/core/960gs/min/960.css', array('aug-960text') , '1.0', 'all and screen and (min-device-width: 720px) and (max-device-width: 1200px)' );
     }
   }
   /*  jQuery UI  

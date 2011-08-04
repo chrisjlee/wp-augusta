@@ -6,9 +6,19 @@
  * 
  */
 
-if ( !function_exists('custom_menu_setup') ) :
-function augusta_menu_setup( $arg="", $menu="") {
-  if (!$arg && !menu) {
+if ( function_exists("custom_menu_setup") )  :
+function augusta_menu_setup () {
+  get_template_part('assets/layout/region/region','menu');  
+}
+add_filter('augusta_menu', 'augusta_menu_setup');
+endif;
+
+/**
+ * Augusta Menu Args
+ * 
+ */
+function augusta_menu_nav() {
+    if (!$arg && !menu) {
     $menu = array(
       'container'       => 'div', 
       'container_class' => 'menu ', 
@@ -25,12 +35,12 @@ function augusta_menu_setup( $arg="", $menu="") {
       'walker'          => '',
       'theme_location' => 'primary' 
     );
-    return wp_nav_menu( apply_filters('augusta_menu_setup', $menu) );
+    return apply_filters('augusta_menu_nav', $menu);
   }  
  /**
  * Footer Menu
  */ 
-  if ($arg == 'footer') {
+  if ($arg === 'footer') {
     $menu = array(
       'container'       => 'div', 
       'container_class' => 'menu ', 
@@ -49,7 +59,7 @@ function augusta_menu_setup( $arg="", $menu="") {
     );
     
   }
-  if ($arg == 'primary') {
+  if ($arg === 'primary') {
     $menu = array(
       'container'       => 'div', 
       'container_id'    => 'menu-primary', 
@@ -68,9 +78,5 @@ function augusta_menu_setup( $arg="", $menu="") {
     );
     
   }
-  return wp_nav_menu( apply_filters('augusta_menu_setup', $menu ) ); 
-}   
-endif;
-add_filter('augusta_menu', 'augusta_menu_setup', $arg, $menu);
-
-?>
+  return apply_filters('augusta_menu_nav', $menu); 
+}

@@ -187,7 +187,7 @@ endif;
 if (!function_exists('custom_region_header_class')) :
 function region_header_class_setup($class) {
   if (!$class) $class = "region";
-  return print apply_filters( 'region_header_class_setup', $class );
+  return apply_filters( 'region_header_class_setup', $class );
 }
 add_filter('region_header_class','region_header_class_setup', $class);
 endif;
@@ -196,7 +196,7 @@ endif;
 if (!function_exists('custom_region_footer_class')) :
 function region_footer_class_setup($class) {
   if (!$class) $class = "region";
-  return print apply_filters( 'region_footer_class_setup', $class );
+  return apply_filters( 'region_footer_class_setup', $class );
 }
 add_filter('region_footer_class','region_footer_class_setup', $class);
 endif;

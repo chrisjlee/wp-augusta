@@ -1,28 +1,43 @@
 <?php
 /**
- * The main template file.
+ * Page template file.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query. 
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha
+ * @since Augusta v1.0.0
+ * 
  */
-
 get_header(); ?>
-<body id="tpl-archive" <?php if(function_exists('body_class')) body_class(); ?> >
-<?php get_template_part( 'tpt-header', 'core' ); ?>
-		<div id="container" class="container_<?php echo CONFIG_960GS_TYPE; ?>">
-			<div id="content" role="main" class="sxn">
-    			<div class="grid_6 alpha "><?php get_sidebar('primary');  ?></div>
-    			<div class="grid_10 omega"><?php get_template_part('/assets/includes/loop','blog'); ?></div>
-			</div><!-- #content -->
-			<div id="content-after">
-				
-			</div>
-		</div><!-- #container -->
-<?php get_footer(); ?>
+<body id="tpl-archive" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
+<?php do_action ('augusta_layout_before');  ?>  
+<div id="zone-header" class="<?php do_action( 'zone_header_class' ) ?>">
+   <?php  do_action('augusta_header'); ?>
+</div>
+<div id="zone-menu" class="<?php do_action( 'zone_menu_class' ) ?>">
+  <?php do_action('augusta_menu'); ?>
+</div>
+<div id="zone-content" class="<?php do_action( 'zone_content_class' )?>">
+  <div id='section-content' class='container-16'>
+  <?php
+    get_sidebar();
+     
+    // augusta-content.php
+    do_action ( 'augusta_content_before' );
+    
+    // wordpress function
+    get_template_part('assets/layout/loop/loop', 'archive' );
+    
+    // augusta-content.php
+    do_action ( 'augusta_content_after' );
+    
+  ?>
+  </div>
+</div>
+<?php 
+  // augusta_layout_end is called inside footer.php
+  // augusta_meta is also called here
+  get_footer();  
+?>
