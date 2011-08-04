@@ -225,3 +225,26 @@ function augusta_page_title_setup() {
 // augusta_page_title() is found in the /assets/loops files
 add_action('augusta_page_title', 'augusta_page_title_setup');
 endif;
+
+/*
+ * Augusta: Built in Plus one
+ * 
+ * Stolen from : http://otto42.com/9j
+ * 
+ * 
+ * 
+ */
+function augusta_ext_plus_one() {
+if (defined(CONFIG_GPLUSONE) ) :
+  add_filter('the_content', 'google_plusone');
+  function google_plusone($content) {
+    $content = $content.'<div class="plusone"><g:plusone size="tall" href="'.get_permalink().'"></g:plusone></div>';
+    return $content;
+  }
+  
+  add_action ('wp_enqueue_scripts','google_plusone_script');
+  function google_plusone_script() {
+    wp_enqueue_script('google-plusone', 'https://apis.google.com/js/plusone.js', array(), null);
+  }
+endif;
+}

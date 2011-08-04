@@ -18,15 +18,17 @@ get_header(); ?>
    <?php do_action('augusta_header'); ?>
 </div>
 <div id="zone-menu" class="<?php do_action( 'zone_menu_class' ) ?>">
-  <?php do_action('augusta_menu'); ?>
+  <?php do_action('augusta_menu', "primary" ); ?>
 </div>
 <div id="zone-content" class="<?php do_action( 'zone_content_class' )?>">
   <?php 
-    
+    // augusta-content.php
     do_action ( 'augusta_content_before' );
     
-    get_template('assets/layout/loop', 'front' );
+    // wordpress function
+    get_template_part('assets/layout/loop/loop', 'front' );
     
+    // augusta-content.php
     do_action ( 'augusta_content_after' );
     
     get_sidebar( 'front' ); 

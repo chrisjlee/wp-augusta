@@ -34,9 +34,8 @@
 require_once('custom-hooks.php');
  
 // Augusta Header
-function augusta_menu($menu) {
-  //return apply_filters('augusta_menu', $menu);
-  do_action('augusta_menu', $menu);
+function augusta_menu($arg, $menu) {
+  do_action('augusta_menu',$arg, $menu);
 }
 
 /**  Zones */
@@ -74,6 +73,14 @@ function augusta_loop_after() {
   do_action ( 'augusta_loop_after' );
 }
 
+/** Sidebar */
+function augusta_sidebar_before() {
+  do_action ( 'augusta_sidebar_before' );
+}
+function augusta_sidebar_after() {
+  do_action ( 'augusta_sidebar_after' );
+}
+
 /**  Regions */
 function region_content_first() {
   do_action ( 'region_content_first', 10, 1 );
@@ -100,25 +107,6 @@ function augusta_layout_end() {
 function grs_generator() {
   do_action ('grs_generator');
 }
-
-/**
- * August Content Core Hooks
- */
-if ( !function_exists('custom_content_setup') ) :
-function augusta_content_setup($output) { ?>
-  <div id="region-content-above" class="<?php do_action('region_content_above_class')?>">
-    <?php do_action('augusta_content_above'); ?>
-  </div>
-  <div id="region-content" class="<?php do_action('region_content_class')?>">
-     <?php do_action('augusta_content'); ?>
-  </div>
-  <div id="region-content-below" class="<?php do_action('region_content_below_class')?>">
-    <?php do_action('augusta_content_below'); ?>
-  </div>
-  blah blah
-<?php }
-add_filter( 'august_content','augusta_content_setup', $output );
-endif;
 
 /**
  * Globe Runner Theme Hooks

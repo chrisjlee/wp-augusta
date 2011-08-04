@@ -7,32 +7,31 @@
  */
 
 if ( !function_exists('custom_menu_setup') ) :
-function augusta_menu_setup($arg) {
-if (!$arg) {
-// Default arguments  
-  $args = array(
-    'container'       => 'div', 
-    'container_class' => 'menu ', 
-    'menu'            => 'Primary Menu', 
-    'menu_id'         => 'menu-primary-ul',
-    'menu_class'      => 'sxn menu omega', 
-    'container_id'    => 'menu-sm', 
-    'fallback_cb'     => 'wp_page_menu',
-    'before'          => '',
-    'after'           => '',
-    'link_before'     => '<span>',
-    'link_after'      => '</span>',
-    'depth'           => 0,
-    'walker'          => '',
-    'theme_location' => 'primary' 
-  );
-}  
+function augusta_menu_setup( $arg="", $menu="") {
+  if (!$arg && !menu) {
+    $menu = array(
+      'container'       => 'div', 
+      'container_class' => 'menu ', 
+      'menu'            => 'Primary Menu', 
+      'menu_id'         => 'menu-primary-ul',
+      'menu_class'      => 'sxn menu omega', 
+      'container_id'    => 'menu-sm', 
+      'fallback_cb'     => 'wp_page_menu',
+      'before'          => '',
+      'after'           => '',
+      'link_before'     => '<span>',
+      'link_after'      => '</span>',
+      'depth'           => 0,
+      'walker'          => '',
+      'theme_location' => 'primary' 
+    );
+    return wp_nav_menu( apply_filters('augusta_menu_setup', $menu) );
+  }  
  /**
  * Footer Menu
  */ 
   if ($arg == 'footer') {
-    echo "$arg";
-    $args = array(
+    $menu = array(
       'container'       => 'div', 
       'container_class' => 'menu ', 
       'menu'            => 'Footer', 
@@ -46,14 +45,32 @@ if (!$arg) {
       'link_after'      => '</span>',
       'depth'           => 0,
       'walker'          => '',
-      'theme_location' => 'secondary'
+      'theme_location' => 'footer'
     );
     
-    return $menu = wp_nav_menu($args);
   }
-  return; 
+  if ($arg == 'primary') {
+    $menu = array(
+      'container'       => 'div', 
+      'container_id'    => 'menu-primary', 
+      'container_class' => 'menu ', 
+      'menu'            => 'Primary', 
+      'menu_id'         => 'menu-primary-ul',
+      'menu_class'      => 'menu', 
+      'fallback_cb'     => 'wp_page_menu',
+      'before'          => '',
+      'after'           => '',
+      'link_before'     => '<span>',
+      'link_after'      => '</span>',
+      'depth'           => 0,
+      'theme_location' => 'primary',
+      'walker'          => ''
+    );
+    
+  }
+  return wp_nav_menu( apply_filters('augusta_menu_setup', $menu ) ); 
 }   
 endif;
-add_filter('augusta_menu', 'augusta_menu_setup', $menu);
+add_filter('augusta_menu', 'augusta_menu_setup', $arg, $menu);
 
 ?>

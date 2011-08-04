@@ -8,8 +8,8 @@
  * @contributor Felipe Rocha
  */
 ?>
-<?php do_action('augusta_sidebar_before');?>
-<div id="sidebar" class="<?php do_action('augusta_sidebar_class') ?> sidebar" role="complementary">
+<?php do_action('augusta_sidebar_before'); ?>
+<div id="sidebar" class="<?php do_action('augusta_sidebar_class') ?> sidebar">
   <ul class="xoxo">
   <?php if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
     <li id="search" class="widget-container widget_search">

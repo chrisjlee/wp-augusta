@@ -108,7 +108,7 @@ if (!is_admin()) :   // Don't load styles to modify the backend
  * 960gs Framework for All Pages
  * 
  */
-  if ( CONFIG_960GS == true) {
+  if ( CONFIG_960GS == true ) {
     /**  Load my grids for augusta  */
     // Load base styles 
     wp_enqueue_style( 'aug-960text', AUGPI . '/core/960gs/min/text.css', array('aug-reset'), '1.0', 'all and screen' );

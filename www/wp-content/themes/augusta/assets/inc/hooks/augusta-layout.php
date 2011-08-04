@@ -93,13 +93,13 @@ endif;
 if (!function_exists('custom_loop_before_setup') ) :
 function augusta_loop_before_setup($output) { 
   if ( is_front_page() ) {
-    $output  ="<div id='content-post' class='hentry entry'>";
+    $output  = "<div id='content-post' class='hentry entry'>";
   } else  {
-    $output  ="<div id='content-post' class='hentry entry'>";
+    $output  = "<div id='content-post' class='hentry entry'>";
   }
-  return apply_filter ('augusta_loop_before','augusta_loop_before_setup', $output);  
+  return apply_filters ('augusta_loop_before_setup', $output);  
 }
-add_filter('augusta_loop_before', $output);
+add_filter('augusta_loop_before', 'augusta_loop_before_setup', $output);
 endif;
 
 /**
@@ -112,13 +112,11 @@ endif;
  * 
  */
 if (!function_exists('custom_loop_after_setup') ) :
-function augusta_loop_after_setup() {
-  
+function augusta_loop_after_setup ( $output ) {
   $output = "</div>";
-  
-  return apply_filter ('augusta_loop_before','augusta_loop_before_setup', $output);  
+  return apply_filters('augusta_loop_before_setup', $output);  
 }
-add_filter ('augusta_loop_after', 'augusta_loop_after_setup');
+add_filter ('augusta_loop_after', 'augusta_loop_after_setup', $output);
 endif;
 
 if ( !function_exists('custom_meta_setup') ) :

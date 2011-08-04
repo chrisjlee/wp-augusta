@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * @package WordPress
  * @subpackage Augusta
@@ -16,6 +16,7 @@
  * 
  *  
  */
+
 //  
  // function custom_augusta_menu_setup($args) {
   // $args = array(
@@ -34,6 +35,6 @@
     // 'walker'          => ''
     // //'theme_location' => 'footer'
   // );
-  // echo apply_filters('augusta_menu_setup', $args);
+  // return apply_filters('augusta_menu_setup', $args);
 // }
 // add_filter('augusta_menu_setup','custom_augusta_menu', 10);
