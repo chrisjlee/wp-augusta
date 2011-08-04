@@ -58,6 +58,7 @@ if (!function_exists( 'custom_doctype_setup' ) ) :
 function augusta_doctype_setup($output) {
   // Add Opengraph -  http://developers.facebook.com/docs/opengraph/
   $fb ="\nxmlns:og='http://ogp.me/ns#'\nxmlns:fb='http://www.facebook.com/2008/fbml'";
+  $fb ='';
   
   $output = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"' . $fb . '>' . "\n";
   $output .= '<!--[if IE 6]><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="ie6 no-js" ' . $fb . '><![endif]--> '. "\n";
