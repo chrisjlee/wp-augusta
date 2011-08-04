@@ -17,7 +17,7 @@
       do_action('augusta_footer'); ?>
     </div><!-- #footer -->
   </div><!-- #zone-footer -->
-  <div id="zone-meta" class="">
+  <div id="zone-meta" class="<?php do_action('zone_meta_class') ?>">
     <?php do_action('augusta_meta'); ?>
   </div>
 <?php do_action('augusta_layout_end'); ?>
