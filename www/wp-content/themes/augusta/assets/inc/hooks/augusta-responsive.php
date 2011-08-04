@@ -70,6 +70,7 @@ function augusta_respond_class(i, width) {
   // Check for valid range.
   if (i > -1) {
     // Add class="range_NUMBER"
+    console.log(width);
     html.className += ' range_' + i;
   }
 

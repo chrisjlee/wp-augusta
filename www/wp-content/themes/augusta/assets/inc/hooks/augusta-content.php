@@ -1,4 +1,5 @@
-<?php /**
+<?php 
+ /**
  * Augusta Class Hooks
  * @author Chris J. Lee
  * @since 1.0.0

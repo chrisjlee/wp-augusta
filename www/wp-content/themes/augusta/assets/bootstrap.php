@@ -64,7 +64,7 @@ wp_register_script('jquery-latest-cdn', 'http://ajax.googleapis.com/ajax/libs/jq
 
 /* CSS Auto Load
  ---------------------------------------*/
-if (!is_admin()) :   // Don't load styles to modify the backend
+if ( !is_admin() ) :   // Don't load styles to modify the backend
  /** 
   * Determine if 960grids are on  
   * then figure out which reset to load
@@ -80,14 +80,17 @@ if (!is_admin()) :   // Don't load styles to modify the backend
   /** Review /assets/hooks/augusta-hooks.php for adapt js configurations */ 
   function augusta_adapt_js() {
     wp_enqueue_script('aug-adapt',  AUGPI . '/core/adapt/js/adapt.min.js', false);
+    // Remove aug-960 if you're using adaptative grids
+    if ( wp_style_is("aug-960") ) wp_deregister_script('aug-960');
+    if ( wp_style_is("aug-960-24") ) wp_deregister_script('aug-960-24');
   }
-  add_action('wp_head', 'augusta_adapt_js', 20);
+  add_action('wp_head', 'augusta_adapt_js', 80);
   wp_enqueue_style('aug-common', AUGCSS . '/common.css', array('aug-reset'), '1.0', 'all');
   wp_enqueue_style('aug-main',  AUGCSS . '/main.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
   
   /** Load Formalize - formalize.me automatically loads*/
   wp_enqueue_style('aug-formalize',  AUGPI . '/core/formalize/css/formalize.css', array('aug-reset'),  '1.0', 'all');
-  wp_enqueue_script('aug-formalize',  AUGPI . '/core/formalize/js/jquery.formalize.min.js', array('jquery'), '1.0', true);  
+  wp_enqueue_script('aug-formalize',  AUGPI . '/core/formalize/js/jquery.formalize.min.js', array('jquery'), '1.0', false);  
   
   /**   Selectivizr Please save me from IE6-8   */
   wp_enqueue_script('aug-selectivizr',  AUGPI . '/core/selectivizr/selectivizr-min.js', array('jquery'), '1.0');  
@@ -106,6 +109,9 @@ if (!is_admin()) :   // Don't load styles to modify the backend
  * reset file than the Eric Meyer reset css file
  * 
  * 960gs Framework for All Pages
+ * 
+ * Also, you'll want to turn off 960gs if you're using the
+ * adapt.js and the adaptative grids. They conflict
  * 
  */
   if ( CONFIG_960GS == true ) {

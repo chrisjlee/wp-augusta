@@ -311,8 +311,5 @@ div.menu  ul li { float: left;  }
 .commentmetadata{margin:0; display:block}
 
 /**   Augusta Base Styles    */
-.zone { margin-left: auto !important; margin-right: auto !important;  }
-.region { }
-@media all and screen and (min-device-width: 720px) and (max-device-width: 1020px) {
-  .zone { width: 960px; }
-}
+.zone { margin-left: auto !important; margin-right: auto !important; clear: both; }
+.region { float: left; }
