@@ -4,9 +4,13 @@
  * @subpackage Augusta
  * @author Chris J. Lee - iam@chrisjlee.net
  * @contributor Felipe Rocha  
- * @description File Contains the necessary setup 
+ * 
+ * File Contains the necessary setup 
  * initialization for hooks, auto loading 
- * the necessary files as well as  creating constants
+ * the necessary files as well as  creating constants.
+ * 
+ * This part actions more like a router. 
+ * It will call the appropriate 
  * 
  */ 
  
@@ -26,38 +30,18 @@
  * 
  */ 
 
-if (!function_exists('custom_header_start_setup')) :
-function augusta_header_setup($output) {
-  $class = do_action('region_header_class_setup');
-  if (!$output) {
-    $output = "<!--Augusta Region Start-->\n<div id='region-header' class='" . $class . "'></div>";
-  }
-  echo $output = apply_filters('augusta_header_setup', $output);
-}
-add_filter('augusta_header', 'augusta_header_setup', $output);
-endif;
-
-/**
- * Augusta Layout Start
- * 
- * This function usually contains the 
- * <div>'s necessary to close #page, #pagewidth  
- *
- * This function also allows you the flexibility 
- * to add any markup that always proceeds the closing tags of
- * #page and #pagewidth 
- */ 
-if (!function_exists('custom_layout_start_setup')) :
-function augusta_layout_start_setup($output) {
+ if (!function_exists('custom_layout_before_setup')) :
+function augusta_layout_before_setup($output) {
+  if ($output == 0) return;
   if (!$output) {
     $class = do_action('page_class'); 
-    $output  = '<!--Augusta Layout Start--><div id="page" class="page clearfix">';
+    $output  = '<!--Augusta Layout Start--><div id="page" class="' . $class . ' page clearfix">';
     $class = do_action('pagewidth_class');
-    $output .= '<div id="pagewidth" class="pagewidth clearfix">';
+    $output .= '<div id="pagewidth" class=" ' . $class . 'pagewidth clearfix">';
   }
-  apply_filters('augusta_layout_start_setup', $output);
+  return print apply_filters('augusta_layout_before_setup', $output);
 }
-add_filter('augusta_layout_start', 'augusta_layout_start_setup', $output);
+add_filter('augusta_layout_start', 'augusta_layout_before_setup', $output);
 endif;
 
 /**
@@ -70,15 +54,16 @@ endif;
  * to add any markup that always proceeds the closing tags of
  * #page and #pagewidth 
  */ 
-if (!function_exists('custom_layout_end_setup') ) :
-function augusta_layout_end_setup($output) {
+if (!function_exists('custom_layout_after_setup') ) :
+function augusta_layout_after_setup($output) {
+  if ($output == 0) return;
   if (!$output) { 
     $output  = '</div>';
     $output  .= '</div><!--Augusta Layout End-->';
   }
-  echo apply_filters('augusta_layout_end_setup', $output);
+  return print apply_filters('augusta_layout_after_setup', $output);
 }
-add_action('augusta_layout_end', 'augusta_layout_end_setup');
+add_filter('augusta_layout_after', 'augusta_layout_after_setup');
 endif;
 
 /**
@@ -93,11 +78,11 @@ endif;
 if (!function_exists('custom_loop_before_setup') ) :
 function augusta_loop_before_setup($output) { 
   if ( is_front_page() ) {
-    $output  = "<div id='content-post' class='hentry entry'>";
+    $output  = "<div id='content' class='hentry entry content'><div id='main' class='main'>";
   } else  {
-    $output  = "<div id='content-post' class='hentry entry'>";
+    $output  = "<div id='content' class='hentry entry content'><div id='main' class='main'>";
   }
-  return apply_filters ('augusta_loop_before_setup', $output);  
+  return print apply_filters ('augusta_loop_before_setup', $output);  
 }
 add_filter('augusta_loop_before', 'augusta_loop_before_setup', $output);
 endif;
@@ -113,18 +98,8 @@ endif;
  */
 if (!function_exists('custom_loop_after_setup') ) :
 function augusta_loop_after_setup ( $output ) {
-  $output = "</div>";
-  return apply_filters('augusta_loop_before_setup', $output);  
+  $output = "</div><!--/END #main-->\n</div><!--/END #content-->\n";
+  return print apply_filters('augusta_loop_before_setup', $output);  
 }
 add_filter ('augusta_loop_after', 'augusta_loop_after_setup', $output);
 endif;
-
-if ( !function_exists('custom_meta_setup') ) :
-function augusta_meta_setup() {
-  // Do something
-}
-add_action('augusta_meta','augusta_meta_setup');
-endif;
-add_action('augusta_meta', 'grs_generator', 50);
-
-

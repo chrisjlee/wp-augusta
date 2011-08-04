@@ -85,7 +85,7 @@ endif;
 //  User Class Hook 
 if ( !function_exists('custom_zone_user_class') ) :
 function zone_user_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_user_class_setup', $class);
 }
 add_filter('zone_user_class','zone_user_class_setup', $class);
@@ -95,7 +95,7 @@ endif;
 //  Header Class Hook 
 if ( !function_exists('custom_zone_header_class') ) :
 function zone_header_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_header_class_setup', $class);
 }
 add_filter('zone_header_class','zone_header_class_setup', $class);
@@ -105,7 +105,7 @@ endif;
 //  Zone Menu Class Hook
 if (!function_exists('custom_zone_menu_class')) :
 function zone_menu_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_class_setup', $class);
 }
 add_filter('zone_menu_class','zone_menu_class_setup', $class);
@@ -114,7 +114,7 @@ endif;
 //  Zone Menu Class Hook
 if (!function_exists('custom_zone_content_above_class')) :
 function zone_content_above_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_content_above_class_setup', $class);
 }
 add_filter('zone_content_above_class','zone_content_above_setup');
@@ -124,7 +124,7 @@ endif;
 //  Zone Content Class Hook
 if (!function_exists('custom_zone_content_class')) :
 function zone_content_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_content_class_setup', $class);
 }
 add_filter('zone_content_class','zone_content_class_setup', $class);
@@ -133,7 +133,7 @@ endif;
 //  Zone Content Below Class Hook
 if (!function_exists('custom_zone_content_below_class')) :
 function zone_content_below_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return apply_filters('zone_content_below_class_setup', $class);
 }
 add_filter('zone_content_below_class','zone_content_below_class_setup', $class);
@@ -142,7 +142,7 @@ endif;
 //  Zone Footer Class Hook
 if (!function_exists('custom_zone_footer_class')) :
 function zone_footer_class_setup($class) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters( 'zone_footer_class_setup', $class );
 }
 add_filter('zone_footer_class','zone_footer_class_setup', $class);
@@ -151,52 +151,53 @@ endif;
 //  Zone Meta Class Hook
 if (!function_exists('custom_zone_meta_below_class')) :
 function zone_meta_class_setup( $class ) {
-  if (!$class) $class = "container-16 zone";
+  if (!$class) $class = "zone";
   return print apply_filters('zone_meta_class_setup', $class);
 }
 add_filter('zone_meta_class','zone_meta_class_setup', $class);
 endif;
 
-// 
- // /** 
- // * Region Class Hooks
- // * 
- // * Regions are parts that make up zones 
- // * 
- // */
-// //  Region Content First Class Hook  
-// if ( !function_exists( 'custom_region_header_class' ) ) :
-// function region_header_class_setup($output) {
-  // $output = "grid_xx";
-  // if (!$output) return apply_filter('region_header_class_setup', $output);
-// }
-// add_filter('region_header_class','region_header_class_setup', $class);
-// endif;
-// 
-// 
-// //  Region Content First Class Hook  
-// if ( !function_exists( 'custom_region_content_first_class' ) ) :
-// function region_content_first_class_setup() {
-  // $output =  "grid_xx";
-  // return apply_filter('region_content_first_class_setup', $output);
-// }
-// add_filter('region_content_first_class','region_content_first_class_setup', $class);
-// endif;
-// 
-// //  Region Content Second Class Hook  
-// if ( !function_exists( 'custom_region_content_second_class' ) ) :
-// function region_content_second_class_setup($output) {
-  // if (!$output) $output = "grid_xx";
-  // return apply_filter('region_content_second_class_setup', $output);
-// }
-// add_filter('region_content_second_class','region_content_second_class_setup', $class);
-// endif;
-// 
-// //  Region Content Third Class Hook  
-// if ( !function_exists( 'custom_region_content_third_class' ) ) :
-// function region_content_third_class_setup() {
-  // echo "grid_xx";
-  // return apply_filter('region_content_third_class_setup', $output);
-// }
-// add_filter('region_content_third_class','region_content_third_class_setup', $class);
-// endif;
+
+//  Zone Sidebar Class Hook
+if (!function_exists('zone_custom_sidebar_class')) :
+function zone_sidebar_class_setup( $class ) {
+  if (!$class) {
+    $class = "grid-4";
+  }
+  // Grid Class for Front Page
+  if (is_front_page()) {
+    $class = 'grid-4';
+  }
+  // Not Front or blog page
+  if ( !is_front_page() || !is_home() ) {
+    // Float your sidebar left
+    $class = 'grid-4 bfl';
+  }
+  return print apply_filters('zone_sidebar_class_setup', $class);
+}
+add_filter('zone_sidebar_class','zone_sidebar_class_setup', $class);
+endif;
+
+
+/**
+ * Augusta: Regions Classes
+ * 
+ */
+/**  Region Header Class Hook */
+if (!function_exists('custom_region_header_class')) :
+function region_header_class_setup($class) {
+  if (!$class) $class = "region";
+  return print apply_filters( 'region_header_class_setup', $class );
+}
+add_filter('region_header_class','region_header_class_setup', $class);
+endif;
+
+/**  Region Footer Class Hook */
+if (!function_exists('custom_region_footer_class')) :
+function region_footer_class_setup($class) {
+  if (!$class) $class = "region";
+  return print apply_filters( 'region_footer_class_setup', $class );
+}
+add_filter('region_footer_class','region_footer_class_setup', $class);
+endif;
+

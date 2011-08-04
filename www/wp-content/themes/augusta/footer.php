@@ -11,16 +11,12 @@
  */
 ?>
   <div id="zone-footer" role="contentinfo" class="<?php do_action('zone_footer_class');?>">
-    <div id="region-footer" class="region">
-      <?php 
-      //get_sidebar('footer');
-      do_action('augusta_footer'); ?>
-    </div><!-- #footer -->
+      <?php do_action('augusta_footer'); ?>
   </div><!-- #zone-footer -->
-  <div id="zone-meta" class="<?php do_action('zone_meta_class') ?>">
+  <div id="zone-meta" class="<?php do_action('zone_meta_class'); ?>">
     <?php do_action('augusta_meta'); ?>
   </div>
-<?php do_action('augusta_layout_end'); ?>
+<?php do_action('augusta_layout_after'); ?>
 <?php 
 
 /**

@@ -45,8 +45,18 @@ function augusta_hero($output) {
 }
 // Augusta Header
 function augusta_header($output) {
-  do_action('augusta_header',10, 1);
+  do_action('augusta_header', $output);
 }
+function augusta_header_before($output, $class) {
+  do_action('augusta_header_before', $output, $class);
+}
+function augusta_header_after($output) {
+  do_action('augusta_header_after', $output);
+}
+function augusta_branding() {
+  do_action ( 'augusta_branding' );
+}
+// Augusta Content
 function augusta_content_before() {
   do_action ( 'augusta_content_before' );
 }
@@ -56,15 +66,13 @@ function augusta_content() {
 function augusta_content_after() {
   do_action ( 'augusta_content_after' );
 }
-function augusta_branding() {
-  do_action ( 'augusta_branding' );
-}
 function augusta_footer() {
   do_action ( 'augusta_footer' );
 }
 function augusta_meta() {
   do_action ( 'augusta_meta' );
 }
+
 /** Loop */
 function augusta_loop_before() {
   do_action ( 'augusta_loop_before' );
@@ -83,25 +91,18 @@ function augusta_sidebar_after() {
 
 /**  Regions */
 function region_content_first() {
-  do_action ( 'region_content_first', 10, 1 );
+  do_action ( 'region_content_first' );
 }
 function region_content_second() {
-  do_action ( 'region_content_second',20, 1 );
+  do_action ( 'region_content_second' );
 }
 function region_content_third() {
-  do_action ( 'region_content_third', 30, 1 );
+  do_action ( 'region_content_third' );
 }
 function region_content_fourth() {
-  do_action ( 'region_content_fourth', 40, 1 );
+  do_action ( 'region_content_fourth' );
 }
 
-/** Layout Wrapper #page / #pagewidth */
-function augusta_layout_start() {
-  do_action ('augusta_layout_start');
-}
-function augusta_layout_end() {
-  do_action ('augusta_layout_end');
-}
 
 /**  Misc */
 function grs_generator() {
@@ -112,6 +113,6 @@ function grs_generator() {
  * Globe Runner Theme Hooks
  */
 function grs_generator_setup() { ?>
- <div id='grs'>Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>
+ <div id='grs' class="grid-4">Dallas SEO, <a href='http://globerunnerseo.com' title='Dallas SEO Consultant'>Globe Runner SEO</a></div>
 <?php }
 add_action('grs_generator', 'grs_generator_setup');

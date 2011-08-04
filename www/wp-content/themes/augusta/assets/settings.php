@@ -7,7 +7,7 @@
  * 
  * Define constants in order to setup theme
  */
-define('CONFIG_CONTENT_WIDTH','960');   // Uses it in the functions.php
+define('CONFIG_LOGO', 'true');   // Turn on logo in header? Image located assets/images/logo.jpg
 define('CONFIG_960GS','true');    // use 960gs?
 define('CONFIG_960GS_COL','16'); // name the number of columns, 24, 12/16, 
 /* Javascript */

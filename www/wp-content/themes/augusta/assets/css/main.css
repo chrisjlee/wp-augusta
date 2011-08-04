@@ -16,13 +16,16 @@
  * 
  */ 
 
-/*****************************************		
-    		Backgrounds
-******************************************/
+/**
+ * Augusta Backgrounds
+ * 
+ * Don't change the links to the backgrounds
+ * Save yourself the trouble. They're already linked 
+ * here for you just replace the images and customize to your likings
+ * 
+ */
 html, body { font-family: Georgia, Times New Roman, Roman, Times, serif; }
-.shadow { background: url('../images/shadow-bg.png') repeat-y top center; width: 985px; margin: 0 auto; }
-/*.footer-shadow { background: url('../images/footer-shadow-bg.png') repeat-x top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 6px 0; }*/
-.footer-shadow { background: url('../images/footer-bottom.png') no-repeat top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 30px 0; margin: 0 auto 30px; }
+.shadow { background: url('../images/shadow-bg.png') repeat-y top center; margin: 0 auto; }
 #footer { background: transparent;  }
 #colophon { background: url('../images/footer-corner.png') no-repeat top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 30px 0; }
 body,
@@ -32,62 +35,84 @@ body.debug-960-16 { background: transparent url("../images/debug/16_col.gif") re
 body.debug-960-24 { background: transparent url("../images/debug/24_col.gif") repeat-y 50% 0 !important; }
 body.debug-960-12 { background: transparent url("../images/debug/12_col.gif") repeat-y 50% 0 !important; }
 body.debug-off { background: transparent; }
-#access { background: transparent url("../images/access-bg.gif") repeat-x 50% 0;   }
-#logo {background:url("../images/logo-bg.jpg") no-repeat scroll 0 0 transparent; }
-#site-title a { background: url("../images/site-text.png") no-repeat;   }
-#branding {background: #ABA398 url("../images/body-bg.jpg"); overflow: hidden; }
-#pg-front .entry-content, 
-#pg-front .entry-summary  { padding: 0; }
-.sidebar li .widget-title { background: url("../images/title-bg.gif") top left repeat-x; height: 26px; } 
-.menu ul li span { position: absolute; left: -999em; }
+/** Delete Me to Activate
+body {background: url("../images/body-bg.jpg"); overflow: hidden; }/**/
+/** Delete Me to Activate
+#page {  } /** */
+/** Delete Me to Activate
+#pagewidth { background: transparent url("../images/template/pagewidth-bg.gif") repeat-y 50% 0 !important; }  /** Just Delete the line before to activate */
+/** Delete Me to Activate
+#zone-menu { background: transparent url("../images/zone-menu-bg.gif");   }/** */
+/** Delete Me to Activate
+#logo {background:url("../images/logo-bg.gif") no-repeat scroll 0 0 transparent; } /**/
+.sidebar li .widget-title { background: url("../images/title-bg.gif") top left repeat-x; height: 26px; } /**/
+/** Delete Me to Activate
+#zone-content { background: url('../images/content-bg.gif') repeat-x;  } /**/
  
-/** 	Layout   */
+/** 
+ * Augusta: Layout
+ * 
+ * Make me look pretty. Laying out
+ * Augusta can be so easy when 
+ * all the id's and classes are already here
+ * why rewrite everything? 
+ * 
+ * Keep in mind these styles apply 
+ * to all widths including mobile 
+ * versions. Add your styles to:
+ * 720.css, 960.css, 1200.css
+ * 
+ * 
+ */
+
+/** Classes: Zones */
+.zone { padding: 0;  }
+/** Classes: Zones */
+.region {  }
+
+/** Zones */
+#page {}
 #pagewidth {} 
-#access, div.menu, #colophon, #branding, #main  { margin: 0; padding: 0; } 
+/**  Zone: Header  */
+#zone-header {}
+  #header {  }
+  #logo {  }
+    #logo a {  }
+/**  Zone: Menu  */
+#zone-menu {}
+  #zone-menu div.menu {}
+    #zone-menu {  }
+      #zone-menu { height: 2em; }
+      #zone-menu ul li { }
+       #zone-menu ul li a { }
+       #zone-menu ul li a:hover { }
+/**  Zone: Content  */
+#zone-content {}
+  #region-content {}
+    #content {}
+      #main {}
+      #main .entry {}
+        #main .entry-header {}
+        #main .entry-title {}
+        #main .entry-post {}
+        #main .entry-footer {}
+  #region-sidebar {}
+/**  Zone: Footer  */
+#zone-footer {}
+  #footer { }
 
-#content-body { background: url('../images/content-bg.gif') repeat-x;  }
-
-#wrapper  {  }
-#pagewidth {   }
-#header {  }
-	#access {   }
-	#branding {   }
-	#branding img {   }
-	#logo {  }
-		#logo a	 { margin: 65px 0 0 20px }
-		#logo  { }
-	/*	Menu	*/
-	#menu-footer ul li {   }
-	#menu-footer ul li a {    }
-#container {   }
-#main {   }
-	#content { }
-	#index-blog #content .entry-title { }
-	#index-blog .entry-contents { }
 #footer { }
-	#footer-colophon { }
-#pg-front #primary { }
-#pg-front #sidebar-front ul.xoxo { }
-#access { }
-	#access ul li { }
-	#access ul li a { }
-	#access ul li a:hover { }
-#footer { }
-	#colophon { }
-	#footer li,
-	#footer div, 
-	#footer ul { }
-		#site-info { }	
-	    #site-info a    { }
-	    #site-title { }
-	        #site-title span a { }
-	    #site-title { }
-			#site-title a { }
-	        #site-title a span { }
+  #footer li,
+  #footer div, 
+  #footer ul { }
+    #site-info { }	
+      #site-info a    { }
+      #site-title { }
+          #site-title span a { }
+      #site-title { }
+      #site-title a { }
+          #site-title a span { }
 
-/*****************************************		
-    	Inside the Loop: .post/.entry
-******************************************/
 /**  .post
 ---------------------------------------*/
 .post {}

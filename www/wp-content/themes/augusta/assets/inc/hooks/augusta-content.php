@@ -96,14 +96,14 @@ add_action('augusta_content_single', 'augusta_content_single_setup');
  * Augusta Content Before
  * @todo documentating
  */
-function augusta_content_before_setup($output) {
+function augusta_content_before_setup($output='', $class='') {
   $class = do_action('content_class');
   if ( isset($class) ) {
-    $output = '<div id="content" class="'. $class .'">';
+    $output = '<div id="region-content" class="region-content'. $class .'">';
   } else {
-    $output = '<div id="content" class="grid_12">';
+    $output = '<div id="region-content" class="region-content grid-12">';
   }
-  return print apply_filters('augusta_content_before_setup', $output);
+  return print apply_filters('augusta_content_before_setup', $output, $class);
 }
 add_filter('augusta_content_before', 'augusta_content_before_setup');
 
@@ -111,11 +111,38 @@ add_filter('augusta_content_before', 'augusta_content_before_setup');
  * Augusta Content Before
  * @todo documentating
  */
-function augusta_content_after_setup($output) {
+function augusta_content_after_setup($output='') {
   $output = '</div>';
   return print apply_filters('augusta_content_after_setup', $output);
 }
 add_filter('augusta_content_after', 'augusta_content_after_setup');
+
+
+/**
+ * Augusta Sidebar Before
+ * @todo documentating
+ */
+function augusta_sidebar_before_setup($output='', $class='') {
+  $class = do_action('content_class');
+  if ( isset($class) ) {
+    $output = '<div id="region-sidebar" class="region-content'. $class .'">';
+  } else {
+    $output = '<div id="region-sidebar" class="region-content grid-4">';
+  }
+  return print apply_filters('augusta_sidebar_before_setup', $output, $class);
+}
+add_filter('augusta_sidebar_before', 'augusta_sidebar_before_setup');
+
+/**
+ * Augusta Sidebar Before
+ * @todo documentating
+ */
+function augusta_sidebar_after_setup($output) {
+  $output = '</div>';
+  return print apply_filters('augusta_content_after_setup', $output);
+}
+add_filter('augusta_sidebar_after', 'augusta_content_after_setup');
+
 
 /**
  * Post Formatters

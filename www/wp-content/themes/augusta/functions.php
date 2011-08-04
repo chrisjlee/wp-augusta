@@ -23,7 +23,7 @@
 add_action( 'after_setup_theme', 'augusta_setup' );
 
  /** 
- * Setup Path Constants 
+ * Setup Path Constants for php files
  * This will define the correct constants of 
  * regardless of if it's a child theme or not 
  * @since 0.0.1
@@ -45,7 +45,7 @@ else {
 }
 
 /**
- * Autoload files
+ * Autoload files - Don't Change this!
  --------------------------------------------- */
 // Loads all the constants - /assets/bootstrap.php is dependant on
 require_once( AUGUSTA_ASSETS . '/settings.php');
@@ -66,12 +66,14 @@ require_once( AUGUSTA_HOOK . '/augusta-menu.php');
 require_once( AUGUSTA_HOOK . '/augusta-classes.php');
 // Directs each layout template to the correct template part
 require_once( AUGUSTA_HOOK . '/augusta-layout.php');
+/** Augusta Hooks: Sections */
 // Load Header Hooks
 require_once( AUGUSTA_HOOK . '/augusta-header.php');
 // Load Content Hooks
 require_once( AUGUSTA_HOOK . '/augusta-content.php');
 // Load Footer / Meta
 require_once( AUGUSTA_HOOK . '/augusta-footer.php');
+/** Augusta Hooks: Responsive Styles/Grids */
 // Load the responsive layouts loads stylesheets 
 require_once( AUGUSTA_HOOK . '/augusta-responsive.php');
 
@@ -96,7 +98,7 @@ if ( ! function_exists( 'augusta_setup' ) ):
  * @uses register_default_headers() To register the default custom header images provided with the theme.
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
  *
- * @since Twenty Eleven 1.0
+ * @since 0.0.5
  */
 function augusta_setup() {
   // Setup Support for Nav Menus  
@@ -182,7 +184,7 @@ if ( !function_exists( 'custom_widgets_init' ) ) :
 
   register_sidebar( array(
     'name' => __( 'Blog: Sidebar ', 'augusta' ),
-    'id' => 'sidebar-5',
+    'id' => 'sidebar-3',
     'description' => __( 'Sidebar for the blog', 'augusta' ),
     'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-blog">',
     'after_widget' => "</div>",
@@ -192,16 +194,6 @@ if ( !function_exists( 'custom_widgets_init' ) ) :
 
   register_sidebar( array(
     'name' => __( 'Footer Area One', 'augusta' ),
-    'id' => 'sidebar-3',
-    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Footer Area Two', 'augusta' ),
     'id' => 'sidebar-4',
     'description' => __( 'An optional widget area for your site footer', 'augusta' ),
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -211,8 +203,18 @@ if ( !function_exists( 'custom_widgets_init' ) ) :
   ) );
 
   register_sidebar( array(
-    'name' => __( 'Footer Area Three', 'augusta' ),
+    'name' => __( 'Footer Area Two', 'augusta' ),
     'id' => 'sidebar-5',
+    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<div class="widget-title"><h2>',
+    'after_title' => '</h2></div>',
+  ) );
+
+  register_sidebar( array(
+    'name' => __( 'Footer Area Three', 'augusta' ),
+    'id' => 'sidebar-6',
     'description' => __( 'An optional widget area for your site footer', 'augusta' ),
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget' => "</div>",
