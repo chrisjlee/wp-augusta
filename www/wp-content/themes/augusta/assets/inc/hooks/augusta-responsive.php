@@ -55,7 +55,8 @@ var ADAPT_CONFIG = {
     '760px  to 980px  = 720.css',
     '980px  to 1280px = 960.css',
     '1280px to 1600px = 1200.css',
-    '1600px to 1920px = 1560.css'
+    '1600px           = 1560.css'
+    //'1600px to 1920px = 1560.css'
     //'1920px           = fluid.css'
   ]
 };
@@ -93,4 +94,4 @@ function augusta_respond_callback(i, width) {
 }
 </script>
 <?php }
-add_action('wp_head', 'augusta_responsive', 10 );
+add_action('wp_enqueue_scripts', 'augusta_responsive', 1 );
