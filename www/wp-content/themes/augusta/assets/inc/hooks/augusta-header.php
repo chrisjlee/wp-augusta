@@ -53,7 +53,7 @@ function augusta_header_setup() {
 }
 add_filter('augusta_header', 'augusta_header_setup');
 endif;
-
+ 
 /**
  * Augusta Default Header Blocks
  * Blocks that are contained in Regions
