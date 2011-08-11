@@ -84,7 +84,7 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
     if ( wp_style_is("aug-960") ) wp_deregister_script('aug-960');
     if ( wp_style_is("aug-960-24") ) wp_deregister_script('aug-960-24');
   }
-  add_action('wp_head', 'augusta_adapt_js', 80);
+  add_action('wp_enqueue_scripts', 'augusta_adapt_js', 20);
   wp_enqueue_style('aug-common', AUGCSS . '/common.css', array('aug-reset'), '1.0', 'all');
   wp_enqueue_style('aug-main',  AUGCSS . '/main.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
   
@@ -98,7 +98,7 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   
   /**  Javascript for all pages  */
   wp_enqueue_script( 'jquery' ); // uses No conflict mode
-  wp_enqueue_script( 'jquery-ui-core', AUGPI . '/core/ui/jquery-ui-latest.custom.min.js', array( 'jquery' ) );
+  //wp_enqueue_script( 'jquery-ui-core', AUGPI . '/core/ui/jquery-ui-latest.custom.min.js', array( 'jquery' ) );
   // jQuery UI Depends on the style
   wp_enqueue_style ( 'jquery-ui-css', AUGPI . '/core/ui/jquery-ui-latest.custom.css', '1.8.14', 'all and screen' );
   wp_enqueue_script( 'aug-core', AUGJS . '/augusta.core.js', array( 'jquery', 'jquery-ui-latest' ), '1.0.1');

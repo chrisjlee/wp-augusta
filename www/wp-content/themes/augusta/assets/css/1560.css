@@ -16,4 +16,5 @@
 /*  Pick your grids 
  @todo add 1560 grids
  * */
-/*@import url("../grid/1560/augusta-16.css");*/
+@import url("grid/1560/augusta-16.css");
+body #page { background: url("grid/1560/augusta-16.png") repeat; }
