@@ -73,6 +73,8 @@ require_once( AUGUSTA_HOOK . '/augusta-header.php');
 require_once( AUGUSTA_HOOK . '/augusta-content.php');
 // Load Footer / Meta
 require_once( AUGUSTA_HOOK . '/augusta-footer.php');
+// Load Comments
+require_once( AUGUSTA_HOOK . '/augusta-comments.php');
 /** Augusta Hooks: Responsive Styles/Grids */
 // Load the responsive layouts loads stylesheets 
 require_once( AUGUSTA_HOOK . '/augusta-responsive.php');

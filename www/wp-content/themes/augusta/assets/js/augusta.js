@@ -4,6 +4,10 @@
  * @subpackage Augusta
  * @author Chris J. Lee
  * 
+ * Do not modify this file unless
+ * you know what you're doing.
+ * This file doesn't need to be modified or changed
+ * 
  * Features self defined javascript
  * modules that we used often.
  *   - jQuery tabs rotating

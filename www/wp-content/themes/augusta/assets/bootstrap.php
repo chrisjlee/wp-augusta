@@ -222,6 +222,11 @@ function augusta_enqueue_page_scripts() {
     wp_enqueue_style('aug-sub', AUGCSSPG . '/sub.css', 'screen'); 
     wp_enqueue_script( 'aug-front', AUGCSSPG . '/sub.js', array('jquery'), '1.0.0', TRUE);
   }
+    /**  Subpages   */
+  if ( is_single() ) { 
+    wp_enqueue_style('aug-single', AUGCSSPG . '/single.css', 'screen'); 
+    wp_enqueue_script( 'aug-single', AUGCSSPG . '/single.js', array('jquery'), '1.0.0', TRUE);
+  }
 }
 endif; 
 if( !is_admin() ) add_action('wp_enqueue_scripts','augusta_enqueue_page_scripts');

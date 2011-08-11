@@ -17,8 +17,8 @@ endif;
  * Augusta Menu Args
  * 
  */
-function augusta_menu_nav() {
-    if (!$arg && !menu) {
+function augusta_menu_nav($menu="") {
+    if (!$arg && !menu || $menu == "primary") {
     $menu = array(
       'container'       => 'div', 
       'container_class' => 'menu ', 
@@ -35,7 +35,9 @@ function augusta_menu_nav() {
       'walker'          => '',
       'theme_location' => 'primary' 
     );
-    return apply_filters('augusta_menu_nav', $menu);
+    //return ;
+    
+    wp_menu_nav( apply_filters( 'augusta_menu_nav', $menu ) );
   }  
  /**
  * Footer Menu

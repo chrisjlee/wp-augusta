@@ -34,14 +34,14 @@ if (!function_exists('custom_layout_before_setup')) :
 function augusta_layout_before_setup($output) {
   if ($output == 0) return;
   if (!$output) {
-    $class = do_action('page_class'); 
+    $class = page_class(); 
     $output  = '<!--Augusta Layout Start--><div id="page" class="' . $class . ' page clearfix">';
-    $class = do_action('pagewidth_class');
+    $class = pagewidth_class();
     $output .= '<div id="pagewidth" class=" ' . $class . 'pagewidth clearfix">';
   }
   return print apply_filters('augusta_layout_before_setup', $output);
 }
-add_filter('augusta_layout_start', 'augusta_layout_before_setup', $output);
+add_filter('augusta_layout_before', 'augusta_layout_before_setup', $output);
 endif;
 
 /**

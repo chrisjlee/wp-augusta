@@ -1,6 +1,6 @@
 <?php
 /**
- * The Front Page template file.
+ * The 404 Page template file.
  *
  * Reference: http://codex.wordpress.org/Template_Hierarchy
  *
@@ -13,11 +13,15 @@
  */
 get_header(); ?>
 <body id="tpl-404" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
-<?php do_action ('augusta_layout_start');  ?>  
-<div id="zone-header" class="<?php do_action( 'zone_header_class' ) ?>">
+<?php
+// Augusta_layout_start creates: 
+//  #page 
+//    #pagewidth 
+do_action ('augusta_layout_start');  ?>  
+<div id="zone-header" class="<?php do_action( 'zone_header_class' ); ?>">
    <?php do_action('augusta_header'); ?>
 </div>
-<div id="zone-menu" class="<?php do_action( 'zone_menu_class' ) ?>">
+<div id="zone-menu" class="<?php do_action( 'zone_menu_class' ); ?>">
   <?php do_action('augusta_menu'); ?>
 </div>
 <div id="zone-content" class="<?php do_action( 'zone_content_class' )?>">

@@ -32,7 +32,7 @@ get_header(); ?>
     // augusta-content.php
     do_action ( 'augusta_content_after' );
     
-    get_sidebar( 'sidebar/front' ); 
+    get_sidebar( 'front' ); 
   ?>
   </div>
 </div>
