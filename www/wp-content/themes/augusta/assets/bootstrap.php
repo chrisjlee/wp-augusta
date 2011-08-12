@@ -79,7 +79,7 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   /**   Adapt.js for mobile styles   */
   /** Review /assets/hooks/augusta-hooks.php for adapt js configurations */ 
   function augusta_adapt_js() {
-    wp_enqueue_script('aug-adapt',  AUGPI . '/core/adapt/js/adapt.min.js', false);
+    wp_enqueue_script('aug-adapt',  AUGPI . '/core/adaptjs/js/adapt.min.js', false);
     // Remove aug-960 if you're using adaptative grids
     if ( wp_style_is("aug-960") ) wp_deregister_script('aug-960');
     if ( wp_style_is("aug-960-24") ) wp_deregister_script('aug-960-24');
