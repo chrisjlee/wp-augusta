@@ -6,6 +6,11 @@
  * @contributor Felipe Rocha  
  */
 ?>
-<div id="region-menu" class="container-16">
-  <?php do_action("augusta_menu_nav"); ?>
+<div id="region-menu" class=" <?php do_action('region_menu_class') ?>">
+  <?php 
+  
+  // Called from augusta-menu.php
+  augusta_nav_menu( $location = "footer" ); 
+  
+  ?>
 </div>

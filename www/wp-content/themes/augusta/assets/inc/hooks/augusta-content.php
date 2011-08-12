@@ -42,7 +42,7 @@ function augusta_the_content() {
  * 
  * Borrowed from twentyten
  */
-if (!function_exists('custom_slideshow_setup')) : // allow child theme to override
+if ( !function_exists('custom_slideshow_setup') ) : // allow child theme to override
   function augusta_slideshow_setup () { 
   // Check if this is a post or page, if it has a thumbnail, and if it's a big one
   if ( is_singular() 
@@ -72,65 +72,49 @@ if (!function_exists('custom_slideshow_setup')) : // allow child theme to overri
 endif;
 
 /**
- * Augusta Content Single Setup
- * @todo documentating
- */
-function augusta_content_single_setup() {
-  get_template_part('assets/layout/loop/loop', 'single');
-}
-add_action('augusta_content_single', 'augusta_content_single_setup');
-
-/**
  * Augusta Content Before
  * @todo documentating
  */
 function augusta_content_before_setup($output='', $class='') {
-  $class = do_action('content_class');
+  $class = content_class();
+  $output = "<!--START #region-content-->\n";
   if ( !empty($class) ) {
-    $output = '<div id="region-content" class="region-content'. $class .'">';
+    $output .= "<div id='region-content' class='region-content $class'>";
   } else {
-    $output = '<div id="region-content" class="region-content grid-12">';
+    $output .= "<div id='region-content' class='region-content grid-12'>";
   }
   return print apply_filters( 'augusta_content_before_setup', $output, $class );
-}
+} 
 add_filter('augusta_content_before', 'augusta_content_before_setup');
 
 /**
- * Augusta Content Before
+ * Augusta Content after
  * @todo documentating
  */
 function augusta_content_after_setup( $output='' ) {
-  $output = '</div>';
+  $output = "\n  </div><!--END #region-content-->";
   return print apply_filters('augusta_content_after_setup', $output);
 }
 add_filter('augusta_content_after', 'augusta_content_after_setup');
 
-
 /**
- * Augusta Sidebar Before
- * @todo documentating
+ * Augusta Section Content
+ * 
  */
-function augusta_sidebar_before_setup($output='', $class='') {
-  $class = do_action('sidebar_class');
-  if ( !empty($class) ) {
-    $output = '<div id="region-sidebar" class="region-content'. $class .'">';
-  } else {
-    $output = '<div id="region-sidebar" class="region-content grid-4 grid-default">';
-  }
-  return print apply_filters('augusta_sidebar_before_setup', $output, $class);
-}
-add_filter('augusta_sidebar_before', 'augusta_sidebar_before_setup');
 
-/**
- * Augusta Sidebar Before
- * @todo documentating
- */
-function augusta_sidebar_after_setup($output) {
-  $output = '</div>';
-  return print apply_filters('augusta_content_after_setup', $output);
-}
-add_filter('augusta_sidebar_after', 'augusta_content_after_setup');
+/** Section Content before  */
+ function section_content_before_setup ( $output='' ) {
+  $class = section_content_class();
+  if ( empty( $class ) ) $class = 'container-16 section section-content'; 
+  $output = "<!-- START #section-content -->\n  <div id='section-content' class=' $class' >";
+  return print apply_filters('section_content_before_setup', $output);
+} add_filter('section_content_before', 'section_content_before_setup');
 
+/** Section Content After  */
+function section_content_after_setup ( $output='' ) {
+  $output = "  </div><!--END #section-content-->";
+  return print apply_filters('section_content_after_setup', $output);
+} add_filter('section_content_after', 'section_content_after_setup');
 
 /**
  * Post Formatters

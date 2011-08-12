@@ -21,8 +21,10 @@ get_header(); ?>
   <?php do_action('augusta_menu'); ?>
 </div>
 <div id="zone-content" class="<?php do_action( 'zone_content_class' )?>">
-  <div id='section-content' class='container-16'>
   <?php 
+    // Wraps #content and #sidebar
+    do_action ( 'section_content_before' );
+    
     // augusta-content.php
     do_action ( 'augusta_content_before' );
     
@@ -32,9 +34,11 @@ get_header(); ?>
     // augusta-content.php
     do_action ( 'augusta_content_after' );
     
-    get_sidebar(); 
+    get_sidebar();
+    
+    // Wraps #content and #sidebar
+    do_action ( 'section_content_after' ); 
   ?>
-  </div>
 </div><!--/#zone-content-->
 <?php 
   // augusta_layout_end is called inside footer.php

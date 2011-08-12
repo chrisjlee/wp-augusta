@@ -31,14 +31,12 @@
  */ 
 
 if (!function_exists('custom_layout_before_setup')) :
-function augusta_layout_before_setup($output) {
-  if ($output == 0) return;
-  if (!$output) {
+function augusta_layout_before_setup($output) {    
     $class = page_class(); 
+    if (!$class) $class = "page";
     $output  = '<!--Augusta Layout Start--><div id="page" class="' . $class . ' page clearfix">';
     $class = pagewidth_class();
     $output .= '<div id="pagewidth" class=" ' . $class . 'pagewidth clearfix">';
-  }
   return print apply_filters('augusta_layout_before_setup', $output);
 }
 add_filter('augusta_layout_before', 'augusta_layout_before_setup', $output);

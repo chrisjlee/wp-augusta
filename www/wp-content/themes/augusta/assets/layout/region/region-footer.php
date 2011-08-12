@@ -11,7 +11,7 @@
  */
 ?>
 <?php do_action('augusta_footer_before'); ?>
-<div id="footer" class="<?php do_action("region_footer_class"); ?> grid-16 alpha omega">
+<div id="footer" class="<?php do_action("footer_class"); ?> grid-16 alpha omega">
   <div id="footer-first" class="grid-8 alpha">
     Footer First
   </div>
@@ -19,4 +19,4 @@
     Footer Second
   </div>
 </div>
-<?php do_action('augusta_footer_before'); ?>
+<?php do_action('augusta_footer_after'); ?>

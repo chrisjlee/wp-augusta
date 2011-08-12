@@ -249,3 +249,56 @@ if (defined(CONFIG_GPLUSONE) ) :
   }
 endif;
 }
+/**
+ * Augusta Analytics Setup
+ * 
+ * From the augusta/assets/settings.php 
+ * file it'll look for that particular key
+ * and figure out if it needs to be displayed
+ * 
+ */
+
+function augusta_analytics_setup() {
+  if (CONFIG_ANALYTICS == false) return;
+  // Add analytics only if it's been turned on in the augusta/assets/settings.php file
+  if (CONFIG_ANALYTICS == true) get_template_part('/assets/layout/block', 'analytics');
+} add_action('augusta_setup','augusta_analytics_setup');
+  
+  
+// function augusta_fb_log($var) {
+  // $output  = '<script>console.log(';
+  // $output .= $var;
+  // $output .= ')</script>';
+// }
+// add_action('wp_footer', 'augusta_fb_log' );
+// augusta_fb_log('test');
+
+
+
+/**
+ * Augusta JS Loading
+ * 
+ * Allows you to run  specific 
+ * scripts to stage while javascript
+ * is still loading
+ *   
+ */
+function augusta_js_loading  () { ?>
+<!-- Called from Helper.php -->
+<script type='text/javascript'>
+// Called from Helper
+if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
+  jQuery(document).ready(function () {
+   jQuery('html').removeClass('no-js');
+   jQuery('html').removeClass('js-loading');
+   jQuery('html').addClass('js')
+   jQuery('window').bind('load', function() {
+     jQuery('html').removeClass('js-loading');
+     jQuery('html').addClass('js-loaded')
+   });
+ });
+}
+</script>
+<?php
+} 
+add_action('wp_footer', 'augusta_js_loading', 100);

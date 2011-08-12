@@ -17,15 +17,13 @@ function augusta_footer_before_setup($output='', $class='') {
   if ($output === 0) return; 
   
   // Utilize region_footer_class hook
-  $_class = do_action('region_footer_class');
-  if ( !empty($_class) ) $_class = $class;
+  $class = footer_class();
   if (!$class) $class = "container-16";
   if (!$output) {
     $output = "<!--Augusta Footer Region Start-->\n<div id='region-footer' class='" . $class . "'>";
   }
   return print apply_filters('augusta_footer_before_setup', $output, $class);
-}
-add_filter('augusta_footer_before', 'augusta_footer_before_setup', $output, $class);
+} add_filter('augusta_footer_before', 'augusta_footer_before_setup', $output, $class);
 endif;
 
 /**
@@ -40,8 +38,7 @@ function augusta_footer_after_setup($output='') {
     $output = "\n</div><!--Augusta Footer END-->\n";
   }
   return print apply_filters('augusta_footer_after_setup', $output);
-}
-add_filter('augusta_footer_after', 'augusta_footer_after_setup', $output);
+} add_filter('augusta_footer_after', 'augusta_footer_after_setup', $output);
 endif;
 
 /**
@@ -53,9 +50,7 @@ endif;
  */ 
 if ( !function_exists('custom_footer_start_setup') ) :
 function augusta_footer_setup() {
-  do_action('augusta_footer_after_setup');
   get_template_part ('assets/layout/region/region','footer');
-  do_action('augusta_footer_before_setup');
 }
 add_filter('augusta_footer', 'augusta_footer_setup');
 endif;
@@ -67,5 +62,3 @@ function augusta_meta_setup() {
 add_action('augusta_meta','augusta_meta_setup');
 endif;
 add_action('augusta_meta', 'grs_generator', 50);
-
- 

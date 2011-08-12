@@ -86,7 +86,7 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   }
   add_action('wp_enqueue_scripts', 'augusta_adapt_js', 20);
   wp_enqueue_style('aug-common', AUGCSS . '/common.css', array('aug-reset'), '1.0', 'all');
-  wp_enqueue_style('aug-main',  AUGCSS . '/main.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
+  wp_enqueue_style('aug-global',  AUGCSS . '/global.css', array('aug-reset', 'aug-common'), '1.0', 'all'); 
   
   /** Load Formalize - formalize.me automatically loads*/
   wp_enqueue_style('aug-formalize',  AUGPI . '/core/formalize/css/formalize.css', array('aug-reset'),  '1.0', 'all');
@@ -95,13 +95,13 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   /**   Selectivizr Please save me from IE6-8   */
   wp_enqueue_script('aug-selectivizr',  AUGPI . '/core/selectivizr/selectivizr-min.js', array('jquery'), '1.0');  
   
-  
   /**  Javascript for all pages  */
   wp_enqueue_script( 'jquery' ); // uses No conflict mode
   //wp_enqueue_script( 'jquery-ui-core', AUGPI . '/core/ui/jquery-ui-latest.custom.min.js', array( 'jquery' ) );
   // jQuery UI Depends on the style
   wp_enqueue_style ( 'jquery-ui-css', AUGPI . '/core/ui/jquery-ui-latest.custom.css', '1.8.14', 'all and screen' );
-  wp_enqueue_script( 'aug-core', AUGJS . '/augusta.core.js', array( 'jquery', 'jquery-ui-latest' ), '1.0.1');
+  wp_enqueue_script( 'aug-config', AUGJS . '/augusta.config.js', array( 'jquery', 'jquery-ui-latest' ), '1.0.1', true);
+  wp_enqueue_script( 'aug-core', AUGJS . '/augusta.core.js', array( 'aug-config' ), '1.0.1', true);
   
 /** 
  * If you're going to be using 960gs there is 

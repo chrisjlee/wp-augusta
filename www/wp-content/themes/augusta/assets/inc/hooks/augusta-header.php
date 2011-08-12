@@ -19,7 +19,7 @@ function augusta_header_before_setup( $output='', $class='' ) {
   if ($output === 0) return; 
   
   // Utilize region_header_class hook
-  $_class = do_action('region_header_class');
+  $class = region_header_class();
   if ( !empty($_class) ) $_class = $class;
   if (!$class) $class = "container-16";
   if (!$output) {

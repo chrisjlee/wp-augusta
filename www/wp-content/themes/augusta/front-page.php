@@ -12,29 +12,33 @@
  * 
  */
 get_header(); ?>
-<body id="tpl-front" <?php if( function_exists( 'body_class' ) ) body_class(); ?> >
+<body id="tpl-front" <?php if( function_exists ( 'body_class' ) ) body_class(); ?> >
 <?php do_action ('augusta_layout_before');  ?>  
-<div id="zone-header" class="<?php do_action( 'zone_header_class' ) ?>">
+<div id="zone-header" class="<?php do_action ( 'zone_header_class' ) ?>">
    <?php  do_action('augusta_header'); ?>
 </div>
-<div id="zone-menu" class="<?php do_action( 'zone_menu_class' ) ?>">
+<div id="zone-menu" class="<?php do_action ( 'zone_menu_class' ) ?>">
   <?php do_action('augusta_menu'); ?>
 </div>
-<div id="zone-content" class="<?php do_action( 'zone_content_class' )?>">
-  <div id='section-content' class='container-16'>
+<div id="zone-content" class="<?php do_action ( 'zone_content_class' )?>">
+  
   <?php 
-    // augusta-content.php
-    do_action ( 'augusta_content_before' );
+    // Wraps #content and #sidebar
+    do_action ( 'section_content_before' );
     
-    // wordpress function
-    get_template_part('assets/layout/loop/loop', 'front' );
+      // See augusta-content.php
+      do_action ( 'augusta_content_before' );
+      
+      // wordpress function
+      get_template_part ( 'assets/layout/loop/loop', 'front' );
+      
+      // See augusta-content.php
+      do_action ( 'augusta_content_after' );
+      
+      get_sidebar ( 'front' );
     
-    // augusta-content.php
-    do_action ( 'augusta_content_after' );
-    
-    get_sidebar( 'front' ); 
+    do_action ( 'section_content_after' ); 
   ?>
-  </div>
 </div>
 <?php 
   // augusta_layout_end is called inside footer.php

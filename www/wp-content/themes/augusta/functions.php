@@ -71,10 +71,14 @@ require_once( AUGUSTA_HOOK . '/augusta-layout.php');
 require_once( AUGUSTA_HOOK . '/augusta-header.php');
 // Load Content Hooks
 require_once( AUGUSTA_HOOK . '/augusta-content.php');
-// Load Footer / Meta
+// Load Footer
 require_once( AUGUSTA_HOOK . '/augusta-footer.php');
+// Load Meta
+require_once( AUGUSTA_HOOK . '/augusta-meta.php');
 // Load Comments
 require_once( AUGUSTA_HOOK . '/augusta-comments.php');
+// Load Sidebar
+require_once( AUGUSTA_HOOK . '/augusta-sidebar.php');
 /** Augusta Hooks: Responsive Styles/Grids */
 // Load the responsive layouts loads stylesheets 
 require_once( AUGUSTA_HOOK . '/augusta-responsive.php');
@@ -151,80 +155,10 @@ function augusta_setup() {
 }
 endif;
 
-  /** Register sidebars by running augusta_widgets_init() on the widgets_init hook. */
-  add_action( 'widgets_init', 'augusta_widgets_init' );
   /** Setup Hook for favicon */
   add_action( 'wp_head', 'augusta_favicon_link' );
   /** Add hook to be executed with wp_head */
   add_action( 'wp_head', 'augusta_setup' );
-
-/*
- * Implements widgets_init
- */
-if ( !function_exists( 'custom_widgets_init' ) ) :
-  function augusta_widgets_init() {
-    //register_widget( 'Augusta_Widget' );
-
-  register_sidebar( array(
-    'name' => __( 'Main Sidebar', 'augusta' ),
-    'id' => 'sidebar-1',
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Sidebar Second ', 'augusta' ),
-    'id' => 'sidebar-2',
-    'description' => __( 'Second Sidebar', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-second">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Blog: Sidebar ', 'augusta' ),
-    'id' => 'sidebar-3',
-    'description' => __( 'Sidebar for the blog', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s sidebar-blog">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Footer Area One', 'augusta' ),
-    'id' => 'sidebar-4',
-    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Footer Area Two', 'augusta' ),
-    'id' => 'sidebar-5',
-    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-
-  register_sidebar( array(
-    'name' => __( 'Footer Area Three', 'augusta' ),
-    'id' => 'sidebar-6',
-    'description' => __( 'An optional widget area for your site footer', 'augusta' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => "</div>",
-    'before_title' => '<div class="widget-title"><h2>',
-    'after_title' => '</h2></div>',
-  ) );
-  }
-endif; 
 
 /**
  * Augusta_favicon_link
@@ -295,29 +229,3 @@ add_filter( 'get_the_excerpt', 'augusta_excerpt_more' );
   // return print "<html>";  
   // //add_action('augusta_doctype','custom_doctype_setup', $output);
 // }
-
-/**
- * Augusta JS Loading
- * 
- * Allows you to run  specific 
- * scripts to stage while javascript
- * is still loading
- *   
- */
-function augusta_js_loading  () { ?>
-<script type='text/javascript'>
-if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
-  jQuery(document).ready(function () {
-   jQuery('html').removeClass('no-js');
-   jQuery('html').removeClass('js-loading');
-   jQuery('html').addClass('js')
-   jQuery('window').bind('load', function() {
-     jQuery('html').removeClass('js-loading');
-     jQuery('html').addClass('js-loaded')
-   });
- });
-}
-</script>
-<?php
-} 
-add_action('wp_footer', 'augusta_js_loading', 100);
