@@ -1,0 +1,16 @@
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee
+ * @since 1.0.0
+ * 
+ * Augusta 1560
+ *  
+ * By Default screens with range 
+ * between than above 1280px to 1600px
+ * will trigger these styles
+ * 
+ */
+
+/*  Pick your grids */
+@import url('grid/1200/augusta-16.css');

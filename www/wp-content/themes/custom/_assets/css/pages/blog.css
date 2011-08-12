@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* 	Blog.css
+ *  Styles just for the /blog/ view
+ *  */
+
+.entry-contents h2 {  }
+.entry-contents .entry-title h2 { font-size: 25px; float: left; }
+.entry-contents .entry-title { border-bottom: 1px solid #333; clear: both; float: left; }
+.entry-contents .entry-date { display: inline; float: right; line-height: 1.1em; text-align: right; font-weight: normal; }
+.entry-contents .post { margin: 0 0 30px 0; border-bottom: 1px solid #EAE8E6; }
+.entry-contents .entry-footer  { background: #eaeaea; padding: 0 10px; border-top: 1px solid #ccc; }
+.entry-contents .entry-footer .postbyline span { font-family: georgia, times, times new roman; color: #aaa; }
+.entry-contents .entry-footer .postbyline  a { color: #a0a0a0; }
+.entry-contents .entry-footer .postbyline  a:hover { color: #333; }
+
+.entry-contents .entry-date { font-size: 12px; font-family: georgia, times, serif; }

@@ -14,8 +14,9 @@
  */
 
 /** Obtain URL For stylesheet */
-if ( is_child_theme() ) $themeurl = get_bloginfo('stylesheet_directory'); 
-else $themeurl = get_bloginfo('template_directory');
+//if ( is_child_theme() ) $themeurl = get_bloginfo('stylesheet_directory'); 
+//else 
+$themeurl = get_bloginfo('template_directory');
 
  /** 
  * Setup Folder Shortcuts

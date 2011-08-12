@@ -1,0 +1,26 @@
+/**
+ * @package Wordpress
+ * @subpackage Augusta
+ * @author Chris J. Lee - iam@chrisjlee.net
+ * @contributor Felipe Rocha  
+ *  
+ * Augusta: events.css
+ * 
+ * Base styles for events list widget
+ * 
+ */ 
+
+/**  Upcoming - sidebar for events
+---------------------------------------*/ 
+.eventsListWidget {   }
+.eventsListWidget a,
+.eventsListWidget a:link,
+.eventsListWidget a:active { text-decoration: none; }
+.eventsListWidget a:hover {  }
+.eventsListWidget ul.upcoming { }
+  .eventsListWidget ul.upcoming li {  }
+    .eventsListWidget .upcoming .when {  }
+    .eventsListWidget .upcoming .event { }
+    .eventsListWidget .upcoming .loc { }
+    .eventsListWidget .upcoming a.more-link { }
+    .eventsListWidget .dig-in { }
