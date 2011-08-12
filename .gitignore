@@ -12,6 +12,9 @@ www/wp-*dev.php
 !www/wp-config-dev-sample.php
 !wp-config-dev-settings.php
 
+#track adapt files
+!www/wp-content/themes/augusta/assets/plugins/core/adapt
+
 # Ignore wordpress install
 # SVN Tracked Wordpress install is located in /setup/
 www/wp-admin/
