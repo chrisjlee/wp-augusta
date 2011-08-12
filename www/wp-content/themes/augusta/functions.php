@@ -33,16 +33,16 @@ add_action( 'after_setup_theme', 'augusta_setup' );
  * AUGUSTA_HOOK - path to hooks folder 
  * 
  */
-if ( is_child_theme() ) {
-  define('AUGUSTA_ASSETS', STYLESHEETPATH . '/assets');
-  define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
-  define('AUGUSTA_HOOK', STYLESHEETPATH . '/assets/inc/hooks');
-}
-else {
+// if ( is_child_theme() ) {
+  // define('AUGUSTA_ASSETS', STYLESHEETPATH . '/assets');
+  // define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
+  // define('AUGUSTA_HOOK', STYLESHEETPATH . '/assets/inc/hooks');
+// }
+// else {
   define('AUGUSTA_ASSETS', TEMPLATEPATH . '/assets');
   define('AUGUSTA_INC', STYLESHEETPATH . '/assets/inc');
   define('AUGUSTA_HOOK', STYLESHEETPATH . '/assets/inc/hooks');
-}
+// }
 
 /**
  * Autoload files - Don't Change this!

@@ -152,7 +152,7 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   if ( CONFIG_COLORBOX == true )  { 
     if (preg_match('/1-5/',CONFIG_COLORBOX_THEME) ) {
       wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/example'. CONFIG_COLORBOX_THEME . '/colorbox.css', '1.0', 'screen' );
-    } else if ( strpos( 'custom',CONFIG_COLORBOX_THEME) === 0 ) {
+    } else if ( strpos( 'custom', CONFIG_COLORBOX_THEME) === 0 ) {
       wp_enqueue_style( 'aug-colorbox', AUGPI.'/core/colorbox/custom/colorbox.css', '1.0', 'screen');
     } else { 
       wp_enqueue_style('aug-colorbox', AUGPI.'/core/colorbox/example4/colorbox.css', '1.0', 'screen');
@@ -167,15 +167,15 @@ if ( !is_admin() ) :   // Don't load styles to modify the backend
   if ( CONFIG_DROPDOWN === true ) :
     
     function augusta_enqueue_superfish_style () {
-    wp_enqueue_style('aug-superfish', AUGPI.'/core/superfish/css/superfish.css', '1.0', 'screen');  
-    wp_enqueue_style('aug-superfish-custom', AUGPI.'/core/superfish/css/superfish.custom.css', array('aug-superfish'), '1.0', 'screen');
+      wp_enqueue_style('aug-superfish', AUGPI.'/core/superfish/css/superfish.css', '1.0', 'screen');  
+      wp_enqueue_style('aug-superfish-custom', AUGPI.'/core/superfish/css/superfish.custom.css', array('aug-superfish'), '1.0', 'screen');
     }
     
     function augusta_enqueue_superfish() {  
-    wp_enqueue_script('aug-superfish', AUGPI.'/core/superfish/js/superfish.js', array('jquery'), '1.0.0' );
-    wp_enqueue_script('aug-superfish-supersubs', AUGPI.'/core/superfish/js/supersubs.js', array('jquery', 'aug-superfish'), '1.0.0', true );  
-    wp_enqueue_script('aug-bgiframe', AUGPI.'/core/superfish/js/jquery.bgiframe.min.js', array('jquery', 'aug-superfish'), '1.0.0', true );   
-    wp_enqueue_script('aug-superfish-config', AUGPI.'/core/superfish/js/superfish.config.js', array('jquery', 'aug-superfish'), '1.0.0', true );
+      wp_enqueue_script('aug-superfish', AUGPI.'/core/superfish/js/superfish.js', array('jquery'), '1.0.0' );
+      wp_enqueue_script('aug-superfish-supersubs', AUGPI.'/core/superfish/js/supersubs.js', array('jquery', 'aug-superfish'), '1.0.0', true );  
+      wp_enqueue_script('aug-bgiframe', AUGPI.'/core/superfish/js/jquery.bgiframe.min.js', array('jquery', 'aug-superfish'), '1.0.0', true );   
+      wp_enqueue_script('aug-superfish-config', AUGPI.'/core/superfish/js/superfish.config.js', array('jquery', 'aug-superfish'), '1.0.0', true );
     }
     // Add Actions
     if( !is_admin() ) {
@@ -214,18 +214,18 @@ function augusta_enqueue_page_scripts() {
   /**  Front Page   */
   if ( is_front_page() ) { 
     wp_enqueue_style('aug-front', AUGCSSPG . '/front.css', array('aug-main'), 'screen'); 
-    wp_enqueue_script( 'aug-front', AUGJS . '/pages/front.js', array('jquery'), '1.0.0', TRUE);            
+    wp_enqueue_script( 'aug-front', AUGJS . '/pages/front.js', array('jquery'), '1.0.0', TRUE);
   }
   
   /**  Subpages   */
   if ( !is_home() && !is_front_page() ) { 
     wp_enqueue_style('aug-sub', AUGCSSPG . '/sub.css', 'screen'); 
-    wp_enqueue_script( 'aug-front', AUGCSSPG . '/sub.js', array('jquery'), '1.0.0', TRUE);
+    wp_enqueue_script( 'aug-sub', AUGJS . '/pages/sub.js', array('jquery'), '1.0.0', TRUE);
   }
     /**  Subpages   */
   if ( is_single() ) { 
     wp_enqueue_style('aug-single', AUGCSSPG . '/single.css', 'screen'); 
-    wp_enqueue_script( 'aug-single', AUGCSSPG . '/single.js', array('jquery'), '1.0.0', TRUE);
+    wp_enqueue_script( 'aug-single', AUGJS . '/single.js', array('jquery'), '1.0.0', TRUE);
   }
 }
 endif; 

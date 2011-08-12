@@ -14,7 +14,7 @@
 /*****************************************		
     		Global Styles
 ******************************************/
-html, body { width: 100%; height: 100%; }
+html, body { width: 100%; height: 100%; font-size: 76%; }
 body, input, textarea, a { color:#000; font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif; line-height:18px; 
 /* Prevent mobile zooming while remain desktop zooming. http://github.com/shichuan/mobile-html5-boilerplate/issues/closed#issue/14 */
 -webkit-text-size-adjust: 100%; -ms-text-size-adjust: none; } /*  W3C won't validate this */
@@ -82,6 +82,14 @@ body.arial a,
 body.arial p,
 body.arial li { font-family: Arial, Helvetica, Sans Serif; font-weight: normal;  }
 
+body.droidsans,
+body.droidsans div,
+body.droidsans a,
+body.droidsans p,
+body.droidsans li { font-family: 'Droid Sans',Arial, Helvetica, Sans Serif; font-weight: normal;  }
+
+code { font-family: "courier new", courier, serif; font-size: 1em; }
+
 /**   Header tags   */
 h1,h2,h3,h4,h5,h6 { font-weight:normal; clear:both; } 
 
@@ -136,7 +144,7 @@ sub { top: .5ex; }
 /**   Adjust font size   */
 p, ul, ol, pre, dl, address { margin-bottom : 1.5em; font-size : 1em; /* 16 / 16 = 1 */ }
 
-small{ font-family: Arial,Helvetica,Sans-Serif; font-size:0.9em; line-height:1.5em }
+small{ font-size:0.9em; line-height:1.5em }
 p img{ padding:0; max-width:100% }
 /**   Adjust Content Page Style   */
 #content #content-posts, .entry, .entry p { color: #000; font-size: 12px;   }
@@ -197,7 +205,7 @@ img.alignleft{padding:4px; margin:0 7px 2px 0; display:inline}
 .alignright{float:right}
 .alignleft{float:left}
 
-small{ font-family: Arial,Helvetica,Sans-Serif; font-size:0.9em; line-height:1.5em }
+small{  font-size:0.9em; line-height:1.5em }
 
 p img{padding:0; max-width:100%}
 small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike{color:#000}
@@ -213,7 +221,7 @@ acronym, abbr, span.caps{font-size:0.9em; letter-spacing:.07em}
 .entry { font-size:11px; }
 	.entry, 
 	.entry p,
-	.entry li { color: #000; font-size: 12px; line-height: 14px; font-family: Arial, Helvetica, sans-serif; }
+	.entry li { color: #000; font-size: 1em; line-height: 14px; }
 	.entry p a:visited, .entry p a, .entry p a:hover{ color:#F06400; text-decoration:underline }
 	
 .thread-alt { background-color:#f8f8f8 }

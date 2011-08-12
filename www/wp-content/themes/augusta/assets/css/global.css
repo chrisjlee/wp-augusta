@@ -24,7 +24,7 @@
  * here for you just replace the images and customize to your likings
  * 
  */
-html, body { font-family: Georgia, Times New Roman, Roman, Times, serif; }
+html, body { font-family: 'Droid Sans', Arial, Helvetica, serif; }
 .shadow { background: url('../images/shadow-bg.png') repeat-y top center; margin: 0 auto; }
 #footer { background: transparent;  }
 #colophon { background: url('../images/footer-corner.png') no-repeat top center; width: 960px; margin: 0 auto; height: 30px; padding: 0 0 30px 0; }
