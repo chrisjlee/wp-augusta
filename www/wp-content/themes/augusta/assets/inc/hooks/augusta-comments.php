@@ -1,11 +1,6 @@
 <?php
 
 /**
- * 
- */
-
-
-/**
  * Augusta Comments
  * 
  * Called from comments.php

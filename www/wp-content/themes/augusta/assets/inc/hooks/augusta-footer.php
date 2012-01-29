@@ -11,35 +11,41 @@
  * Opens #region-header You can rewrite this to add another wrapper
  * 
  */
-if ( !function_exists('custom_footer_before_setup') ) :
-function augusta_footer_before_setup($output='', $class='') {
-  // If output = 0 it turns this zone off
-  if ($output === 0) return; 
-  
-  // Utilize region_footer_class hook
-  $class = footer_class();
-  if (!$class) $class = "container-16";
-  if (!$output) {
-    $output = "<!--Augusta Footer Region Start-->\n<div id='region-footer' class='" . $class . "'>";
+if (!function_exists('custom_footer_before_setup')) {
+
+  function augusta_footer_before_setup($output='', $class='') {
+    // If output = 0 it turns this zone off
+    if ($output === 0) return; 
+    
+    // Utilize region_footer_class hook
+    $class = footer_class();
+    if (!$class) $class = "container-16";
+    if (!$output) {
+      $output = "<!--Augusta Footer Region Start-->\n<div id='region-footer' class='" . $class . "'>";
+    }
+    return print apply_filters('augusta_footer_before_setup', $output, $class);
   }
-  return print apply_filters('augusta_footer_before_setup', $output, $class);
-} add_filter('augusta_footer_before', 'augusta_footer_before_setup', $output, $class);
-endif;
+  add_filter('augusta_footer_before', 'augusta_footer_before_setup', $output, $class);
+
+}
 
 /**
  * Augusta Footer Before
  * Closes header. You can rewrite this to add another wrapper
  * 
  */ 
-if ( !function_exists('custom_footer_after_setup') ) :
-function augusta_footer_after_setup($output='') {
-  if ($output === 0) return; 
-  if (!$output) {
-    $output = "\n</div><!--Augusta Footer END-->\n";
+if (!function_exists('custom_footer_after_setup')) {
+
+  function augusta_footer_after_setup($output='') {
+    if ($output === 0) return; 
+    if (!$output) {
+      $output = "\n</div><!--Augusta Footer END-->\n";
+    }
+    return print apply_filters('augusta_footer_after_setup', $output);
   }
-  return print apply_filters('augusta_footer_after_setup', $output);
-} add_filter('augusta_footer_after', 'augusta_footer_after_setup', $output);
-endif;
+  add_filter('augusta_footer_after', 'augusta_footer_after_setup', $output);
+
+}
 
 /**
  * Augusta Footer 
@@ -48,17 +54,22 @@ endif;
  * a different file 
  * 
  */ 
-if ( !function_exists('custom_footer_start_setup') ) :
-function augusta_footer_setup() {
-  get_template_part ('assets/layout/region/region','footer');
-}
-add_filter('augusta_footer', 'augusta_footer_setup');
-endif;
+if (!function_exists('custom_footer_start_setup')) {
 
-if ( !function_exists('custom_meta_setup') ) :
-function augusta_meta_setup() {
-  get_template_part('assets/layout/region/region', 'meta');
+  function augusta_footer_setup() {
+    get_template_part ('assets/layout/region/region','footer');
+  }
+  add_filter('augusta_footer', 'augusta_footer_setup');
+
 }
-add_action('augusta_meta','augusta_meta_setup');
-endif;
+
+if (!function_exists('custom_meta_setup')) {
+
+  function augusta_meta_setup() {
+    get_template_part('assets/layout/region/region', 'meta');
+  }
+  add_action('augusta_meta','augusta_meta_setup');
+
+}
+
 add_action('augusta_meta', 'grs_generator', 50);

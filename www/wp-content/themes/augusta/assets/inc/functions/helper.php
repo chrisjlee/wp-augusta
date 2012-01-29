@@ -17,12 +17,9 @@
  * 
  * This is called to change the classes of wordpress'
  * body_class() function 
- * 
- * 
- * 
- * 
  *  
  */ 
+
 // "Borrowed" from: http://coding.smashingmagazine.com/2009/08/18/10-useful-wordpress-hook-hacks/
 function augusta_browser_body_class($classes) {
   global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
@@ -79,7 +76,7 @@ endif;
 /**
  * Child Theme Function: 
  * Copy the following below to convert 
- * a child them to HTML5
+ * a child theme to HTML5
 
 // Change the doctype
 function childtheme_doctype_setup($content) {
@@ -106,45 +103,47 @@ function childtheme_doctype_setup($content) {
  * By default augusta is a html theme.
  *  
  */
-if ( !function_exists( 'custom_title_setup' ) ) :
-function augusta_title_setup() {
-  $separator  = '|';
-  $blog_name  = get_bloginfo('name');
- 
-  if( (!is_paged() ) && ( is_single() || is_page() || is_home() || is_category())) $follow_content = 'index, follow';
-  else $follow_content = 'noindex, follow, noodp, noydir';
- 
-  if ( (is_single() || is_page()) ) {
-      $page_title = the_title('','', FALSE);
+if (!function_exists('custom_title_setup')) {
+  function augusta_title_setup() {
+    $separator  = '|';
+    $blog_name  = get_bloginfo('name');
+   
+    if((!is_paged()) && (is_single() || is_page() || is_home() || is_category())) $follow_content = 'index, follow';
+    else $follow_content = 'noindex, follow, noodp, noydir';
+   
+    if ((is_single() || is_page())) {
+        $page_title = the_title('','', FALSE);
+    }
+    elseif (is_category()) {
+        $page_title = 'Category: '.single_cat_title('', FALSE);
+    }
+    elseif (is_tag()) {
+        $page_title  = 'Tag: '.single_tag_title('', FALSE);
+    }
+    elseif (is_date()) {
+        $page_title = 'Post of ';
+        if (is_day()) {
+            $page_title .= get_the_time('j F Y', FALSE);
+        }
+        elseif (is_month()) {
+            $page_title .= get_the_time('F Y', FALSE);
+        }
+        elseif (is_year()) {
+            $page_title .= get_the_time('Y', FALSE);
+        }
+    }
+    elseif (is_search()) {
+         $page_title = 'Search results for: '.$_GET['s'];
+    }
+    if ($page_title != '') $page_title .= ' '.$separator.' ';
+   $page_title .= $blog_name;
+    
+    return print apply_filters('augusta_title_setup',$page_title);
   }
-  elseif (is_category()) {
-      $page_title = 'Category: '.single_cat_title('', FALSE);
-  }
-  elseif ( is_tag() ) {
-      $page_title  = 'Tag: '.single_tag_title('', FALSE);
-  }
-  elseif (is_date()) {
-      $page_title = 'Post of ';
-      if (is_day()) {
-          $page_title .= get_the_time('j F Y', FALSE);
-      }
-      elseif (is_month()) {
-          $page_title .= get_the_time('F Y', FALSE);
-      }
-      elseif (is_year()) {
-          $page_title .= get_the_time('Y', FALSE);
-      }
-  }
-  elseif (is_search()) {
-       $page_title = 'Search results for: '.$_GET['s'];
-  }
-  if ($page_title != '') $page_title .= ' '.$separator.' ';
- $page_title .= $blog_name;
-  
-  return print apply_filters('augusta_title_setup',$page_title);
+
+  add_action('augusta_title', 'augusta_title_setup');
+
 }
-add_action('augusta_title', 'augusta_title_setup');
-endif;
 
 /*
  * Implements augusta_page_title
@@ -155,77 +154,87 @@ endif;
  * 
  * @param
  */
-if (!function_exists('custom_page_title_setup')) :
-function augusta_page_title_setup() {
-  global $post;
-  
-  $content = '';
-  if (is_attachment()) {
-      $content .= '<h2 class="page-title"><a href="';
-      $content .= apply_filters('the_permalink',get_permalink($post->post_parent));
-      $content .= '" rev="attachment"><span class="meta-nav">&laquo; </span>';
-      $content .= get_the_title($post->post_parent);
-      $content .= '</a></h2>';
-  } elseif (is_author()) {
-      $content .= '<h1 class="page-title author">';
-      $author = get_the_author_meta( 'display_name' );
-      $content .= __('Author Archives: ', 'thematic');
-      $content .= '<span>';
-      $content .= $author;
-      $content .= '</span></h1>';
-  } elseif (is_category()) {
-      $content .= '<h1 class="page-title">';
-      $content .= __('Category Archives:', 'thematic');
-      $content .= ' <span>';
-      $content .= single_cat_title('', FALSE);
-      $content .= '</span></h1>' . "\n";
-      $content .= '<div class="archive-meta">';
-      if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
-      $content .= '</div>';
-  } elseif (is_search()) {
-      $content .= '<h1 class="page-title">';
-      $content .= __('Search Results for:', 'thematic');
-      $content .= ' <span id="search-terms">';
-      $content .= esc_html(stripslashes($_GET['s']));
-      $content .= '</span></h1>';
-  } elseif (is_tag()) {
-      $content .= '<h1 class="page-title">';
-      $content .= __('Tag Archives:', 'thematic');
-      $content .= ' <span>';
-      $content .= __(thematic_tag_query());
-      $content .= '</span></h1>';
-  } elseif (is_tax()) {
-      global $taxonomy;
-      $content .= '<h1 class="page-title">';
-      $tax = get_taxonomy($taxonomy);
-      $content .= $tax->labels->name . ' ';
-      $content .= __('Archives:', 'thematic');
-      $content .= ' <span>';
-      $content .= thematic_get_term_name();
-      $content .= '</span></h1>';
-  } elseif (is_day()) {
-      $content .= '<h1 class="page-title">';
-      $content .= sprintf(__('Daily Archives: <span>%s</span>', 'thematic'), get_the_time(get_option('date_format')));
-      $content .= '</h1>';
-  } elseif (is_month()) {
-      $content .= '<h1 class="page-title">';
-      $content .= sprintf(__('Monthly Archives: <span>%s</span>', 'thematic'), get_the_time('F Y'));
-      $content .= '</h1>';
-  } elseif (is_year()) {
-      $content .= '<h1 class="page-title">';
-      $content .= sprintf(__('Yearly Archives: <span>%s</span>', 'thematic'), get_the_time('Y'));
-      $content .= '</h1>';
-  } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-      $content .= '<h1 class="page-title">';
-      $content .= __('Blog Archives', 'thematic');
-      $content .= '</h1>';
+if (!function_exists('custom_page_title_setup')) {
+  function augusta_page_title_setup() {
+    global $post;
+    
+    $content = '';
+    if (is_attachment()) {
+        $content .= '<h2 class="page-title"><a href="';
+        $content .= apply_filters('the_permalink',get_permalink($post->post_parent));
+        $content .= '" rev="attachment"><span class="meta-nav">&laquo; </span>';
+        $content .= get_the_title($post->post_parent);
+        $content .= '</a></h2>';
+    }
+    elseif (is_author()) {
+        $content .= '<h1 class="page-title author">';
+        $author = get_the_author_meta( 'display_name' );
+        $content .= __('Author Archives: ', 'thematic');
+        $content .= '<span>';
+        $content .= $author;
+        $content .= '</span></h1>';
+    }
+    elseif (is_category()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Category Archives:', 'thematic');
+        $content .= ' <span>';
+        $content .= single_cat_title('', FALSE);
+        $content .= '</span></h1>' . "\n";
+        $content .= '<div class="archive-meta">';
+        if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
+        $content .= '</div>';
+    }
+    elseif (is_search()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Search Results for:', 'thematic');
+        $content .= ' <span id="search-terms">';
+        $content .= esc_html(stripslashes($_GET['s']));
+        $content .= '</span></h1>';
+    }
+    elseif (is_tag()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Tag Archives:', 'thematic');
+        $content .= ' <span>';
+        $content .= __(thematic_tag_query());
+        $content .= '</span></h1>';
+    }
+    elseif (is_tax()) {
+        global $taxonomy;
+        $content .= '<h1 class="page-title">';
+        $tax = get_taxonomy($taxonomy);
+        $content .= $tax->labels->name . ' ';
+        $content .= __('Archives:', 'thematic');
+        $content .= ' <span>';
+        $content .= thematic_get_term_name();
+        $content .= '</span></h1>';
+    }
+    elseif (is_day()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Daily Archives: <span>%s</span>', 'thematic'), get_the_time(get_option('date_format')));
+        $content .= '</h1>';
+    }
+    elseif (is_month()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Monthly Archives: <span>%s</span>', 'thematic'), get_the_time('F Y'));
+        $content .= '</h1>';
+    }
+    elseif (is_year()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Yearly Archives: <span>%s</span>', 'thematic'), get_the_time('Y'));
+        $content .= '</h1>';
+    }
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Blog Archives', 'thematic');
+        $content .= '</h1>';
+    }
+    $content .= "\n";
+    echo apply_filters('augusta_page_title', $content);
   }
-  $content .= "\n";
-  echo apply_filters('augusta_page_title', $content);
+
+  // augusta_page_title() is found in the /assets/loops files
+  add_action('augusta_page_title', 'augusta_page_title_setup');
 }
-// augusta_page_title() is found in the /assets/loops files
-add_action('augusta_page_title', 'augusta_page_title_setup');
-endif;
 
 /*
  * Augusta: Built in Plus one
@@ -236,18 +245,19 @@ endif;
  * 
  */
 function augusta_ext_plus_one() {
-if (defined(CONFIG_GPLUSONE) ) :
-  add_filter('the_content', 'google_plusone');
-  function google_plusone($content) {
-    $content = $content.'<div class="plusone"><g:plusone size="tall" href="'.get_permalink().'"></g:plusone></div>';
-    return $content;
+  if (defined(CONFIG_GPLUSONE)) {
+    add_filter('the_content', 'google_plusone');
+    function google_plusone($content) {
+      $content = $content.'<div class="plusone"><g:plusone size="tall" href="'.get_permalink().'"></g:plusone></div>';
+      return $content;
+    }
+    
+    add_action ('wp_enqueue_scripts','google_plusone_script');
+
+    function google_plusone_script() {
+      wp_enqueue_script('google-plusone', 'https://apis.google.com/js/plusone.js', array(), null);
+    }
   }
-  
-  add_action ('wp_enqueue_scripts','google_plusone_script');
-  function google_plusone_script() {
-    wp_enqueue_script('google-plusone', 'https://apis.google.com/js/plusone.js', array(), null);
-  }
-endif;
 }
 /**
  * Augusta Analytics Setup
@@ -262,18 +272,19 @@ function augusta_analytics_setup() {
   if (CONFIG_ANALYTICS == false) return;
   // Add analytics only if it's been turned on in the augusta/assets/settings.php file
   if (CONFIG_ANALYTICS == true) get_template_part('/assets/layout/block', 'analytics');
-} add_action('augusta_setup','augusta_analytics_setup');
-  
-  
-// function augusta_fb_log($var) {
-  // $output  = '<script>console.log(';
-  // $output .= $var;
-  // $output .= ')</script>';
-// }
-// add_action('wp_footer', 'augusta_fb_log' );
-// augusta_fb_log('test');
+}
 
-
+add_action('augusta_setup','augusta_analytics_setup');
+  
+/*
+function augusta_fb_log($var) {
+ $output  = '<script>console.log(';
+ $output .= $var;
+ $output .= ')</script>';
+}
+add_action('wp_footer', 'augusta_fb_log' );
+augusta_fb_log('test');
+*/
 
 /**
  * Augusta JS Loading
@@ -283,22 +294,23 @@ function augusta_analytics_setup() {
  * is still loading
  *   
  */
-function augusta_js_loading  () { ?>
-<!-- Called from Helper.php -->
-<script type='text/javascript'>
-// Called from Helper
-if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
-  jQuery(document).ready(function () {
-   jQuery('html').removeClass('no-js');
-   jQuery('html').removeClass('js-loading');
-   jQuery('html').addClass('js')
-   jQuery('window').bind('load', function() {
+function augusta_js_loading  () {
+?>
+  <!-- Called from Helper.php -->
+  <script type='text/javascript'>
+  // Called from Helper
+  if ( typeof jQuery !== undefined || typeof jQuery != undefined || jQuery ) {
+    jQuery(document).ready(function () {
+     jQuery('html').removeClass('no-js');
      jQuery('html').removeClass('js-loading');
-     jQuery('html').addClass('js-loaded')
+     jQuery('html').addClass('js')
+     jQuery('window').bind('load', function() {
+       jQuery('html').removeClass('js-loading');
+       jQuery('html').addClass('js-loaded')
+     });
    });
- });
-}
-</script>
-<?php
+  }
+  </script>
+  <?php
 } 
 add_action('wp_footer', 'augusta_js_loading', 100);
