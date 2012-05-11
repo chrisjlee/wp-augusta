@@ -1,0 +1,327 @@
+@import "helpers.scss";
+
+$offset: 25px;
+
+.header {
+	@include container;
+	border-bottom: 1px solid $gs-light;
+	position: relative;
+	height: 120px;
+
+	.submenu {
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		li {
+			float: left;
+			display: block;
+			padding: 5px 0 0;
+
+			a {
+				@include ff-primary;
+				@include fs-mm;
+				@include border-radius(0 0 7px 7px);
+
+				color: #000;
+				border-top: 0;
+				margin-left: 5px;
+				padding: 10px 10px 5px;
+				border: 1px solid #dfdfdf;
+				text-decoration: none;
+
+				&.highlight {
+					background: url('../images/highlight.png') repeat-x #051c2b;
+					border: 1px solid #051c2b;
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	.logo {
+		@include grid(4);
+		margin-top: $offset;
+	}
+
+	.menu {
+		@include grid(10);
+		@include border-radius(7px);
+
+		border-top: 1px solid $gs-light;
+		background: #fafafa;
+		margin-top: 30px + $offset;
+
+		li {
+			float: left;
+
+			a {
+				@include ff-primary;
+				@include fs-m;
+
+				border-left: 1px solid $gs-light;
+				border-right: 1px solid #fff;
+				text-decoration: none;
+				display: block;
+				padding: 15px 17px;
+				color: #000;
+
+				&.first-item, &.last-item {
+					border: 0;
+				}
+			}
+		}
+	}
+
+	.grs-logo {
+		@include grid(2);
+		margin-top: 20px + $offset;
+	}
+}
+
+
+
+
+.main {
+	@include container;
+	margin-top: 20px;
+
+	h1, h2, h3 {
+		@include ff-primary;
+		color: $gs-medium; 
+	}
+
+	h1 {
+		@include fs-xl;
+		border-bottom: 1px solid #ffca65;
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+	}
+
+	h2 {
+		@include fs-mm;
+
+		&.sync {
+			background: url('../images/sync.png') no-repeat;
+			font-size: 16px;
+			color: $gs-medium;
+			font-weight: normal;
+			padding: 7px 5px 7px 40px;
+			margin-bottom: 10px;
+
+			a {
+				color: $main;
+				text-decoration: none;
+			}
+		}
+	}
+
+	h3 {
+		@include fs-m;
+	}
+
+	.content {
+		@include grid(14);
+		@include prefix(1);
+		@include suffix(1);
+		@include ff-primary;
+		@include fs-m;
+		margin: 20px 0;
+		color: $gs-medium;
+
+		p {
+			margin: 1em 0;
+		}
+	}
+}
+
+.step {
+	padding: 40px 0;
+
+	.instructions {
+		@include grid(5);
+		@include alpha; 
+
+		h2 {
+			@include fs-xxxl;
+			line-height: 70%;
+			padding-bottom: 15px;
+			text-transform: uppercase;
+			border-bottom: 1px solid #ffca65;
+		}
+	}
+
+	img {
+		@include grid(9);
+		@include omega; 
+	}
+}
+
+.hero {
+	@include grid(16);
+	@include alpha;
+	@include omega;
+	@include border-radius(7px 10px 10px 7px);
+	//margin: 0 10px !important;
+	background: $dark-main;
+
+	.left, .right {
+		@include ff-primary;
+		text-align: center;
+	}
+
+	.left {
+		@include alpha;
+		@include grid(10);
+		padding: 37px 0;
+
+		h2, h3 {
+			font-weight: normal;
+		}
+
+		h2 {
+			@include fs-l;
+			color: $light;
+		}
+
+		h3 {
+			@include fs-mm;
+			color: $gs;
+		}
+	}
+
+	.right {
+		@include grid(6);
+		@include border-radius(0 7px 7px 0);
+		@include omega;
+		padding: 20px 0;
+		background: $light-secondary;
+
+		h4 {
+			@include fs-l;
+			@include text-shadow(2px 2px 0 $dull-secondary);
+			text-transform: uppercase;
+			font-weight: normal;
+			color: $light;
+		}
+
+		strong {
+			@include fs-m;
+			font-weight: normal;
+			color: $gs-medium;
+			display: block;
+		}
+
+		a {
+			@include border-radius(7px);
+			background: $main;
+			border: 1px solid $light-main;
+			text-decoration: none;
+			margin: 7px auto 0;
+			padding: 8px 30px;
+			display: block;
+			color: $light;
+			width: 100px;
+			box-shadow: 0 1px 0 $light, inset 0 1px 0 $dull-main;
+		}
+	}
+}
+
+.front-content {
+	@include fs-m;
+	@include ff-primary;
+	color: $gs-medium;
+
+	p {
+		margin: 1em 0;
+	}
+
+	a {
+		color: $main;
+		text-decoration: none;
+	}
+}
+
+.actions {
+	//margin: 5px 10px;
+	margin: 5px 0 40px;
+}
+
+.bottom-front {
+	margin-bottom: 75px;
+	
+	h1 {
+		@include fs-mm;
+		font-weight: normal;
+		padding-bottom: 5px;
+	}
+
+	.features, .button {
+		@include grid(4);
+		@include ff-primary;
+		@include fs-m;
+		color: $gs-medium;
+
+		&.first {
+			@include alpha;
+		}
+	}
+
+	.button {
+		@include grid(4);
+		@include border-radius(7px);
+		width: 190px;
+		padding: 15px;
+		display: block;
+		background: #fcfcfc;
+		border: 1px solid #ebebeb;
+		text-align: center;
+		text-decoration: none;
+
+		.signup, .mail, .click {
+			@include fs-mm;
+			@include ff-primary;
+			display: block;
+		}
+
+		.signup {
+			color: #ffbc2b;
+		}
+
+		.mail {
+			color: $gs-medium;
+		}
+
+		.click {
+			@include fs-m;
+			color: $secondary;
+		}
+	}
+}
+
+.footer {
+	@include container;
+	border-top: 1px solid $gs-light;
+	margin-top: 20px;
+	padding: 20px 0 45px;
+
+	.menu {
+		li {
+			@include ff-primary;
+			@include fs-m;
+			float: left;
+			color: $gs-medium;
+			margin: 5px 20px 0 0;
+
+			a {
+				color: $gs-medium;
+				text-decoration: none;
+
+				&.highlight {
+					color: $secondary;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

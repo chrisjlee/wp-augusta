@@ -1,0 +1,211 @@
+@import "reset.scss";
+@import "grid.scss";
+
+//		Variables
+// ----------------------------------------
+ 
+// gray scales
+
+// $gs-light: #e5e5e5;
+// $gs: #a5a5a5;
+// $gs-medium: #3d3d3d;
+
+// $main: #3285bc;
+// $dark-main: #051c2b;
+// $light-main: #195f9f;
+// $dull-main: #90bddb;
+// $ll-main: #c5e9ff;
+
+// $secondary: #3285bc;
+// $light-secondary: #ffc74e;
+// $dull-secondary: #e0af45;
+// $tertiary: #f4b400;
+// $dark-tertiary: #c36e00;
+
+// $light: #fff;
+// $dark: #2D2E30;
+
+// $error: #F76D6D;
+
+/*		Mixins
+ * -----------------------------------*/
+
+/*=		show/hide		*/
+@mixin hide { display: none !important; }
+@mixin db { display: block; }
+@mixin show { display: block; }
+@mixin hide-text { position: absolute; left: -999em; }
+@mixin show-text { position: static; left: auto; }
+
+/*=		Custom Font Sizes		*/
+@mixin fs-xxxs { font-size: 9px;  line-height: 120%; }
+@mixin fs-xxs { font-size: 10px;  line-height: 120%; }
+@mixin fs-xs { font-size: 11px;  line-height: 120%; }
+@mixin fs-s { font-size: 12px; line-height: 120%; }
+@mixin fs-m { font-size: 14px; line-height: 130%; }
+@mixin fs-mm { font-size: 18px; line-height: 140%; }
+@mixin fs-l { font-size: 24px; line-height: 140%; }
+@mixin fs-xl { font-size: 30px; line-height: 143%; }
+@mixin fs-xxl { font-size: 36px; line-height: 145%; }
+@mixin fs-xxxl { font-size: 48px; line-height: 150%; } 
+@mixin fs-xxxxl { font-size: 60px; line-height: 150%; } 
+
+/*=   Custom Font Family   */
+@mixin ff-primary { font-family: "myriad-pro", Myriad Pro, sans-serif; }
+@mixin ff-secondary { font-family: Arial, sans-serif; }
+
+/*=		Custom Line-Height		*/
+@mixin lh-1e { line-height: 1em !important; }
+@mixin lh-1e1 { line-height: 1.1em !important; }
+@mixin lh-1e2 { line-height: 1.2em !important; }
+@mixin lh-1e3 { line-height: 1.3em !important; }
+@mixin lh-1e4 { line-height: 1.4em !important; }
+@mixin lh-1e5 { line-height: 1.5em !important; }
+@mixin lh-1e6 { line-height: 1.6em !important; }
+@mixin lh-1e7 { line-height: 1.7em !important; }
+@mixin lh-1e8 { line-height: 1.8em !important; }
+@mixin lh-2e { line-height: 2em !important; }
+@mixin lh-2e1 { line-height: 2.1em !important; }
+@mixin lh-2e5 { line-height: 2.5em !important; }
+
+@mixin lh-100p { line-height: 100% }
+@mixin lh-120p { line-height: 120% }
+@mixin lh-130p { line-height: 130% }
+@mixin lh-140p { line-height: 140% }
+@mixin lh-150p { line-height: 150% }
+@mixin lh-160p { line-height: 160% }
+@mixin lh-180p { line-height: 180% }
+@mixin lh-200p { line-height: 200% }
+
+/*=		Text-Transform		*/
+@mixin tt-none { text-transform: none; }
+@mixin tt-n { text-transform: none; }
+@mixin TT-NONE { text-transform: none !important; }
+@mixin TT-N { text-transform: none !important; }
+@mixin tt-c { text-transform: capitalize; }
+@mixin tt-capitalize { text-transform: capitalize; }
+@mixin TT-C { text-transform: capitalize !important;}
+@mixin TT-CAPITALIZE { text-transform: capitalize !important;}
+
+/*    Parametric Mixins
+ * -----------------------------------*/
+
+@mixin border-radius($radius: 2px) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// transparent background
+@mixin bga($r, $g, $b, $a) {
+	background: rgb($r, $g, $b);
+	background: rgba($r, $g, $b, $a);
+	background: transparent\9;
+	filter: prodid:DXImageTransform.Microsoft.gradient(startColorstr=#{hexa($a, $r, $g, $b)},endColorstr=#{hexa($a, $r, $g, $b)});
+	//filter: prodid:DXImageTransform.Microsoft.gradient(startColorstr=#{'#' + hex(round($a * 255)) + '' + hex($r) + '' + hex($g) + '' + hex($b)},endColorstr=#{'#' + hex(round($a*255)) + '' + hex($r) + '' + hex($g) + '' + hex($b)});
+	//-ms-filter: "progid:DXImageTransform.Microsoft.alpha(Opacity=" + round(!$a*100) + ")"; // IE 8
+	//filter: "alpha(opacity=" + round(!a*100) + ")"
+	zoom: 1;
+}
+
+@mixin text-shadow($settings) {
+  -moz-text-shadow: $settings;
+  -webkit-text-shadow: $settings;
+  -o-text-shadow: $settings;
+  text-shadow: $settings;
+}
+
+@mixin box-shadow($settings) {
+  -moz-box-shadow: $settings;
+  -webkit-box-shadow: $settings;
+  -o-box-shadow: $settings;
+  box-shadow: $settings;
+}
+
+@mixin 3-box-shadow($s1, $s2, $s3) {
+  -moz-box-shadow: $s1, $s2, $s3;
+  -webkit-box-shadow: $s1, $s2, $s3;
+  -o-box-shadow: $s1, $s2, $s3;
+  box-shadow: $s1, $s2, $s3;
+}
+
+@mixin text-shadow($settings) {
+	-moz-text-shadow: $settings;
+	-webkit-text-shadow: $settings;
+	-o-text-shadow: $settings;
+	text-shadow: $settings;
+}
+
+@mixin gradient($color1, $color2) {
+  background: $color2;
+  background-image: linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: -o-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: -moz-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: -webkit-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: -ms-linear-gradient(bottom, $color1 10%, $color2 80%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.10, $color1),
+    color-stop(0.80, $color2)
+  );
+}
+
+@mixin gradient_with_image($color1, $color2, $url) {
+  background: $color2;
+  background-image: $url;
+  background-image: $url, linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: $url, -o-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: $url, -moz-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: $url, -webkit-linear-gradient(bottom, $color1 10%, $color2 80%);
+  background-image: $url, -ms-linear-gradient(bottom, $color1 10%, $color2 80%);
+
+  background-image: $url, -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.10, $color1),
+    color-stop(0.80, $color2)
+  );
+
+  background-repeat: no-repeat;
+  background-position: center 0;
+}
+
+/*		Classes	
+ * -----------------------------------*/
+
+.sxn, .block,
+.section, .colgroup, .widget,
+.page, .sxn, .bfr, .bfl {
+	display:inline-block;
+
+	&:after {
+		content:".";
+		display:block;
+		clear:both;
+		visibility:hidden;
+		line-height:0;
+		height:0
+	}
+}
+
+/*=		Clearfloat Fix		*/
+.clearfix { clear:both; height:0; font-size: 1px; line-height: 0px; } 
+.cancelempty {clear:both; font-size:1px; margin:0; padding:0 }
+
+/*=		Float Classes		*/
+.block,  .col, .cg, .fl, .bfl { float: left }
+.bfr, .fr { float:right; }
+.fn,.section, .sxn { float:none; }
+.section, .sxn  { float: none; }
+
+/*=		Image Fixes for IE6		*/
+.f0, .imgfix { font-size: 0; line-height: 0px;  } 
+.pw, .inset { margin-left: auto; margin-right: auto;}
+
+/*= Jquery Tabs */
+.ui-tabs .ui-tabs-hide { @include hide-text; }
