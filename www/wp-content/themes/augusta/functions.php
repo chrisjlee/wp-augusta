@@ -222,3 +222,6 @@ add_filter( 'get_the_excerpt', 'augusta_excerpt_more' );
   // return print "<html>";  
   // //add_action('augusta_doctype','custom_doctype_setup', $output);
 // }
+
+require_once(__DIR__ .'/assets/dependencies.php');
+require_once(__DIR__ .'/assets/common.php');
