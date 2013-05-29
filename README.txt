@@ -19,7 +19,7 @@ Co-Authors: Felipe L. Rocha, Jonathan Masiello
 
 Sponsored by
 ---------------------------------
-Globe Runner SEO, <a href="http://globerunnerseo.com">Dallas Wordpress Development</a>
+Globe Runner SEO
 
 Description
 ---------------------------------
